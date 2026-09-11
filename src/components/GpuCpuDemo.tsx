@@ -23,7 +23,7 @@ export function GpuCpuDemo() {
   const timerRef = useRef<number | null>(null)
 
   const run = (m: 'cpu' | 'gpu') => {
-    window.clearInterval(timerRef.current ?? undefined)
+    window.clearTimeout(timerRef.current ?? undefined)
     cancelAnimationFrame(rafRef.current)
     setMode(m)
     setDone(new Set())
@@ -39,7 +39,8 @@ export function GpuCpuDemo() {
       filled = Math.min(TOTAL, filled + perTick)
       setDone(new Set(order.slice(0, filled)))
       if (filled >= TOTAL) {
-        window.clearInterval(timerRef.current ?? undefined)
+        window.clearTimeout(timerRef.current ?? undefined)
+        cancelAnimationFrame(rafRef.current)
         const total = performance.now() - startRef.current
         setElapsed(total)
         setResult((r) => ({ ...r, [m]: total }))
@@ -60,7 +61,7 @@ export function GpuCpuDemo() {
   useEffect(() => {
     return () => {
       cancelAnimationFrame(rafRef.current)
-      window.clearInterval(timerRef.current ?? undefined)
+      window.clearTimeout(timerRef.current ?? undefined)
     }
   }, [])
 

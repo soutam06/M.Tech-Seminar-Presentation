@@ -25,12 +25,13 @@ export function SlideShell({
   return (
     <section className="scanlines relative h-full w-full overflow-hidden">
       <DeckBackground hue={hue} />
-      <div
-        className={`slide-scroll relative z-10 mx-auto flex h-full max-w-6xl flex-col overflow-y-auto px-6 py-10 md:px-14 md:py-14 ${
-          center ? 'justify-center' : 'justify-start'
-        }`}
-      >
-        {(kicker || era) && (
+      <div className="slide-scroll relative z-10 flex h-full flex-col overflow-y-auto">
+        <div
+          className={`mx-auto my-auto w-full max-w-6xl px-6 py-10 md:px-14 md:py-12 ${
+            center ? 'md:py-14' : ''
+          }`}
+        >
+          {(kicker || era) && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,7 +66,8 @@ export function SlideShell({
             {subtitle}
           </motion.p>
         )}
-        {children && <div className={title ? 'mt-8' : ''}>{children}</div>}
+          {children && <div className={title ? 'mt-8' : ''}>{children}</div>}
+        </div>
       </div>
     </section>
   )
