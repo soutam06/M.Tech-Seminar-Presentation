@@ -3,6 +3,10 @@ import { motion } from 'framer-motion'
 import { SlideShell } from './components/SlideShell'
 import { Card, Chip, GradientText, Reveal, Stat } from './components/primitives'
 import { GpuCpuDemo } from './components/GpuCpuDemo'
+import heroEvolution from './assets/hero-evolution.png'
+import arcadeEra from './assets/arcade-era.png'
+import gpuChip from './assets/gpu-chip.png'
+import futureImmersion from './assets/future-immersion.png'
 
 export type Slide = {
   id: string
@@ -27,6 +31,36 @@ function IconChip({ children }: { children: ReactNode }) {
   )
 }
 
+function Figure({
+  src,
+  alt,
+  caption,
+  delay = 0.2,
+  className = '',
+}: {
+  src: string
+  alt: string
+  caption?: string
+  delay?: number
+  className?: string
+}) {
+  return (
+    <motion.figure
+      initial={{ opacity: 0, scale: 0.97 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      className={`overflow-hidden rounded-2xl border border-white/10 bg-black/30 ${className}`}
+    >
+      <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover" />
+      {caption && (
+        <figcaption className="px-3 py-2 text-center font-mono text-[11px] text-white/45">
+          {caption}
+        </figcaption>
+      )}
+    </motion.figure>
+  )
+}
+
 export const slides: Slide[] = [
   // 1 — TITLE
   {
@@ -35,43 +69,56 @@ export const slides: Slide[] = [
     hue: 'magenta',
     render: () => (
       <SlideShell hue="magenta" center>
-        <div className="flex flex-col items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Chip>⚙️ A Science &amp; Engineering Talk</Chip>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
-          >
-            The Engineering
-            <br />
-            of <GradientText>Play</GradientText>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-6 max-w-2xl text-lg text-white/70 md:text-2xl"
-          >
-            How the gaming industry evolved — and where it's headed — told through the
-            engineering that made it possible.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-10 flex flex-wrap items-center gap-3 font-mono text-sm text-white/50"
-          >
-            <span className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5">
-              Pixels → Polygons → AI → Immersion
-            </span>
-          </motion.div>
+        <div className="grid items-center gap-8 md:grid-cols-[1.05fr_0.95fr]">
+          <div className="flex flex-col items-start">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Chip>⚙️ A Science &amp; Engineering Talk</Chip>
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-5 font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
+            >
+              The Engineering
+              <br />
+              of <GradientText>Play</GradientText>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-5 max-w-2xl text-base text-white/70 md:text-xl"
+            >
+              How the gaming industry evolved — and where it's headed — told through the
+              engineering that made it possible.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="mt-7 border-l-2 border-fuchsia-400/50 pl-4"
+            >
+              <div className="font-display text-lg font-semibold text-white md:text-xl">
+                Soutam Rajbhar
+              </div>
+              <div className="mt-0.5 text-sm text-white/55">
+                Department of Chemical Engineering
+              </div>
+              <div className="text-sm text-white/55">IIT Kharagpur</div>
+            </motion.div>
+          </div>
+          <Figure
+            src={heroEvolution}
+            alt="The evolution of games: from a Pong CRT and 8-bit sprites, to 3D wireframe characters, to a person in a VR headset before a futuristic world."
+            caption="From Pong on a CRT → 8-bit → 3D → immersive VR worlds"
+            delay={0.35}
+            className="hidden md:block"
+          />
         </div>
       </SlideShell>
     ),
@@ -184,6 +231,12 @@ export const slides: Slide[] = [
         title={<>The Spark: making a screen <GradientText from={TINT.amber} to={TINT.magenta}>respond</GradientText></>}
         subtitle="Before graphics, the challenge was simply: can a machine react to a human in real time?"
       >
+        <Figure
+          src={arcadeEra}
+          alt="A dark 1980s arcade lit by the glow of classic cabinets showing simple pixel sprites."
+          delay={0.15}
+          className="mb-5 h-32 md:h-44"
+        />
         <div className="grid gap-4 md:grid-cols-3">
           <Card delay={0.1}>
             <IconChip>🕹️</IconChip>
@@ -235,6 +288,12 @@ export const slides: Slide[] = [
         title={<>The third dimension &amp; the birth of the <GradientText>GPU</GradientText></>}
         subtitle="Turning flat sprites into worlds meant doing enormous amounts of the same math — fast."
       >
+        <Figure
+          src={gpuChip}
+          alt="A glowing GPU graphics chip on a circuit board with many bright cores lit in parallel."
+          delay={0.15}
+          className="mb-5 h-28 md:h-40"
+        />
         <div className="grid gap-4 md:grid-cols-2">
           <Card delay={0.1}>
             <h3 className="font-display text-lg font-semibold text-white">The problem</h3>
@@ -508,6 +567,12 @@ export const slides: Slide[] = [
         title={<>From a screen you watch to a world you <GradientText from={TINT.violet} to={TINT.cyan}>inhabit</GradientText></>}
         subtitle="The frontier isn't just better images — it's collapsing the distance between you and the world."
       >
+        <Figure
+          src={futureImmersion}
+          alt="A person wearing a VR headset reaching toward a floating holographic AI-generated game world."
+          delay={0.15}
+          className="mb-5 h-28 md:h-40"
+        />
         <div className="grid gap-4 md:grid-cols-2">
           <Card delay={0.1}>
             <h3 className="font-display text-lg font-semibold text-white">🥽 VR / AR &amp; spatial</h3>
@@ -587,7 +652,121 @@ export const slides: Slide[] = [
     ),
   },
 
-  // 13 — CLOSE
+  // 13 — KEY TAKEAWAYS
+  {
+    id: 'takeaways',
+    label: 'Key Takeaways',
+    hue: 'lime',
+    render: () => {
+      const points = [
+        {
+          t: 'Gaming is an engineering industry',
+          d: 'Bigger than film and music combined — and every leap forward was won by engineers, not just artists.',
+          c: TINT.cyan,
+        },
+        {
+          t: 'The GPU is the hero of the story',
+          d: 'A chip built to shade pixels in parallel now trains every major AI model. Fun hardware became world-changing hardware.',
+          c: TINT.magenta,
+        },
+        {
+          t: 'Breakthroughs keep escaping gaming',
+          d: 'GPUs, physics engines, netcode and neural rendering all leaked out to power AI, film, robotics and science.',
+          c: TINT.violet,
+        },
+        {
+          t: 'The future is generated & felt',
+          d: 'AI will imagine worlds in real time, and immersion tech will dissolve the line between the player and the world.',
+          c: TINT.lime,
+        },
+      ]
+      return (
+        <SlideShell
+          hue="lime"
+          kicker="If you remember four things"
+          title={<>Key <GradientText from={TINT.lime} to={TINT.cyan}>takeaways</GradientText></>}
+        >
+          <div className="grid gap-4 md:grid-cols-2">
+            {points.map((p, i) => (
+              <motion.div
+                key={p.t}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.12 + i * 0.1 }}
+                className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+              >
+                <span
+                  className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full font-mono text-sm font-bold"
+                  style={{ color: p.c, background: `${p.c}1a`, border: `1px solid ${p.c}55` }}
+                >
+                  {i + 1}
+                </span>
+                <div>
+                  <h3 className="font-display text-lg font-semibold text-white">{p.t}</h3>
+                  <p className="mt-1 text-sm text-white/60">{p.d}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </SlideShell>
+      )
+    },
+  },
+
+  // 14 — REFERENCES
+  {
+    id: 'references',
+    label: 'References',
+    hue: 'violet',
+    render: () => {
+      const refs = [
+        ['Newzoo', 'Global Games Market Report — revenue & player estimates', '2024'],
+        ['NVIDIA', 'GeForce 256 — “the world’s first GPU”, and GPU architecture history', '1999–'],
+        ['NVIDIA', 'DLSS: Deep Learning Super Sampling — neural rendering overview', '2020–'],
+        ['Akenine-Möller, Haines & Hoffman', 'Real-Time Rendering (4th ed.) — rasterisation & ray tracing', '2018'],
+        ['Valve Developer Community', 'Source Multiplayer Networking — lag compensation & prediction', ''],
+        ['Google DeepMind', 'AlphaGo & AlphaStar — reinforcement learning in games', '2016–19'],
+        ['Google Research', 'GameNGen — a neural network that runs a playable game in real time', '2024'],
+        ['Cooper et al., Nature', 'Predicting protein structures with the game “Foldit”', '2010'],
+      ]
+      return (
+        <SlideShell
+          hue="violet"
+          kicker="Sources & further reading"
+          title="References"
+          subtitle="A starting point if you want to dig into any part of this story."
+        >
+          <div className="grid gap-x-8 gap-y-3 md:grid-cols-2">
+            {refs.map(([who, what, year], i) => (
+              <motion.div
+                key={who + what}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.08 + i * 0.06 }}
+                className="flex gap-3 border-b border-white/5 pb-3"
+              >
+                <span className="font-mono text-xs text-white/35">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <p className="text-sm text-white/70">
+                  <span className="font-semibold text-white">{who}.</span> {what}
+                  {year ? <span className="text-white/40"> · {year}</span> : null}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+          <Reveal delay={0.6} className="mt-5">
+            <p className="font-mono text-xs text-white/40">
+              Figures are approximate and cited for scale; imagery is illustrative /
+              AI-generated for this talk.
+            </p>
+          </Reveal>
+        </SlideShell>
+      )
+    },
+  },
+
+  // 15 — CLOSE
   {
     id: 'thanks',
     label: 'Thank you',
@@ -595,36 +774,40 @@ export const slides: Slide[] = [
     render: () => (
       <SlideShell hue="magenta" center>
         <div className="flex flex-col items-start">
-          <Chip>🎮 The End · Questions welcome</Chip>
+          <Chip>🎮 One last thought</Chip>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mt-6 font-display text-4xl font-bold leading-tight md:text-6xl"
+            className="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl"
           >
-            Thank you.
+            The next leap in technology
             <br />
-            <GradientText>Let's play with ideas.</GradientText>
+            won't be announced in a lab —
+            <br />
+            <GradientText>it'll ship in a game.</GradientText>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="mt-6 max-w-2xl text-lg text-white/65"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-6 max-w-2xl text-base text-white/65 md:text-lg"
           >
             Pixels → Polygons → Parallel compute → AI → Immersion. From <em>Pong</em> on an
             oscilloscope to worlds we may one day step inside — every leap was an engineering
-            leap.
+            leap. Keep an eye on what gamers play next; it's a preview of what everyone builds
+            with.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-            className="mt-8 flex flex-wrap gap-3 font-mono text-sm text-white/55"
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-8 flex flex-wrap items-center gap-3 font-mono text-sm text-white/60"
           >
-            <span className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5">
-              Great discussion Q: “Should game engines be the default tool for all simulation?”
+            <span className="rounded-lg border border-fuchsia-400/30 bg-fuchsia-400/10 px-4 py-1.5 text-fuchsia-200">
+              Thank you — questions welcome
             </span>
+            <span className="text-white/45">Soutam Rajbhar · Chemical Engineering, IIT Kharagpur</span>
           </motion.div>
         </div>
       </SlideShell>
