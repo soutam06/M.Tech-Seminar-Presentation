@@ -71,7 +71,6 @@ export const slides: Slide[] = [
             <span className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5">
               Pixels → Polygons → AI → Immersion
             </span>
-            <span className="hidden md:inline">press → or Space to begin</span>
           </motion.div>
         </div>
       </SlideShell>
