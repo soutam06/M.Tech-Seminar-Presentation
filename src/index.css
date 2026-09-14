@@ -60,3 +60,33 @@
 .export-mode .export-hide {
   display: none !important;
 }
+
+/* Presentation scale: type grows with the window so a projector can actually read it */
+.deck-cards {
+  display: grid;
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: clamp(0.85rem, 1.2vw, 1.4rem);
+  grid-auto-rows: 1fr;
+}
+
+.deck-title {
+  font-size: clamp(2.6rem, 5.2vw, 5.4rem);
+  line-height: 1.05;
+}
+
+.deck-sub {
+  font-size: clamp(1.45rem, 2.35vw, 2.25rem);
+  line-height: 1.3;
+}
+
+.deck-h {
+  font-size: clamp(1.55rem, 2.55vw, 2.55rem);
+  line-height: 1.15;
+}
+
+.deck-p {
+  font-size: clamp(1.35rem, 2.15vw, 2.05rem);
+  line-height: 1.35;
+  color: rgb(255 255 255 / 0.9);
+}

@@ -24,14 +24,14 @@ export function SlideShell({
   return (
     <section className="relative h-full w-full overflow-hidden">
       <DeckBackground hue={hue} />
-      <div className="relative z-10 flex h-full min-h-0 flex-col px-[3.5vw] pb-20 pt-7">
+      <div className="relative z-10 flex h-full min-h-0 flex-col px-[2.8vw] pb-[4.6rem] pt-[1.6vw]">
         <div
           className={`flex min-h-0 w-full flex-1 flex-col ${center ? 'justify-center' : ''}`}
         >
           {(kicker || era) && (
-            <div className="mb-2 flex flex-wrap items-center gap-3">
+            <div className="mb-[0.6vw] flex flex-wrap items-center gap-3">
               {kicker && (
-                <span className="font-mono text-[11px] uppercase tracking-[0.32em] text-white/45 sm:text-xs">
+                <span className="font-mono text-[clamp(0.9rem,1.35vw,1.15rem)] uppercase tracking-[0.22em] text-white/75">
                   {kicker}
                 </span>
               )}
@@ -39,17 +39,17 @@ export function SlideShell({
             </div>
           )}
           {title && (
-            <h2 className="max-w-none font-display text-[clamp(1.75rem,4.2vw,4.25rem)] font-bold leading-[1.06] tracking-tight">
+            <h2 className="deck-title max-w-none font-display font-bold tracking-tight">
               {title}
             </h2>
           )}
           {subtitle && (
-            <p className="mt-2 max-w-none text-[clamp(0.95rem,1.6vw,1.35rem)] leading-snug text-white/70">
+            <p className="deck-sub mt-[0.6vw] max-w-none font-medium text-white/90">
               {subtitle}
             </p>
           )}
           {children && (
-            <div className={`flex min-h-0 flex-1 flex-col ${title ? 'mt-4' : ''}`}>
+            <div className={`flex min-h-0 flex-1 flex-col ${title ? 'mt-[1.1vw]' : ''}`}>
               {children}
             </div>
           )}

@@ -73,23 +73,23 @@ export const slides: Slide[] = [
         <div className="grid h-full min-h-0 items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col items-start">
             <Chip>A science &amp; engineering talk</Chip>
-            <h1 className="mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
+            <h1 className="mt-6 font-display text-[clamp(3.2rem,7vw,7.2rem)] font-bold leading-[1.02] tracking-tight">
               The Engineering
               <br />
               of <GradientText>Play</GradientText>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg text-white/70 lg:text-2xl">
+            <p className="deck-sub mt-6 max-w-4xl text-white/85">
               How games grew up — and where they are going — told through the engineering
               that made each leap possible.
             </p>
             <div className="mt-8 border-l-2 border-fuchsia-400/50 pl-4">
-              <div className="font-display text-xl font-semibold text-white lg:text-2xl">
+              <div className="font-display text-[clamp(1.6rem,2.6vw,2.4rem)] font-semibold text-white">
                 Soutam Rajbhar
               </div>
-              <div className="mt-0.5 text-sm text-white/55 lg:text-base">
+              <div className="deck-p mt-1">
                 Department of Chemical Engineering
               </div>
-              <div className="text-sm text-white/55 lg:text-base">IIT Kharagpur</div>
+              <div className="deck-p">IIT Kharagpur</div>
             </div>
           </div>
           <Figure
@@ -120,7 +120,7 @@ export const slides: Slide[] = [
         }
         subtitle="Bigger than movies and music put together. And it isn't really an art industry. It's an engineering one."
       >
-        <div className="grid min-h-[38vh] flex-1 grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="deck-cards grid-cols-2 md:grid-cols-4">
           <Card delay={0.1}>
             <Stat value="~$200B" label="Money made each year" tint={TINT.cyan} />
           </Card>
@@ -135,7 +135,7 @@ export const slides: Slide[] = [
           </Card>
         </div>
         <Reveal delay={0.5} className="mt-6">
-          <p className="text-white/60 md:text-lg">
+          <p className="deck-p mt-4">
             Every second, your computer does maths for millions of points — shape, bounce,
             light — and paints a new picture before you can blink. That's the story we're
             following today.
@@ -165,26 +165,26 @@ export const slides: Slide[] = [
           title="Five big leaps. One story."
           subtitle="Each leap happened because engineers solved a hard problem. Here's the map for today."
         >
-          <div className="relative mt-4">
-            <div className="absolute left-[8%] right-[8%] top-[11px] hidden h-px bg-gradient-to-r from-amber-400/50 via-violet-400/50 to-lime-400/50 md:block" />
-            <div className="mt-6 grid min-h-0 flex-1 gap-4 md:grid-cols-5">
+          <div className="relative mt-2 flex min-h-0 flex-1 flex-col">
+            <div className="absolute left-[6%] right-[6%] top-[14px] hidden h-px bg-gradient-to-r from-amber-400/50 via-violet-400/50 to-lime-400/50 md:block" />
+            <div className="deck-cards md:grid-cols-5">
               {eras.map((e) => (
                 <div
                   key={e.t}
-                  className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-5 pt-6"
+                  className="relative flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.05] p-[1.3vw] pt-[1.8vw]"
                 >
                   <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2">
                     <span
-                      className="h-3.5 w-3.5 rounded-full ring-4 ring-[color:var(--color-ink)]"
+                      className="h-4 w-4 rounded-full ring-4 ring-[color:var(--color-ink)]"
                       style={{ background: e.c, boxShadow: `0 0 12px ${e.c}` }}
                     />
                   </div>
-                  <div className="font-display text-lg font-semibold" style={{ color: e.c }}>
+                  <div className="deck-h font-display font-semibold" style={{ color: e.c }}>
                     {e.t}
                   </div>
-                  <div className="mt-1 text-sm leading-snug text-white/55">{e.d}</div>
+                  <div className="deck-p mt-[0.5vw] flex-1">{e.d}</div>
                   <div
-                    className="mt-4 border-t border-white/10 pt-3 font-mono text-sm font-semibold tracking-wide"
+                    className="mt-[1vw] border-t border-white/10 pt-[0.8vw] font-mono text-[clamp(1.15rem,1.9vw,1.7rem)] font-semibold tracking-wide"
                     style={{ color: e.c }}
                   >
                     {e.y}
@@ -221,27 +221,27 @@ export const slides: Slide[] = [
           alt="A dark 1980s arcade lit by the glow of classic cabinets showing simple pixel sprites."
           className="h-[32vh] w-full shrink-0"
         />
-        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-3">
+        <div className="deck-cards md:grid-cols-3">
           <Card delay={0.1}>
             <IconChip>🕹️</IconChip>
-            <h3 className="mt-3 font-display text-lg font-semibold text-white">The games</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">The games</h3>
+            <p className="deck-p mt-[0.5vw]">
               <em>Tennis for Two</em> (1958) on a lab screen, <em>Pong</em> (1972), then
               <em> Space Invaders</em> and packed arcade halls.
             </p>
           </Card>
           <Card delay={0.2}>
             <IconChip>🔌</IconChip>
-            <h3 className="mt-3 font-display text-lg font-semibold text-white">How it was built</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">How it was built</h3>
+            <p className="deck-p mt-[0.5vw]">
               Early machines were wired by hand. There was often no “brain chip” yet — the
               wiring <em>itself</em> was the game.
             </p>
           </Card>
           <Card delay={0.3}>
             <IconChip>💡</IconChip>
-            <h3 className="mt-3 font-display text-lg font-semibold text-white">The big change</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">The big change</h3>
+            <p className="deck-p mt-[0.5vw]">
               Cheap computer chips arrived. A game became <em>software</em> — the same machine
               could play many different games.
             </p>
@@ -281,18 +281,18 @@ export const slides: Slide[] = [
           alt="A glowing GPU graphics chip on a circuit board with many bright cores lit in parallel."
           className="h-[32vh] w-full shrink-0"
         />
-        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
+        <div className="deck-cards md:grid-cols-2">
           <Card delay={0.1}>
-            <h3 className="font-display text-lg font-semibold text-white">The problem</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">The problem</h3>
+            <p className="deck-p mt-[0.5vw]">
               A 3D world is made of millions of tiny triangles. Every picture, the computer
               must move them, light them, and colour every dot. A normal chip (the CPU) does
               this one step at a time — too slow for smooth play.
             </p>
           </Card>
           <Card delay={0.2}>
-            <h3 className="font-display text-lg font-semibold text-white">The answer</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">The answer</h3>
+            <p className="deck-p mt-[0.5vw]">
               A new chip built just for pictures: the{' '}
               <span className="text-cyan-300">Graphics Processing Unit</span>. It has many small
               workers that colour lots of dots <em>at the same time</em>. NVIDIA's 1999
@@ -300,18 +300,18 @@ export const slides: Slide[] = [
             </p>
           </Card>
         </div>
-        <div className="mt-4 flex flex-wrap gap-2 font-mono text-xs">
+        <div className="mt-4 flex flex-wrap gap-2 font-mono text-[clamp(1rem,1.5vw,1.25rem)]">
           {['PlayStation', 'Nintendo 64', 'Quake', 'GeForce 256'].map((t) => (
             <span
               key={t}
-              className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-white/60"
+              className="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-white/80"
             >
               {t}
             </span>
           ))}
         </div>
         <Reveal delay={0.5} className="mt-5">
-          <p className="text-white/60">
+          <p className="deck-p">
             One idea matters more than anything else today:{' '}
             <span className="text-white">do the same small job on thousands of things at once</span>.
             Let's watch it happen. →
@@ -340,24 +340,24 @@ export const slides: Slide[] = [
         <div className="flex min-h-0 flex-1 flex-col rounded-2xl border border-white/10 bg-black/30 p-4 md:p-6">
           <GpuCpuDemo />
         </div>
-        <div className="mt-4 grid min-h-0 flex-1 gap-3 md:grid-cols-2">
+        <div className="deck-cards md:grid-cols-2">
           <Card delay={0.15}>
-            <h3 className="font-display text-base font-semibold text-cyan-200">CPU · 4 cores</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-cyan-200">CPU · 4 cores</h3>
+            <p className="deck-p mt-[0.5vw]">
               Few workers. Each one is smart and can do many kinds of jobs — like 4 master
               chefs in a kitchen.
             </p>
           </Card>
           <Card delay={0.22}>
-            <h3 className="font-display text-base font-semibold text-fuchsia-200">GPU · 48 cores</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-fuchsia-200">GPU · 48 cores</h3>
+            <p className="deck-p mt-[0.5vw]">
               Many workers. Each one is simple and repeats one job — like 48 line cooks all
               chopping vegetables at once.
             </p>
           </Card>
         </div>
         <Reveal delay={0.4} className="mt-4">
-          <p className="text-center text-sm text-white/55">
+          <p className="deck-p text-center">
             If we gave the CPU 48 cores, would it become a GPU?{' '}
             <span className="text-white">No.</span> More chefs still aren't a factory line.
             A real GPU has <span className="text-white">thousands</span> of these simple cores.
@@ -387,27 +387,27 @@ export const slides: Slide[] = [
         }
         subtitle="Home internet turned games into places we share. That created new headaches for engineers."
       >
-        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-3">
+        <div className="deck-cards md:grid-cols-3">
           <Card delay={0.1}>
             <IconChip>🌐</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">Fighting delay</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">Fighting delay</h3>
+            <p className="deck-p mt-[0.5vw]">
               A signal can take about 40 milliseconds to cross the world. Games guess your next
               move, then correct it — so play still feels instant.
             </p>
           </Card>
           <Card delay={0.2}>
             <IconChip>🧲</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">Real physics</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">Real physics</h3>
+            <p className="deck-p mt-[0.5vw]">
               Games solve bounce, crash, and falling bodies 60 times a second — the same kind of
               maths used in engineering simulations.
             </p>
           </Card>
           <Card delay={0.3}>
             <IconChip>🏙️</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">Huge worlds</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">Huge worlds</h3>
+            <p className="deck-p mt-[0.5vw]">
               Games like <em>World of Warcraft</em> keep tens of thousands of players in sync
               across many computers at once.
             </p>
@@ -442,31 +442,31 @@ export const slides: Slide[] = [
         }
         subtitle="From a phone in every pocket to light that looks almost real."
       >
-        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
+        <div className="deck-cards md:grid-cols-2">
           <Card delay={0.1}>
-            <h3 className="font-display text-lg font-semibold text-white">📱 In every pocket</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">📱 In every pocket</h3>
+            <p className="deck-p mt-[0.5vw]">
               Most gaming now happens on phones. A modern phone already has a strong picture
               chip — a console in your hand.
             </p>
           </Card>
           <Card delay={0.18}>
-            <h3 className="font-display text-lg font-semibold text-white">☁️ Games in the cloud</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">☁️ Games in the cloud</h3>
+            <p className="deck-p mt-[0.5vw]">
               The game can run on a faraway computer and send you video — like Netflix, except
               your button press has to travel there and back in a blink.
             </p>
           </Card>
           <Card delay={0.26}>
-            <h3 className="font-display text-lg font-semibold text-white">💡 Tracing light</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">💡 Tracing light</h3>
+            <p className="deck-p mt-[0.5vw]">
               New chips follow rays of light through a scene — real reflections and shadows.
               Movie computers used to spend hours on one frame. Games now do it live.
             </p>
           </Card>
           <Card delay={0.34}>
-            <h3 className="font-display text-lg font-semibold text-white">🏟️ Esports</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">🏟️ Esports</h3>
+            <p className="deck-p mt-[0.5vw]">
               Competitive games fill stadiums. That needs rock-solid servers, fair play, and
               timing accurate to a fraction of a picture.
             </p>
@@ -492,34 +492,34 @@ export const slides: Slide[] = [
         }
         subtitle="Tools made so we could have fun ended up powering some of today's most serious work."
       >
-        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-3">
+        <div className="deck-cards md:grid-cols-3">
           <Card delay={0.1}>
             <IconChip>🧠</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">GPUs → the AI boom</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">GPUs → the AI boom</h3>
+            <p className="deck-p mt-[0.5vw]">
               The same “many hands” maths that colours pixels is what trains AI. Chatbots and
               image models run on chips that started life in games.
             </p>
           </Card>
           <Card delay={0.2}>
             <IconChip>🎬</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">Game tools → film &amp; design</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">Game tools → film &amp; design</h3>
+            <p className="deck-p mt-[0.5vw]">
               The same software that builds games now draws movie sets, car showrooms, and
               buildings — live, not overnight.
             </p>
           </Card>
           <Card delay={0.3}>
             <IconChip>🤖</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">Game physics → factories</h3>
-            <p className="mt-1 text-sm text-white/60">
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">Game physics → factories</h3>
+            <p className="deck-p mt-[0.5vw]">
               Robots and self-driving cars practise in game-like worlds. Factories test a
               virtual copy of a plant before they build the real one.
             </p>
           </Card>
         </div>
         <Reveal delay={0.5} className="mt-6">
-          <p className="text-white/65 md:text-lg">
+          <p className="deck-p">
             <span className="text-lime-300">The point:</span> chasing a fun, hard problem —
             drawing a world 60 times a second — gave every other field a new set of tools.
           </p>
@@ -544,31 +544,31 @@ export const slides: Slide[] = [
         }
         subtitle="The next leap: the computer doesn't only paint the world. It starts to imagine it."
       >
-        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
+        <div className="deck-cards md:grid-cols-2">
           <Card delay={0.1}>
-            <h3 className="font-display text-lg font-semibold text-white">🪄 AI fills in the picture</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">🪄 AI fills in the picture</h3>
+            <p className="deck-p mt-[0.5vw]">
               Games already draw a rough picture, then let AI add the extra detail — more
               sharpness for less work. NVIDIA calls one version of this DLSS.
             </p>
           </Card>
           <Card delay={0.2}>
-            <h3 className="font-display text-lg font-semibold text-white">🌍 Worlds made on the spot</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">🌍 Worlds made on the spot</h3>
+            <p className="deck-p mt-[0.5vw]">
               Research models can now invent playable game pictures in real time. Imagine
               levels, characters, and quests made just for you.
             </p>
           </Card>
           <Card delay={0.28}>
-            <h3 className="font-display text-lg font-semibold text-white">🗣️ Characters that talk back</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">🗣️ Characters that talk back</h3>
+            <p className="deck-p mt-[0.5vw]">
               Chat-style AI can give game characters real conversations — they reply to what
               you actually say, not a fixed script.
             </p>
           </Card>
           <Card delay={0.36}>
-            <h3 className="font-display text-lg font-semibold text-white">♾️ Endless maps + AI</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">♾️ Endless maps + AI</h3>
+            <p className="deck-p mt-[0.5vw]">
               Older tricks already built whole galaxies from one seed number. Pair that with
               AI and you get huge worlds that still feel surprising.
             </p>
@@ -599,31 +599,31 @@ export const slides: Slide[] = [
           alt="A person wearing a VR headset reaching toward a floating holographic AI-generated game world."
           className="h-[32vh] w-full shrink-0"
         />
-        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
+        <div className="deck-cards md:grid-cols-2">
           <Card delay={0.1}>
-            <h3 className="font-display text-lg font-semibold text-white">🥽 Headsets &amp; mixed reality</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">🥽 Headsets &amp; mixed reality</h3>
+            <p className="deck-p mt-[0.5vw]">
               A headset must draw two sharp pictures, many times a second, with almost no delay
               after you move your head. Miss that, and people feel sick.
             </p>
           </Card>
           <Card delay={0.2}>
-            <h3 className="font-display text-lg font-semibold text-white">✋ Feeling the world</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">✋ Feeling the world</h3>
+            <p className="deck-p mt-[0.5vw]">
               Motors in controllers and suits let you feel weight, texture, and kickback —
               not just see it.
             </p>
           </Card>
           <Card delay={0.28}>
-            <h3 className="font-display text-lg font-semibold text-white">☁️ Play with almost no hardware</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">☁️ Play with almost no hardware</h3>
+            <p className="deck-p mt-[0.5vw]">
               As networks get faster, the heavy work can live in the cloud — a rich world
               streamed to thin, cheap glasses.
             </p>
           </Card>
           <Card delay={0.36}>
-            <h3 className="font-display text-lg font-semibold text-white">🧠 Playing by thought</h3>
-            <p className="mt-2 text-sm text-white/60">
+            <h3 className="deck-h font-display font-semibold text-white">🧠 Playing by thought</h3>
+            <p className="deck-p mt-[0.5vw]">
               Early brain–computer links already let some people move a cursor by thinking.
               That's a far-off idea of how we might one day play.
             </p>
@@ -649,7 +649,7 @@ export const slides: Slide[] = [
         }
         center
       >
-        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-3">
+        <div className="deck-cards md:grid-cols-3">
           {[
             {
               n: '01',
@@ -672,18 +672,18 @@ export const slides: Slide[] = [
           ].map((s) => (
             <div
               key={s.n}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 lg:p-8"
+              className="flex h-full flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.04] p-[1.4vw]"
             >
-              <div className="font-mono text-3xl font-bold" style={{ color: s.c }}>
+              <div className="font-mono text-[clamp(2.2rem,4vw,3.4rem)] font-bold" style={{ color: s.c }}>
                 {s.n}
               </div>
-              <h3 className="mt-3 font-display text-lg font-semibold text-white">{s.t}</h3>
-              <p className="mt-2 text-sm text-white/60">{s.d}</p>
+              <h3 className="mt-3 deck-h font-display font-semibold text-white">{s.t}</h3>
+              <p className="deck-p mt-[0.5vw]">{s.d}</p>
             </div>
           ))}
         </div>
         <Reveal delay={0.6} className="mt-8">
-          <p className="max-w-3xl text-lg text-white/75 md:text-2xl">
+          <p className="deck-p mt-8 max-w-5xl">
             Games are where we practise building{' '}
             <GradientText>worlds that react in real time</GradientText> — and that practise
             keeps handing the rest of engineering its next tools.
@@ -731,21 +731,21 @@ export const slides: Slide[] = [
             </>
           }
         >
-          <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
+          <div className="deck-cards md:grid-cols-2">
             {points.map((p, i) => (
               <div
                 key={p.t}
-                className="flex h-full gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5 lg:p-8"
+                className="flex h-full items-center gap-[1.2vw] rounded-2xl border border-white/10 bg-white/[0.05] p-[1.4vw]"
               >
                 <span
-                  className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full font-mono text-sm font-bold"
+                  className="grid h-[2.6vw] min-h-12 w-[2.6vw] min-w-12 flex-shrink-0 place-items-center rounded-full font-mono text-[clamp(1.2rem,2vw,1.7rem)] font-bold"
                   style={{ color: p.c, background: `${p.c}1a`, border: `1px solid ${p.c}55` }}
                 >
                   {i + 1}
                 </span>
                 <div>
-                  <h3 className="font-display text-lg font-semibold text-white">{p.t}</h3>
-                  <p className="mt-1 text-sm text-white/60">{p.d}</p>
+                  <h3 className="deck-h font-display font-semibold text-white">{p.t}</h3>
+                  <p className="deck-p mt-[0.5vw]">{p.d}</p>
                 </div>
               </div>
             ))}
@@ -778,21 +778,21 @@ export const slides: Slide[] = [
           title="References"
           subtitle="A starting list if you want to read more after today."
         >
-          <div className="grid gap-x-8 gap-y-3 md:grid-cols-2">
+          <div className="grid h-full min-h-0 flex-1 grid-cols-1 gap-x-[2vw] gap-y-[0.8vw] md:grid-cols-2">
             {refs.map(([who, what, year], i) => (
-              <div key={who + what} className="flex gap-3 border-b border-white/5 pb-3">
-                <span className="font-mono text-xs text-white/35">
+              <div key={who + what} className="flex gap-3 border-b border-white/10 pb-[0.6vw]">
+                <span className="font-mono text-[clamp(1.1rem,1.7vw,1.4rem)] text-white/50">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <p className="text-sm text-white/70">
+                <p className="deck-p">
                   <span className="font-semibold text-white">{who}.</span> {what}
-                  {year ? <span className="text-white/40"> · {year}</span> : null}
+                  {year ? <span className="text-white/50"> · {year}</span> : null}
                 </p>
               </div>
             ))}
           </div>
           <Reveal delay={0.6} className="mt-5">
-            <p className="font-mono text-xs text-white/40">
+            <p className="text-[clamp(1rem,1.5vw,1.25rem)] text-white/55">
               Numbers are rounded for scale. Every picture carries its own source
               line. Pictures in this talk are original AI-generated illustrations
               made for this seminar — not photos of real products.
@@ -812,20 +812,20 @@ export const slides: Slide[] = [
       <SlideShell hue="magenta" center>
         <div className="flex flex-col items-start">
           <Chip>One last thought</Chip>
-          <h2 className="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl">
+          <h2 className="deck-title mt-6 font-display font-bold tracking-tight">
             The next leap in technology
             <br />
             won't be announced in a lab —
             <br />
             <GradientText>it'll ship in a game.</GradientText>
           </h2>
-          <p className="mt-6 max-w-3xl text-lg text-white/65 lg:text-xl">
+          <p className="deck-sub mt-6 max-w-5xl text-white/85">
             Dots → triangles → many hands at once → AI → worlds you can step inside. From
             <em> Pong</em> on a lab screen to places we may one day walk into — every leap was
             an engineering leap. Watch what gamers play next. It's a preview of what everyone
             else will build with.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-sm text-white/60">
+          <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[clamp(1.1rem,1.7vw,1.4rem)] text-white/85">
             <span className="rounded-lg border border-fuchsia-400/30 bg-fuchsia-400/10 px-4 py-1.5 text-fuchsia-200">
               Thank you — questions welcome
             </span>
