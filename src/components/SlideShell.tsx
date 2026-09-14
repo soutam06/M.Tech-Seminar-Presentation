@@ -24,16 +24,14 @@ export function SlideShell({
   return (
     <section className="relative h-full w-full overflow-hidden">
       <DeckBackground hue={hue} />
-      <div className="slide-scroll relative z-10 flex h-full min-h-0 flex-col overflow-y-auto px-6 pb-20 pt-8 sm:px-10 lg:px-16 xl:px-20">
+      <div className="relative z-10 flex h-full min-h-0 flex-col px-[3.5vw] pb-20 pt-7">
         <div
-          className={`mx-auto flex w-full max-w-[1680px] flex-1 flex-col ${
-            center ? 'justify-center' : 'justify-center py-2'
-          }`}
+          className={`flex min-h-0 w-full flex-1 flex-col ${center ? 'justify-center' : ''}`}
         >
           {(kicker || era) && (
-            <div className="mb-3 flex flex-wrap items-center gap-3">
+            <div className="mb-2 flex flex-wrap items-center gap-3">
               {kicker && (
-                <span className="font-mono text-xs uppercase tracking-[0.32em] text-white/45">
+                <span className="font-mono text-[11px] uppercase tracking-[0.32em] text-white/45 sm:text-xs">
                   {kicker}
                 </span>
               )}
@@ -41,16 +39,20 @@ export function SlideShell({
             </div>
           )}
           {title && (
-            <h2 className="font-display text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl">
+            <h2 className="max-w-none font-display text-[clamp(1.75rem,4.2vw,4.25rem)] font-bold leading-[1.06] tracking-tight">
               {title}
             </h2>
           )}
           {subtitle && (
-            <p className="mt-3 max-w-5xl text-base text-white/65 sm:text-lg lg:text-xl">
+            <p className="mt-2 max-w-none text-[clamp(0.95rem,1.6vw,1.35rem)] leading-snug text-white/70">
               {subtitle}
             </p>
           )}
-          {children && <div className={title ? 'mt-6 lg:mt-8' : ''}>{children}</div>}
+          {children && (
+            <div className={`flex min-h-0 flex-1 flex-col ${title ? 'mt-4' : ''}`}>
+              {children}
+            </div>
+          )}
         </div>
       </div>
     </section>

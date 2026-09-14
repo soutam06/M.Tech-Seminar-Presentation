@@ -70,7 +70,7 @@ export const slides: Slide[] = [
     hue: 'magenta',
     render: () => (
       <SlideShell hue="magenta" center>
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="grid h-full min-h-0 items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col items-start">
             <Chip>A science &amp; engineering talk</Chip>
             <h1 className="mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
@@ -96,7 +96,7 @@ export const slides: Slide[] = [
             src={heroEvolution}
             alt="The evolution of games: from a Pong CRT and 8-bit sprites, to 3D wireframe characters, to a person in a VR headset before a futuristic world."
             caption="Pong on a TV → 8-bit characters → 3D → stepping into a virtual world"
-            className="hidden min-h-[280px] md:block lg:min-h-[420px]"
+            className="hidden h-full min-h-[52vh] md:block"
           />
         </div>
       </SlideShell>
@@ -120,7 +120,7 @@ export const slides: Slide[] = [
         }
         subtitle="Bigger than movies and music put together. And it isn't really an art industry. It's an engineering one."
       >
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="grid min-h-[38vh] flex-1 grid-cols-2 gap-4 md:grid-cols-4">
           <Card delay={0.1}>
             <Stat value="~$200B" label="Money made each year" tint={TINT.cyan} />
           </Card>
@@ -167,7 +167,7 @@ export const slides: Slide[] = [
         >
           <div className="relative mt-4">
             <div className="absolute left-[8%] right-[8%] top-[11px] hidden h-px bg-gradient-to-r from-amber-400/50 via-violet-400/50 to-lime-400/50 md:block" />
-            <div className="grid gap-4 md:grid-cols-5">
+            <div className="mt-6 grid min-h-0 flex-1 gap-4 md:grid-cols-5">
               {eras.map((e) => (
                 <div
                   key={e.t}
@@ -219,9 +219,9 @@ export const slides: Slide[] = [
         <Figure
           src={arcadeEra}
           alt="A dark 1980s arcade lit by the glow of classic cabinets showing simple pixel sprites."
-          className="mb-5 h-40 sm:h-48 lg:h-56"
+          className="h-[32vh] w-full shrink-0"
         />
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-3">
           <Card delay={0.1}>
             <IconChip>🕹️</IconChip>
             <h3 className="mt-3 font-display text-lg font-semibold text-white">The games</h3>
@@ -279,9 +279,9 @@ export const slides: Slide[] = [
         <Figure
           src={gpuChip}
           alt="A glowing GPU graphics chip on a circuit board with many bright cores lit in parallel."
-          className="mb-5 h-36 sm:h-44 lg:h-52"
+          className="h-[32vh] w-full shrink-0"
         />
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
           <Card delay={0.1}>
             <h3 className="font-display text-lg font-semibold text-white">The problem</h3>
             <p className="mt-2 text-sm text-white/60">
@@ -337,10 +337,10 @@ export const slides: Slide[] = [
         }
         subtitle="Both chips colour the same 144-dot picture. The CPU has 4 strong workers. The GPU has 48 smaller ones. Watch the clock."
       >
-        <div className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
+        <div className="flex min-h-0 flex-1 flex-col rounded-2xl border border-white/10 bg-black/30 p-4 md:p-6">
           <GpuCpuDemo />
         </div>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
+        <div className="mt-4 grid min-h-0 flex-1 gap-3 md:grid-cols-2">
           <Card delay={0.15}>
             <h3 className="font-display text-base font-semibold text-cyan-200">CPU · 4 cores</h3>
             <p className="mt-1 text-sm text-white/60">
@@ -387,7 +387,7 @@ export const slides: Slide[] = [
         }
         subtitle="Home internet turned games into places we share. That created new headaches for engineers."
       >
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-3">
           <Card delay={0.1}>
             <IconChip>🌐</IconChip>
             <h3 className="mt-3 font-display text-base font-semibold text-white">Fighting delay</h3>
@@ -442,7 +442,7 @@ export const slides: Slide[] = [
         }
         subtitle="From a phone in every pocket to light that looks almost real."
       >
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
           <Card delay={0.1}>
             <h3 className="font-display text-lg font-semibold text-white">📱 In every pocket</h3>
             <p className="mt-2 text-sm text-white/60">
@@ -492,7 +492,7 @@ export const slides: Slide[] = [
         }
         subtitle="Tools made so we could have fun ended up powering some of today's most serious work."
       >
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-3">
           <Card delay={0.1}>
             <IconChip>🧠</IconChip>
             <h3 className="mt-3 font-display text-base font-semibold text-white">GPUs → the AI boom</h3>
@@ -544,7 +544,7 @@ export const slides: Slide[] = [
         }
         subtitle="The next leap: the computer doesn't only paint the world. It starts to imagine it."
       >
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
           <Card delay={0.1}>
             <h3 className="font-display text-lg font-semibold text-white">🪄 AI fills in the picture</h3>
             <p className="mt-2 text-sm text-white/60">
@@ -597,9 +597,9 @@ export const slides: Slide[] = [
         <Figure
           src={futureImmersion}
           alt="A person wearing a VR headset reaching toward a floating holographic AI-generated game world."
-          className="mb-5 h-36 sm:h-44 lg:h-52"
+          className="h-[32vh] w-full shrink-0"
         />
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
           <Card delay={0.1}>
             <h3 className="font-display text-lg font-semibold text-white">🥽 Headsets &amp; mixed reality</h3>
             <p className="mt-2 text-sm text-white/60">
@@ -649,7 +649,7 @@ export const slides: Slide[] = [
         }
         center
       >
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-3">
           {[
             {
               n: '01',
@@ -731,11 +731,11 @@ export const slides: Slide[] = [
             </>
           }
         >
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="mt-4 grid min-h-0 flex-1 gap-4 md:grid-cols-2">
             {points.map((p, i) => (
               <div
                 key={p.t}
-                className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5 lg:p-6"
+                className="flex h-full gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5 lg:p-8"
               >
                 <span
                   className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full font-mono text-sm font-bold"

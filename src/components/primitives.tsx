@@ -51,7 +51,9 @@ export function Card({
   delay?: number
 }) {
   return (
-    <div className={`rounded-2xl border border-white/10 bg-white/[0.05] p-5 lg:p-6 ${className}`}>
+    <div
+      className={`flex h-full min-h-0 flex-col rounded-2xl border border-white/10 bg-white/[0.05] p-5 lg:p-7 ${className}`}
+    >
       {children}
     </div>
   )
@@ -69,7 +71,7 @@ export function Stat({
   return (
     <div className="flex flex-col">
       <span
-        className="font-display text-4xl font-bold leading-none lg:text-5xl"
+        className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold leading-none"
         style={{ color: tint }}
       >
         {value}
