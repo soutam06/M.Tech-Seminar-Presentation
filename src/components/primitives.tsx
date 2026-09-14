@@ -23,7 +23,7 @@ export function GradientText({
 
 export function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex w-fit shrink-0 items-center gap-2 self-start rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[16px] font-medium uppercase tracking-[0.16em] text-white">
+    <span className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[16px] font-medium uppercase tracking-[0.16em] text-white">
       {children}
     </span>
   )
@@ -52,7 +52,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`flex h-full min-h-0 flex-col justify-center overflow-hidden rounded-2xl border border-white/20 bg-white/[0.09] p-6 ${className}`}
+      className={`flex h-full min-h-0 flex-col justify-start overflow-hidden rounded-2xl border border-white/20 bg-white/[0.09] p-6 ${className}`}
     >
       {children}
     </div>

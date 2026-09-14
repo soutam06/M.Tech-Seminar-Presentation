@@ -47,9 +47,14 @@ function Figure({
 }) {
   return (
     <figure
-      className={`relative overflow-hidden rounded-2xl border border-white/10 bg-black/30 ${className}`}
+      className={`relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 ${className}`}
     >
-      <img src={src} alt={alt} loading="eager" className="absolute inset-0 h-full w-full object-cover" />
+      <img
+        src={src}
+        alt={alt}
+        loading="eager"
+        className="absolute inset-0 h-full w-full object-contain"
+      />
       {caption && (
         <span className="absolute left-3 top-3 max-w-[90%] rounded bg-black/65 px-2 py-1 font-mono text-[13px] leading-snug text-white/90">
           {caption}
@@ -84,6 +89,31 @@ function Note({
   )
 }
 
+function Cluster({
+  cols,
+  children,
+  footer,
+}: {
+  cols: 2 | 3 | 4 | 5
+  children: ReactNode
+  footer?: ReactNode
+}) {
+  const colClass =
+    cols === 2
+      ? 'grid-cols-2'
+      : cols === 3
+        ? 'grid-cols-3'
+        : cols === 4
+          ? 'grid-cols-4'
+          : 'grid-cols-5'
+  return (
+    <div className="flex min-h-0 flex-1 flex-col justify-center gap-6">
+      <div className={`grid items-stretch gap-5 ${colClass}`}>{children}</div>
+      {footer}
+    </div>
+  )
+}
+
 export const slides: Slide[] = [
   {
     id: 'title',
@@ -91,7 +121,7 @@ export const slides: Slide[] = [
     hue: 'magenta',
     render: () => (
       <SlideShell hue="magenta">
-        <div className="grid h-full min-h-0 grid-cols-[1fr_760px] items-stretch gap-12">
+        <div className="grid h-full min-h-0 grid-cols-[1fr_920px] items-center gap-12">
           <div className="flex min-h-0 flex-col justify-center">
             <Chip>A science &amp; engineering talk</Chip>
             <h1 className="mt-6 font-display text-[72px] font-bold leading-[1.02] tracking-tight">
@@ -115,7 +145,7 @@ export const slides: Slide[] = [
             src={heroEvolution}
             alt="The evolution of games: from a Pong CRT and 8-bit sprites, to 3D wireframe characters, to a person in a VR headset before a futuristic world."
             caption="Pong on a TV → 8-bit characters → 3D → stepping into a virtual world"
-            className="h-full min-h-0"
+            className="aspect-[16/9] w-full"
           />
         </div>
       </SlideShell>
@@ -138,27 +168,29 @@ export const slides: Slide[] = [
         }
         subtitle="Bigger than movies and music put together. And it isn't really an art industry. It's an engineering one."
       >
-        <div className="grid min-h-0 flex-1 grid-rows-[1fr_auto] gap-5 overflow-hidden">
-          <div className="grid min-h-0 grid-cols-4 gap-5">
-            <Card>
-              <Stat value="~$200B" label="Money made each year" tint={TINT.cyan} />
-            </Card>
-            <Card>
-              <Stat value="3.3B+" label="People who play" tint={TINT.magenta} />
-            </Card>
-            <Card>
-              <Stat value="1 in 3" label="People on the planet play" tint={TINT.violet} />
-            </Card>
-            <Card>
-              <Stat value="60–240" label="New pictures drawn every second" tint={TINT.lime} />
-            </Card>
-          </div>
-          <p className="shrink-0 deck-p">
-            Every second, your computer does maths for millions of points — shape, bounce,
-            light — and paints a new picture before you can blink. That's the story we're
-            following today.
-          </p>
-        </div>
+        <Cluster
+          cols={4}
+          footer={
+            <p className="deck-p">
+              Every second, your computer does maths for millions of points — shape, bounce,
+              light — and paints a new picture before you can blink. That's the story we're
+              following today.
+            </p>
+          }
+        >
+          <Card>
+            <Stat value="~$200B" label="Money made each year" tint={TINT.cyan} />
+          </Card>
+          <Card>
+            <Stat value="3.3B+" label="People who play" tint={TINT.magenta} />
+          </Card>
+          <Card>
+            <Stat value="1 in 3" label="People on the planet play" tint={TINT.violet} />
+          </Card>
+          <Card>
+            <Stat value="60–240" label="New pictures drawn every second" tint={TINT.lime} />
+          </Card>
+        </Cluster>
       </SlideShell>
     ),
   },
@@ -182,32 +214,34 @@ export const slides: Slide[] = [
           title="Five big leaps. One story."
           subtitle="Each leap happened because engineers solved a hard problem. Here's the map for today."
         >
-          <div className="relative min-h-0 flex-1 pt-4">
-            <div className="absolute left-[6%] right-[6%] top-[22px] h-px bg-gradient-to-r from-amber-400/50 via-violet-400/50 to-lime-400/50" />
-            <div className="grid h-full min-h-0 grid-cols-5 gap-5">
-              {eras.map((e) => (
-                <div
-                  key={e.t}
-                  className="relative flex h-full min-h-0 flex-col justify-between overflow-hidden rounded-2xl border border-white/20 bg-white/[0.09] p-6 pt-8"
-                >
-                  <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2">
-                    <span
-                      className="h-4 w-4 rounded-full ring-4 ring-[color:var(--color-ink)]"
-                      style={{ background: e.c, boxShadow: `0 0 12px ${e.c}` }}
-                    />
-                  </div>
-                  <div className="deck-h font-display font-semibold" style={{ color: e.c }}>
-                    {e.t}
-                  </div>
-                  <div className="mt-3 flex-1 deck-p">{e.d}</div>
+          <div className="flex min-h-0 flex-1 flex-col justify-center">
+            <div className="relative pt-5">
+              <div className="absolute left-[6%] right-[6%] top-[26px] h-px bg-gradient-to-r from-amber-400/50 via-violet-400/50 to-lime-400/50" />
+              <div className="grid grid-cols-5 items-stretch gap-5">
+                {eras.map((e) => (
                   <div
-                    className="mt-4 border-t border-white/10 pt-3 font-mono text-[24px] font-semibold tracking-wide"
-                    style={{ color: e.c }}
+                    key={e.t}
+                    className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/20 bg-white/[0.09] p-6 pt-8"
                   >
-                    {e.y}
+                    <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2">
+                      <span
+                        className="h-4 w-4 rounded-full ring-4 ring-[color:var(--color-ink)]"
+                        style={{ background: e.c, boxShadow: `0 0 12px ${e.c}` }}
+                      />
+                    </div>
+                    <div className="deck-h font-display font-semibold" style={{ color: e.c }}>
+                      {e.t}
+                    </div>
+                    <div className="mt-3 deck-p">{e.d}</div>
+                    <div
+                      className="mt-5 border-t border-white/10 pt-3 font-mono text-[22px] font-semibold tracking-wide"
+                      style={{ color: e.c }}
+                    >
+                      {e.y}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </SlideShell>
@@ -235,13 +269,13 @@ export const slides: Slide[] = [
         }
         subtitle="Before fancy pictures, the hard question was simple: can a machine react to a person right now?"
       >
-        <div className="grid min-h-0 flex-1 grid-cols-[540px_1fr] gap-6 overflow-hidden">
+        <div className="grid min-h-0 flex-1 grid-cols-[780px_1fr] items-center gap-8 overflow-hidden">
           <Figure
             src={arcadeEra}
             alt="A dark 1980s arcade lit by the glow of classic cabinets showing simple pixel sprites."
-            className="h-full min-h-0"
+            className="aspect-[16/9] w-full"
           />
-          <div className="grid min-h-0 grid-rows-[1fr_1fr_1fr_auto] gap-4 overflow-hidden">
+          <div className="flex flex-col gap-4">
             <Card>
               <IconChip>🕹️</IconChip>
               <h3 className="mt-3 deck-h font-display font-semibold text-white">The games</h3>
@@ -293,13 +327,13 @@ export const slides: Slide[] = [
         }
         subtitle="To turn flat pictures into worlds, a computer had to do the same maths millions of times — very fast."
       >
-        <div className="grid min-h-0 flex-1 grid-cols-[540px_1fr] gap-6 overflow-hidden">
+        <div className="grid min-h-0 flex-1 grid-cols-[780px_1fr] items-center gap-8 overflow-hidden">
           <Figure
             src={gpuChip}
             alt="A glowing GPU graphics chip on a circuit board with many bright cores lit in parallel."
-            className="h-full min-h-0"
+            className="aspect-[16/9] w-full"
           />
-          <div className="grid min-h-0 grid-rows-[1fr_1fr_auto_auto] gap-4 overflow-hidden">
+          <div className="flex flex-col gap-4">
             <Card>
               <h3 className="deck-h font-display font-semibold text-white">The problem</h3>
               <p className="mt-2 deck-p">
@@ -327,7 +361,7 @@ export const slides: Slide[] = [
                 </span>
               ))}
             </div>
-            <p className="shrink-0 deck-p">
+            <p className="deck-p">
               One idea matters more than anything else today:{' '}
               <span className="text-white">do the same small job on thousands of things at once</span>.
               Let's watch it happen. →
@@ -353,11 +387,11 @@ export const slides: Slide[] = [
         }
         subtitle="Both chips colour the same 144-dot picture. The CPU has 4 strong workers. The GPU has 48 smaller ones. Watch the clock."
       >
-        <div className="grid min-h-0 flex-1 grid-cols-[560px_1fr] gap-6 overflow-hidden">
-          <div className="flex min-h-0 overflow-hidden rounded-2xl border border-white/10 bg-black/30 p-5">
+        <div className="grid min-h-0 flex-1 grid-cols-[560px_1fr] items-center gap-8 overflow-hidden">
+          <div className="flex min-h-0 items-center overflow-hidden rounded-2xl border border-white/10 bg-black/30 p-5">
             <GpuCpuDemo />
           </div>
-          <div className="grid min-h-0 grid-rows-[1fr_1fr_auto] gap-4 overflow-hidden">
+          <div className="flex flex-col gap-4">
             <Card>
               <h3 className="deck-h font-display font-semibold text-cyan-200">CPU · 4 cores</h3>
               <p className="mt-2 deck-p">
@@ -374,7 +408,7 @@ export const slides: Slide[] = [
                 chopping vegetables at once.
               </p>
             </Card>
-            <p className="shrink-0 deck-p">
+            <p className="deck-p">
               If we gave the CPU 48 cores, would it become a GPU?{' '}
               <span className="text-white">No.</span> More chefs still aren't a factory line. A
               real GPU has <span className="text-white">thousands</span> of these simple cores.
@@ -407,38 +441,40 @@ export const slides: Slide[] = [
         }
         subtitle="Home internet turned games into places we share. That created new headaches for engineers."
       >
-        <div className="grid min-h-0 flex-1 grid-rows-[1fr_auto] gap-5 overflow-hidden">
-          <div className="grid min-h-0 grid-cols-3 gap-5">
-            <Card>
-              <IconChip>🌐</IconChip>
-              <h3 className="mt-3 deck-h font-display font-semibold text-white">Fighting delay</h3>
-              <p className="mt-2 deck-p">
-                A signal can take about 40 milliseconds to cross the world. Games guess your next
-                move, then correct it — so play still feels instant.
-              </p>
-            </Card>
-            <Card>
-              <IconChip>🧲</IconChip>
-              <h3 className="mt-3 deck-h font-display font-semibold text-white">Real physics</h3>
-              <p className="mt-2 deck-p">
-                Games solve bounce, crash, and falling bodies 60 times a second — the same kind of
-                maths used in engineering simulations.
-              </p>
-            </Card>
-            <Card>
-              <IconChip>🏙️</IconChip>
-              <h3 className="mt-3 deck-h font-display font-semibold text-white">Huge worlds</h3>
-              <p className="mt-2 deck-p">
-                Games like <em>World of Warcraft</em> keep tens of thousands of players in sync
-                across many computers at once.
-              </p>
-            </Card>
-          </div>
-          <Note accent={TINT.violet} label="The shift:">
-            a game stopped being “a program on your computer” and became{' '}
-            <span className="text-white">a live system serving millions of people at once</span>.
-          </Note>
-        </div>
+        <Cluster
+          cols={3}
+          footer={
+            <Note accent={TINT.violet} label="The shift:">
+              a game stopped being “a program on your computer” and became{' '}
+              <span className="text-white">a live system serving millions of people at once</span>.
+            </Note>
+          }
+        >
+          <Card>
+            <IconChip>🌐</IconChip>
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">Fighting delay</h3>
+            <p className="mt-2 deck-p">
+              A signal can take about 40 milliseconds to cross the world. Games guess your next
+              move, then correct it — so play still feels instant.
+            </p>
+          </Card>
+          <Card>
+            <IconChip>🧲</IconChip>
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">Real physics</h3>
+            <p className="mt-2 deck-p">
+              Games solve bounce, crash, and falling bodies 60 times a second — the same kind of
+              maths used in engineering simulations.
+            </p>
+          </Card>
+          <Card>
+            <IconChip>🏙️</IconChip>
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">Huge worlds</h3>
+            <p className="mt-2 deck-p">
+              Games like <em>World of Warcraft</em> keep tens of thousands of players in sync
+              across many computers at once.
+            </p>
+          </Card>
+        </Cluster>
       </SlideShell>
     ),
   },
@@ -460,7 +496,7 @@ export const slides: Slide[] = [
         }
         subtitle="From a phone in every pocket to light that looks almost real."
       >
-        <div className="grid min-h-0 flex-1 grid-cols-2 gap-5 overflow-hidden">
+        <Cluster cols={2}>
           <Card>
             <h3 className="deck-h font-display font-semibold text-white">📱 In every pocket</h3>
             <p className="mt-2 deck-p">
@@ -489,7 +525,7 @@ export const slides: Slide[] = [
               timing accurate to a fraction of a picture.
             </p>
           </Card>
-        </div>
+        </Cluster>
       </SlideShell>
     ),
   },
@@ -512,44 +548,46 @@ export const slides: Slide[] = [
         }
         subtitle="Tools made so we could have fun ended up powering some of today's most serious work."
       >
-        <div className="grid min-h-0 flex-1 grid-rows-[1fr_auto] gap-5 overflow-hidden">
-          <div className="grid min-h-0 grid-cols-3 gap-5">
-            <Card>
-              <IconChip>🧠</IconChip>
-              <h3 className="mt-3 deck-h font-display font-semibold text-white">
-                GPUs → the AI boom
-              </h3>
-              <p className="mt-2 deck-p">
-                The same “many hands” maths that colours pixels is what trains AI. Chatbots and
-                image models run on chips that started life in games.
-              </p>
-            </Card>
-            <Card>
-              <IconChip>🎬</IconChip>
-              <h3 className="mt-3 deck-h font-display font-semibold text-white">
-                Game tools → film &amp; design
-              </h3>
-              <p className="mt-2 deck-p">
-                The same software that builds games now draws movie sets, car showrooms, and
-                buildings — live, not overnight.
-              </p>
-            </Card>
-            <Card>
-              <IconChip>🤖</IconChip>
-              <h3 className="mt-3 deck-h font-display font-semibold text-white">
-                Game physics → factories
-              </h3>
-              <p className="mt-2 deck-p">
-                Robots and self-driving cars practise in game-like worlds. Factories test a
-                virtual copy of a plant before they build the real one.
-              </p>
-            </Card>
-          </div>
-          <p className="shrink-0 deck-p">
-            <span className="text-lime-300">The point:</span> chasing a fun, hard problem —
-            drawing a world 60 times a second — gave every other field a new set of tools.
-          </p>
-        </div>
+        <Cluster
+          cols={3}
+          footer={
+            <p className="deck-p">
+              <span className="text-lime-300">The point:</span> chasing a fun, hard problem —
+              drawing a world 60 times a second — gave every other field a new set of tools.
+            </p>
+          }
+        >
+          <Card>
+            <IconChip>🧠</IconChip>
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">
+              GPUs → the AI boom
+            </h3>
+            <p className="mt-2 deck-p">
+              The same “many hands” maths that colours pixels is what trains AI. Chatbots and
+              image models run on chips that started life in games.
+            </p>
+          </Card>
+          <Card>
+            <IconChip>🎬</IconChip>
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">
+              Game tools → film &amp; design
+            </h3>
+            <p className="mt-2 deck-p">
+              The same software that builds games now draws movie sets, car showrooms, and
+              buildings — live, not overnight.
+            </p>
+          </Card>
+          <Card>
+            <IconChip>🤖</IconChip>
+            <h3 className="mt-3 deck-h font-display font-semibold text-white">
+              Game physics → factories
+            </h3>
+            <p className="mt-2 deck-p">
+              Robots and self-driving cars practise in game-like worlds. Factories test a
+              virtual copy of a plant before they build the real one.
+            </p>
+          </Card>
+        </Cluster>
       </SlideShell>
     ),
   },
@@ -569,7 +607,7 @@ export const slides: Slide[] = [
         }
         subtitle="The next leap: the computer doesn't only paint the world. It starts to imagine it."
       >
-        <div className="grid min-h-0 flex-1 grid-cols-2 gap-5 overflow-hidden">
+        <Cluster cols={2}>
           <Card>
             <h3 className="deck-h font-display font-semibold text-white">
               🪄 AI fills in the picture
@@ -606,7 +644,7 @@ export const slides: Slide[] = [
               AI and you get huge worlds that still feel surprising.
             </p>
           </Card>
-        </div>
+        </Cluster>
       </SlideShell>
     ),
   },
@@ -629,13 +667,13 @@ export const slides: Slide[] = [
         }
         subtitle="The next race isn't only prettier pictures. It's making the world feel close enough to touch."
       >
-        <div className="grid min-h-0 flex-1 grid-cols-[540px_1fr] gap-6 overflow-hidden">
+        <div className="grid min-h-0 flex-1 grid-cols-[780px_1fr] items-center gap-8 overflow-hidden">
           <Figure
             src={futureImmersion}
             alt="A person wearing a VR headset reaching toward a floating holographic AI-generated game world."
-            className="h-full min-h-0"
+            className="aspect-[16/9] w-full"
           />
-          <div className="grid min-h-0 grid-cols-2 grid-rows-2 gap-4 overflow-hidden">
+          <div className="grid grid-cols-2 gap-4">
             <Card>
               <h3 className="deck-h font-display font-semibold text-white">
                 🥽 Headsets &amp; mixed reality
@@ -688,46 +726,45 @@ export const slides: Slide[] = [
           </>
         }
       >
-        <div className="grid min-h-0 flex-1 grid-rows-[1fr_auto] gap-5 overflow-hidden">
-          <div className="grid min-h-0 grid-cols-3 gap-5">
-            {[
-              {
-                n: '01',
-                t: 'A wild wish',
-                d: 'Someone wants a rich world that reacts right now.',
-                c: TINT.cyan,
-              },
-              {
-                n: '02',
-                t: 'A clever leap',
-                d: 'Engineers answer with a new chip or a smart trick — the GPU, delay-hiding, tracing light, AI drawing.',
-                c: TINT.violet,
-              },
-              {
-                n: '03',
-                t: 'It leaves the game',
-                d: 'That trick becomes a tool for everyone — AI, film, robots, and science.',
-                c: TINT.magenta,
-              },
-            ].map((s) => (
-              <div
-                key={s.n}
-                className="flex h-full min-h-0 flex-col justify-center overflow-hidden rounded-2xl border border-white/20 bg-white/[0.09] p-7"
-              >
-                <div className="font-mono text-[48px] font-bold" style={{ color: s.c }}>
-                  {s.n}
-                </div>
-                <h3 className="mt-3 deck-h font-display font-semibold text-white">{s.t}</h3>
-                <p className="mt-2 deck-p">{s.d}</p>
+        <Cluster
+          cols={3}
+          footer={
+            <p className="deck-p max-w-5xl">
+              Games are where we practise building{' '}
+              <GradientText>worlds that react in real time</GradientText> — and that practise
+              keeps handing the rest of engineering its next tools.
+            </p>
+          }
+        >
+          {[
+            {
+              n: '01',
+              t: 'A wild wish',
+              d: 'Someone wants a rich world that reacts right now.',
+              c: TINT.cyan,
+            },
+            {
+              n: '02',
+              t: 'A clever leap',
+              d: 'Engineers answer with a new chip or a smart trick — the GPU, delay-hiding, tracing light, AI drawing.',
+              c: TINT.violet,
+            },
+            {
+              n: '03',
+              t: 'It leaves the game',
+              d: 'That trick becomes a tool for everyone — AI, film, robots, and science.',
+              c: TINT.magenta,
+            },
+          ].map((s) => (
+            <Card key={s.n}>
+              <div className="font-mono text-[48px] font-bold" style={{ color: s.c }}>
+                {s.n}
               </div>
-            ))}
-          </div>
-          <p className="deck-p shrink-0 max-w-5xl">
-            Games are where we practise building{' '}
-            <GradientText>worlds that react in real time</GradientText> — and that practise
-            keeps handing the rest of engineering its next tools.
-          </p>
-        </div>
+              <h3 className="mt-3 deck-h font-display font-semibold text-white">{s.t}</h3>
+              <p className="mt-2 deck-p">{s.d}</p>
+            </Card>
+          ))}
+        </Cluster>
       </SlideShell>
     ),
   },
@@ -769,11 +806,11 @@ export const slides: Slide[] = [
             </>
           }
         >
-          <div className="grid min-h-0 flex-1 grid-cols-2 gap-5 overflow-hidden">
+          <Cluster cols={2}>
             {points.map((p, i) => (
               <div
                 key={p.t}
-                className="flex h-full min-h-0 items-center gap-5 overflow-hidden rounded-2xl border border-white/20 bg-white/[0.09] p-6"
+                className="flex h-full items-center gap-5 overflow-hidden rounded-2xl border border-white/20 bg-white/[0.09] p-6"
               >
                 <span
                   className="grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[22px] font-bold"
@@ -787,7 +824,7 @@ export const slides: Slide[] = [
                 </div>
               </div>
             ))}
-          </div>
+          </Cluster>
         </SlideShell>
       )
     },
@@ -811,11 +848,12 @@ export const slides: Slide[] = [
       return (
         <SlideShell
           hue="violet"
+          center
           kicker="Where the facts come from"
           title="References"
           subtitle="A starting list if you want to read more after today."
         >
-          <div className="grid min-h-0 flex-1 grid-cols-2 content-start gap-x-12 gap-y-4 overflow-hidden">
+          <div className="mt-2 grid w-[1500px] max-w-full grid-cols-2 gap-x-16 gap-y-5 text-left">
             {refs.map(([who, what, year], i) => (
               <div key={who + what} className="flex gap-3 border-b border-white/10 pb-3">
                 <span className="font-mono text-[20px] text-white/70">
@@ -828,7 +866,7 @@ export const slides: Slide[] = [
               </div>
             ))}
           </div>
-          <p className="mt-4 shrink-0 text-[20px] text-white/80">
+          <p className="mt-8 max-w-[1200px] text-center text-[20px] text-white/80">
             Numbers are rounded for scale. Every picture carries its own source line. Pictures in
             this talk are original AI-generated illustrations made for this seminar — not photos of
             real products.
@@ -844,7 +882,7 @@ export const slides: Slide[] = [
     hue: 'magenta',
     render: () => (
       <SlideShell hue="magenta" center>
-        <div className="flex max-w-[1500px] flex-col items-start">
+        <div className="flex max-w-[1400px] flex-col items-center text-center">
           <Chip>One last thought</Chip>
           <h2 className="mt-6 font-display text-[60px] font-bold leading-[1.08] tracking-tight">
             The next leap in technology
@@ -859,7 +897,7 @@ export const slides: Slide[] = [
             an engineering leap. Watch what gamers play next. It's a preview of what everyone
             else will build with.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[20px] text-white">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 font-mono text-[20px] text-white">
             <span className="rounded-lg border border-fuchsia-400/40 bg-fuchsia-400/15 px-4 py-1.5 text-fuchsia-100">
               Thank you — questions welcome
             </span>

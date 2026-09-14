@@ -27,11 +27,15 @@ export function SlideShell({
       <div className="relative z-10 flex h-full min-h-0 flex-col px-16 pb-24 pt-12">
         <div
           className={`flex min-h-0 w-full flex-1 flex-col overflow-hidden ${
-            center ? 'justify-center' : ''
+            center ? 'items-center justify-center' : ''
           }`}
         >
           {(kicker || era) && (
-            <div className="mb-3 flex shrink-0 flex-wrap items-center gap-3">
+            <div
+              className={`mb-3 flex shrink-0 flex-wrap items-center gap-3 ${
+                center ? 'justify-center' : ''
+              }`}
+            >
               {kicker && (
                 <span className="font-mono text-[17px] uppercase tracking-[0.22em] text-white">
                   {kicker}
@@ -41,20 +45,28 @@ export function SlideShell({
             </div>
           )}
           {title && (
-            <h2 className="deck-title max-w-none shrink-0 font-display font-bold tracking-tight">
+            <h2
+              className={`deck-title max-w-none shrink-0 font-display font-bold tracking-tight ${
+                center ? 'text-center' : ''
+              }`}
+            >
               {title}
             </h2>
           )}
           {subtitle && (
-            <p className="deck-sub mt-3 max-w-[1600px] shrink-0 font-medium">
+            <p
+              className={`deck-sub mt-3 max-w-[1600px] shrink-0 font-medium ${
+                center ? 'text-center' : ''
+              }`}
+            >
               {subtitle}
             </p>
           )}
           {children && (
             <div
-              className={`flex min-h-0 flex-1 flex-col overflow-hidden ${
-                title ? 'mt-5' : ''
-              }`}
+              className={`flex min-h-0 flex-col overflow-hidden ${
+                center ? '' : 'flex-1'
+              } ${title ? 'mt-5' : ''}`}
             >
               {children}
             </div>

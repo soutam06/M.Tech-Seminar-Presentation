@@ -60,11 +60,12 @@ export function GpuCpuDemo() {
   }, [])
 
   const tint = mode === 'gpu' ? 'var(--color-neon-magenta)' : 'var(--color-neon-cyan)'
+  const done = Boolean(result.cpu && result.gpu)
 
   return (
-    <div className="flex h-full min-h-0 flex-col items-center justify-center gap-5">
+    <div className="flex h-full min-h-0 w-full flex-col items-center justify-center gap-5">
       <div
-        className="grid rounded-xl border border-white/10 bg-black/40 p-3"
+        className="grid shrink-0 rounded-xl border border-white/10 bg-black/40 p-3"
         style={{
           gridTemplateColumns: `repeat(${GRID}, ${CELL}px)`,
           gap: 3,
@@ -87,7 +88,7 @@ export function GpuCpuDemo() {
         })}
       </div>
 
-      <div className="flex items-center gap-10 font-mono text-[20px]">
+      <div className="flex shrink-0 items-center gap-10 font-mono text-[20px]">
         <div className="text-center">
           <div className="text-white/80">shaded</div>
           <div className="text-[36px] font-bold leading-none text-white">
@@ -102,7 +103,7 @@ export function GpuCpuDemo() {
         </div>
       </div>
 
-      <div className="flex items-center justify-center gap-3">
+      <div className="flex shrink-0 items-center justify-center gap-3">
         <button
           onClick={() => run('cpu')}
           disabled={mode !== 'idle'}
@@ -119,15 +120,21 @@ export function GpuCpuDemo() {
         </button>
       </div>
 
-      {result.cpu && result.gpu && (
-        <div className="max-w-[520px] rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-center text-[20px] leading-snug text-white">
+      <div className="flex h-[84px] w-full max-w-[520px] shrink-0 items-center justify-center">
+        <div
+          className={`rounded-xl border px-4 py-2 text-center text-[20px] leading-snug ${
+            done
+              ? 'border-white/20 bg-white/10 text-white'
+              : 'invisible border-transparent'
+          }`}
+        >
           Same frame — GPU finished{' '}
           <span className="font-bold text-fuchsia-300">
-            {(result.cpu / result.gpu).toFixed(1)}× faster
+            {done ? (result.cpu! / result.gpu!).toFixed(1) : '0.0'}× faster
           </span>{' '}
           by colouring dots at the same time.
         </div>
-      )}
+      </div>
     </div>
   )
 }
