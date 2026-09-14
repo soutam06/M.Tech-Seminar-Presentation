@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
 import { slides } from './slides'
 
 function readExportMode() {
@@ -15,22 +14,16 @@ export default function App() {
   const [index, setIndex] = useState(() =>
     Math.max(0, Math.min(slides.length - 1, boot.start)),
   )
-  const [dir, setDir] = useState(1)
   const [showMap, setShowMap] = useState(false)
   const exportMode = boot.exportMode
   const count = slides.length
 
-  // keep a ref of index for the key handler without re-binding
   const indexRef = useRef(index)
   indexRef.current = index
 
   const go = useCallback(
     (next: number) => {
-      setIndex((cur) => {
-        const clamped = Math.max(0, Math.min(count - 1, next))
-        setDir(clamped >= cur ? 1 : -1)
-        return clamped
-      })
+      setIndex(() => Math.max(0, Math.min(count - 1, next)))
     },
     [count],
   )
@@ -60,43 +53,27 @@ export default function App() {
   const current = slides[index]
 
   return (
-    <MotionConfig reducedMotion={exportMode ? 'always' : 'never'}>
     <div
       className={`relative h-screen w-screen overflow-hidden bg-[color:var(--color-ink)] text-white ${
         exportMode ? 'export-mode' : ''
       }`}
     >
-      <AnimatePresence mode="wait" custom={dir}>
-        <motion.div
-          key={current.id}
-          custom={dir}
-          initial={exportMode ? false : { opacity: 0, x: dir * 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={exportMode ? undefined : { opacity: 0, x: dir * -60 }}
-          transition={{ duration: exportMode ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0"
-        >
-          {current.render()}
-        </motion.div>
-      </AnimatePresence>
+      <div className="absolute inset-0">{current.render()}</div>
 
-      {/* Progress bar */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1 bg-white/5 export-hide">
-        <motion.div
+        <div
           className="h-full"
           style={{
+            width: `${((index + 1) / count) * 100}%`,
             background: 'linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-magenta))',
           }}
-          animate={{ width: `${((index + 1) / count) * 100}%` }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
         />
       </div>
 
-      {/* Bottom control bar */}
       <div className="absolute inset-x-0 bottom-0 z-30 flex items-center justify-between px-5 pb-5 md:px-8 export-hide">
         <button
           onClick={() => setShowMap((s) => !s)}
-          className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-4 py-2 font-mono text-xs text-white/70 backdrop-blur transition hover:bg-black/60"
+          className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-4 py-2 font-mono text-xs text-white/70 hover:bg-black/70"
         >
           <span className="grid grid-cols-3 gap-0.5">
             {[...Array(6)].map((_, i) => (
@@ -117,13 +94,12 @@ export default function App() {
         </div>
       </div>
 
-      {/* Slide dots */}
       <div className="pointer-events-none absolute inset-x-0 bottom-16 z-20 flex justify-center gap-1.5 export-hide">
         {slides.map((s, i) => (
           <button
             key={s.id}
             onClick={() => go(i)}
-            className="pointer-events-auto h-1.5 rounded-full transition-all"
+            className="pointer-events-auto h-1.5 rounded-full"
             style={{
               width: i === index ? 22 : 6,
               background:
@@ -134,58 +110,48 @@ export default function App() {
         ))}
       </div>
 
-      {/* Overview map */}
-      <AnimatePresence>
-        {showMap && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 z-40 flex items-center justify-center bg-black/80 backdrop-blur-md"
-            onClick={() => setShowMap(false)}
+      {showMap && (
+        <div
+          className="absolute inset-0 z-40 flex items-center justify-center bg-black/80"
+          onClick={() => setShowMap(false)}
+        >
+          <div
+            className="max-h-[80vh] w-full max-w-4xl overflow-y-auto p-6"
+            onClick={(e) => e.stopPropagation()}
           >
-            <motion.div
-              initial={{ scale: 0.96, y: 10 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.96, y: 10 }}
-              className="max-h-[80vh] w-full max-w-4xl overflow-y-auto p-6"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <h3 className="mb-4 font-display text-xl font-semibold text-white/80">
-                Jump to a slide
-              </h3>
-              <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-                {slides.map((s, i) => (
-                  <button
-                    key={s.id}
-                    onClick={() => {
-                      go(i)
-                      setShowMap(false)
-                    }}
-                    className={`rounded-xl border p-4 text-left transition ${
-                      i === index
-                        ? 'border-cyan-400/60 bg-cyan-400/10'
-                        : 'border-white/10 bg-white/[0.03] hover:bg-white/[0.07]'
-                    }`}
-                  >
-                    <div className="font-mono text-xs text-white/40">
-                      {String(i + 1).padStart(2, '0')}
-                    </div>
-                    <div className="mt-1 font-display text-sm font-semibold text-white">
-                      {s.label}
-                    </div>
-                  </button>
-                ))}
-              </div>
-              <p className="mt-5 text-center font-mono text-xs text-white/40">
-                ← → or Space to move · G or Esc for this menu · Home/End to jump
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <h3 className="mb-4 font-display text-xl font-semibold text-white/80">
+              Jump to a slide
+            </h3>
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+              {slides.map((s, i) => (
+                <button
+                  key={s.id}
+                  onClick={() => {
+                    go(i)
+                    setShowMap(false)
+                  }}
+                  className={`rounded-xl border p-4 text-left ${
+                    i === index
+                      ? 'border-cyan-400/60 bg-cyan-400/10'
+                      : 'border-white/10 bg-white/[0.03] hover:bg-white/[0.07]'
+                  }`}
+                >
+                  <div className="font-mono text-xs text-white/40">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <div className="mt-1 font-display text-sm font-semibold text-white">
+                    {s.label}
+                  </div>
+                </button>
+              ))}
+            </div>
+            <p className="mt-5 text-center font-mono text-xs text-white/40">
+              ← → or Space to move · G or Esc for this menu · Home/End to jump
+            </p>
+          </div>
+        </div>
+      )}
     </div>
-    </MotionConfig>
   )
 }
 
@@ -202,7 +168,7 @@ function NavButton({
     <button
       onClick={onClick}
       disabled={disabled}
-      className="pointer-events-auto grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-black/40 text-white/80 backdrop-blur transition hover:bg-black/60 disabled:cursor-not-allowed disabled:opacity-30"
+      className="pointer-events-auto grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-black/50 text-white/80 hover:bg-black/70 disabled:cursor-not-allowed disabled:opacity-30"
       aria-label={dir === 'next' ? 'Next slide' : 'Previous slide'}
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">

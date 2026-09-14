@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 
 export function GradientText({
@@ -24,7 +23,7 @@ export function GradientText({
 
 export function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-white/70 backdrop-blur">
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-white/70">
       {children}
     </span>
   )
@@ -45,21 +44,16 @@ export function EraBadge({ years, tint }: { years: string; tint: string }) {
 export function Card({
   children,
   className = '',
-  delay = 0,
+  delay: _delay = 0,
 }: {
   children: ReactNode
   className?: string
   delay?: number
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 22 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm ${className}`}
-    >
+    <div className={`rounded-2xl border border-white/10 bg-white/[0.05] p-5 lg:p-6 ${className}`}>
       {children}
-    </motion.div>
+    </div>
   )
 }
 
@@ -75,7 +69,7 @@ export function Stat({
   return (
     <div className="flex flex-col">
       <span
-        className="font-display text-3xl font-bold leading-none md:text-4xl"
+        className="font-display text-4xl font-bold leading-none lg:text-5xl"
         style={{ color: tint }}
       >
         {value}
@@ -89,21 +83,12 @@ export function Stat({
 
 export function Reveal({
   children,
-  delay = 0,
+  delay: _delay = 0,
   className = '',
 }: {
   children: ReactNode
   delay?: number
   className?: string
 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
+  return <div className={className}>{children}</div>
 }

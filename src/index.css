@@ -43,24 +43,9 @@
 }
 
 .grid-bg {
-  background-image: linear-gradient(rgba(139, 92, 246, 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.09) 1px, transparent 1px);
-  background-size: 44px 44px;
-}
-
-.scanlines::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.03) 0px,
-    rgba(255, 255, 255, 0.03) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  mix-blend-mode: overlay;
+  background-image: linear-gradient(rgba(139, 92, 246, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
 /* thin custom scrollbar for slide overflow */

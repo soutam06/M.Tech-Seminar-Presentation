@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import { motion } from 'framer-motion'
 import { SlideShell } from './components/SlideShell'
 import { Card, Chip, GradientText, Reveal, Stat } from './components/primitives'
 import { GpuCpuDemo } from './components/GpuCpuDemo'
@@ -38,23 +37,16 @@ function Figure({
   alt,
   caption,
   source = IMAGE_SOURCE,
-  delay = 0.2,
   className = '',
 }: {
   src: string
   alt: string
   caption?: string
   source?: string
-  delay?: number
   className?: string
 }) {
   return (
-    <motion.figure
-      initial={{ opacity: 0, scale: 0.97 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={`overflow-hidden rounded-2xl border border-white/10 bg-black/30 ${className}`}
-    >
+    <figure className={`overflow-hidden rounded-2xl border border-white/10 bg-black/30 ${className}`}>
       <div className="relative h-full w-full">
         <img src={src} alt={alt} loading="eager" className="h-full w-full object-cover" />
         <span className="absolute bottom-1.5 left-1.5 max-w-[94%] rounded bg-black/70 px-2 py-1 font-mono text-[11px] leading-none tracking-wide text-white/90 md:text-xs">
@@ -66,7 +58,7 @@ function Figure({
           {caption}
         </figcaption>
       )}
-    </motion.figure>
+    </figure>
   )
 }
 
@@ -78,55 +70,33 @@ export const slides: Slide[] = [
     hue: 'magenta',
     render: () => (
       <SlideShell hue="magenta" center>
-        <div className="grid items-center gap-8 md:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div className="flex flex-col items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Chip>A science &amp; engineering talk</Chip>
-            </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-7xl"
-            >
+            <Chip>A science &amp; engineering talk</Chip>
+            <h1 className="mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl xl:text-8xl">
               The Engineering
               <br />
               of <GradientText>Play</GradientText>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-5 max-w-2xl text-base text-white/70 md:text-xl"
-            >
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg text-white/70 lg:text-2xl">
               How games grew up — and where they are going — told through the engineering
               that made each leap possible.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-              className="mt-7 border-l-2 border-fuchsia-400/50 pl-4"
-            >
-              <div className="font-display text-lg font-semibold text-white md:text-xl">
+            </p>
+            <div className="mt-8 border-l-2 border-fuchsia-400/50 pl-4">
+              <div className="font-display text-xl font-semibold text-white lg:text-2xl">
                 Soutam Rajbhar
               </div>
-              <div className="mt-0.5 text-sm text-white/55">
+              <div className="mt-0.5 text-sm text-white/55 lg:text-base">
                 Department of Chemical Engineering
               </div>
-              <div className="text-sm text-white/55">IIT Kharagpur</div>
-            </motion.div>
+              <div className="text-sm text-white/55 lg:text-base">IIT Kharagpur</div>
+            </div>
           </div>
           <Figure
             src={heroEvolution}
             alt="The evolution of games: from a Pong CRT and 8-bit sprites, to 3D wireframe characters, to a person in a VR headset before a futuristic world."
             caption="Pong on a TV → 8-bit characters → 3D → stepping into a virtual world"
-            delay={0.35}
-            className="hidden md:block"
+            className="hidden min-h-[280px] md:block lg:min-h-[420px]"
           />
         </div>
       </SlideShell>
@@ -198,13 +168,10 @@ export const slides: Slide[] = [
           <div className="relative mt-4">
             <div className="absolute left-[8%] right-[8%] top-[11px] hidden h-px bg-gradient-to-r from-amber-400/50 via-violet-400/50 to-lime-400/50 md:block" />
             <div className="grid gap-4 md:grid-cols-5">
-              {eras.map((e, i) => (
-                <motion.div
+              {eras.map((e) => (
+                <div
                   key={e.t}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45, delay: 0.1 + i * 0.1 }}
-                  className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-4 pt-5"
+                  className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-5 pt-6"
                 >
                   <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2">
                     <span
@@ -222,7 +189,7 @@ export const slides: Slide[] = [
                   >
                     {e.y}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -252,8 +219,7 @@ export const slides: Slide[] = [
         <Figure
           src={arcadeEra}
           alt="A dark 1980s arcade lit by the glow of classic cabinets showing simple pixel sprites."
-          delay={0.15}
-          className="mb-5 h-32 md:h-44"
+          className="mb-5 h-40 sm:h-48 lg:h-56"
         />
         <div className="grid gap-4 md:grid-cols-3">
           <Card delay={0.1}>
@@ -313,8 +279,7 @@ export const slides: Slide[] = [
         <Figure
           src={gpuChip}
           alt="A glowing GPU graphics chip on a circuit board with many bright cores lit in parallel."
-          delay={0.15}
-          className="mb-5 h-28 md:h-40"
+          className="mb-5 h-36 sm:h-44 lg:h-52"
         />
         <div className="grid gap-4 md:grid-cols-2">
           <Card delay={0.1}>
@@ -632,8 +597,7 @@ export const slides: Slide[] = [
         <Figure
           src={futureImmersion}
           alt="A person wearing a VR headset reaching toward a floating holographic AI-generated game world."
-          delay={0.15}
-          className="mb-5 h-28 md:h-40"
+          className="mb-5 h-36 sm:h-44 lg:h-52"
         />
         <div className="grid gap-4 md:grid-cols-2">
           <Card delay={0.1}>
@@ -705,20 +669,17 @@ export const slides: Slide[] = [
               d: 'That trick becomes a tool for everyone — AI, film, robots, and science.',
               c: TINT.magenta,
             },
-          ].map((s, i) => (
-            <motion.div
+          ].map((s) => (
+            <div
               key={s.n}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 + i * 0.12 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
+              className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 lg:p-8"
             >
               <div className="font-mono text-3xl font-bold" style={{ color: s.c }}>
                 {s.n}
               </div>
               <h3 className="mt-3 font-display text-lg font-semibold text-white">{s.t}</h3>
               <p className="mt-2 text-sm text-white/60">{s.d}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
         <Reveal delay={0.6} className="mt-8">
@@ -772,12 +733,9 @@ export const slides: Slide[] = [
         >
           <div className="grid gap-4 md:grid-cols-2">
             {points.map((p, i) => (
-              <motion.div
+              <div
                 key={p.t}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.12 + i * 0.1 }}
-                className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+                className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5 lg:p-6"
               >
                 <span
                   className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full font-mono text-sm font-bold"
@@ -789,7 +747,7 @@ export const slides: Slide[] = [
                   <h3 className="font-display text-lg font-semibold text-white">{p.t}</h3>
                   <p className="mt-1 text-sm text-white/60">{p.d}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </SlideShell>
@@ -822,13 +780,7 @@ export const slides: Slide[] = [
         >
           <div className="grid gap-x-8 gap-y-3 md:grid-cols-2">
             {refs.map(([who, what, year], i) => (
-              <motion.div
-                key={who + what}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.08 + i * 0.06 }}
-                className="flex gap-3 border-b border-white/5 pb-3"
-              >
+              <div key={who + what} className="flex gap-3 border-b border-white/5 pb-3">
                 <span className="font-mono text-xs text-white/35">
                   {String(i + 1).padStart(2, '0')}
                 </span>
@@ -836,7 +788,7 @@ export const slides: Slide[] = [
                   <span className="font-semibold text-white">{who}.</span> {what}
                   {year ? <span className="text-white/40"> · {year}</span> : null}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
           <Reveal delay={0.6} className="mt-5">
@@ -860,40 +812,25 @@ export const slides: Slide[] = [
       <SlideShell hue="magenta" center>
         <div className="flex flex-col items-start">
           <Chip>One last thought</Chip>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight md:text-6xl"
-          >
+          <h2 className="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl">
             The next leap in technology
             <br />
             won't be announced in a lab —
             <br />
             <GradientText>it'll ship in a game.</GradientText>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-6 max-w-2xl text-base text-white/65 md:text-lg"
-          >
+          </h2>
+          <p className="mt-6 max-w-3xl text-lg text-white/65 lg:text-xl">
             Dots → triangles → many hands at once → AI → worlds you can step inside. From
             <em> Pong</em> on a lab screen to places we may one day walk into — every leap was
             an engineering leap. Watch what gamers play next. It's a preview of what everyone
             else will build with.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-8 flex flex-wrap items-center gap-3 font-mono text-sm text-white/60"
-          >
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-sm text-white/60">
             <span className="rounded-lg border border-fuchsia-400/30 bg-fuchsia-400/10 px-4 py-1.5 text-fuchsia-200">
               Thank you — questions welcome
             </span>
             <span className="text-white/45">Soutam Rajbhar · Chemical Engineering, IIT Kharagpur</span>
-          </motion.div>
+          </div>
         </div>
       </SlideShell>
     ),
