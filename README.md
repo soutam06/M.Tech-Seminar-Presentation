@@ -21,6 +21,9 @@ it starts relatable and builds toward GPUs, AI, and immersion.
 8. **The Future** — AI-generated worlds & neural rendering, then VR/AR, haptics and neural
    interfaces.
 9. **The Throughline** — the repeating engineering pattern behind it all.
+10. **Key takeaways, references, close**
+
+A full **15-minute speaking script** (what to say on each slide, plus likely questions) is in [`SPEECH.md`](./SPEECH.md).
 
 ## Run it locally
 

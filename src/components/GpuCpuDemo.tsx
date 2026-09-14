@@ -68,7 +68,7 @@ export function GpuCpuDemo() {
   const tint = mode === 'gpu' ? 'var(--color-neon-magenta)' : 'var(--color-neon-cyan)'
 
   return (
-    <div className="flex flex-col items-center gap-5">
+    <div className="flex flex-col items-center gap-4">
       <div
         className="relative grid gap-[3px] rounded-xl border border-white/10 bg-black/40 p-3"
         style={{ gridTemplateColumns: `repeat(${GRID}, minmax(0, 1fr))` }}
@@ -112,14 +112,14 @@ export function GpuCpuDemo() {
           disabled={mode !== 'idle'}
           className="rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-5 py-2.5 font-semibold text-cyan-200 transition hover:bg-cyan-400/20 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          Render with CPU · {CPU_CORES} cores
+          CPU · {CPU_CORES} cores
         </button>
         <button
           onClick={() => run('gpu')}
           disabled={mode !== 'idle'}
           className="rounded-xl border border-fuchsia-400/40 bg-fuchsia-400/10 px-5 py-2.5 font-semibold text-fuchsia-200 transition hover:bg-fuchsia-400/20 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          Render with GPU · {GPU_CORES} cores
+          GPU · {GPU_CORES} cores
         </button>
       </div>
 

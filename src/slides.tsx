@@ -76,7 +76,7 @@ export const slides: Slide[] = [
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Chip>⚙️ A Science &amp; Engineering Talk</Chip>
+              <Chip>A science &amp; engineering talk</Chip>
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -94,8 +94,8 @@ export const slides: Slide[] = [
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-5 max-w-2xl text-base text-white/70 md:text-xl"
             >
-              How the gaming industry evolved — and where it's headed — told through the
-              engineering that made it possible.
+              How games grew up — and where they are going — told through the engineering
+              that made each leap possible.
             </motion.p>
             <motion.div
               initial={{ opacity: 0 }}
@@ -115,7 +115,7 @@ export const slides: Slide[] = [
           <Figure
             src={heroEvolution}
             alt="The evolution of games: from a Pong CRT and 8-bit sprites, to 3D wireframe characters, to a person in a VR headset before a futuristic world."
-            caption="From Pong on a CRT → 8-bit → 3D → immersive VR worlds"
+            caption="Pong on a TV → 8-bit characters → 3D → stepping into a virtual world"
             delay={0.35}
             className="hidden md:block"
           />
@@ -132,34 +132,34 @@ export const slides: Slide[] = [
     render: () => (
       <SlideShell
         hue="cyan"
-        kicker="Let's set the stakes"
+        kicker="Why this matters"
         title={
           <>
             Gaming is the <GradientText>biggest</GradientText> entertainment
-            <br /> industry on Earth.
+            <br /> business on Earth.
           </>
         }
-        subtitle="Bigger than global cinema and recorded music — combined. But it isn't really an art industry. It's an engineering one."
+        subtitle="Bigger than movies and music put together. And it isn't really an art industry. It's an engineering one."
       >
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           <Card delay={0.1}>
-            <Stat value="~$200B" label="Annual revenue" tint={TINT.cyan} />
+            <Stat value="~$200B" label="Money made each year" tint={TINT.cyan} />
           </Card>
           <Card delay={0.18}>
-            <Stat value="3.3B+" label="Players worldwide" tint={TINT.magenta} />
+            <Stat value="3.3B+" label="People who play" tint={TINT.magenta} />
           </Card>
           <Card delay={0.26}>
             <Stat value="1 in 3" label="People on the planet play" tint={TINT.violet} />
           </Card>
           <Card delay={0.34}>
-            <Stat value="60–240" label="Full frames rendered / second" tint={TINT.lime} />
+            <Stat value="60–240" label="New pictures drawn every second" tint={TINT.lime} />
           </Card>
         </div>
         <Reveal delay={0.5} className="mt-6">
           <p className="text-white/60 md:text-lg">
-            Every second, your machine solves geometry, physics and lighting for millions of
-            points — and paints a new picture before you can blink. That's the story we're
-            following tonight.
+            Every second, your computer does maths for millions of points — shape, bounce,
+            light — and paints a new picture before you can blink. That's the story we're
+            following today.
           </p>
         </Reveal>
       </SlideShell>
@@ -173,21 +173,21 @@ export const slides: Slide[] = [
     hue: 'violet',
     render: () => {
       const eras = [
-        { y: '1958–85', t: 'The Spark', d: 'Transistors & arcades', c: TINT.amber },
-        { y: '1994–05', t: 'The 3rd Dimension', d: 'Polygons & the GPU', c: TINT.cyan },
-        { y: '2004–15', t: 'Connected Worlds', d: 'Netcode & physics', c: TINT.violet },
-        { y: '2015–now', t: 'Everywhere', d: 'Mobile, cloud, ray tracing', c: TINT.magenta },
-        { y: 'Next', t: 'Generated & Felt', d: 'AI worlds & immersion', c: TINT.lime },
+        { y: '1958 – 1985', t: 'The Spark', d: 'Simple screens & arcade halls', c: TINT.amber },
+        { y: '1994 – 2005', t: 'Going 3D', d: 'Triangles & a new chip: the GPU', c: TINT.cyan },
+        { y: '2004 – 2015', t: 'Playing together', d: 'Internet delay & real physics', c: TINT.violet },
+        { y: '2015 – now', t: 'Everywhere', d: 'Phones, cloud, real-looking light', c: TINT.magenta },
+        { y: 'Next', t: 'Felt & invented', d: 'AI worlds you can step inside', c: TINT.lime },
       ]
       return (
         <SlideShell
           hue="violet"
-          kicker="The journey in one view"
-          title="Five leaps, one throughline"
-          subtitle="Each era was unlocked by an engineering breakthrough. Here's the map for tonight."
+          kicker="The whole story in one look"
+          title="Five big leaps. One story."
+          subtitle="Each leap happened because engineers solved a hard problem. Here's the map for today."
         >
-          <div className="relative mt-2">
-            <div className="absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-amber-400/40 via-violet-400/40 to-lime-400/40 md:block" />
+          <div className="relative mt-4">
+            <div className="absolute left-[8%] right-[8%] top-[11px] hidden h-px bg-gradient-to-r from-amber-400/50 via-violet-400/50 to-lime-400/50 md:block" />
             <div className="grid gap-4 md:grid-cols-5">
               {eras.map((e, i) => (
                 <motion.div
@@ -195,19 +195,24 @@ export const slides: Slide[] = [
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.45, delay: 0.1 + i * 0.1 }}
-                  className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-4"
+                  className="relative rounded-2xl border border-white/10 bg-white/[0.04] p-4 pt-5"
                 >
-                  <div className="mb-3 flex items-center gap-2">
+                  <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2">
                     <span
-                      className="grid h-3 w-3 place-items-center rounded-full"
+                      className="h-3.5 w-3.5 rounded-full ring-4 ring-[color:var(--color-ink)]"
                       style={{ background: e.c, boxShadow: `0 0 12px ${e.c}` }}
                     />
-                    <span className="font-mono text-xs text-white/50">{e.y}</span>
                   </div>
                   <div className="font-display text-lg font-semibold" style={{ color: e.c }}>
                     {e.t}
                   </div>
-                  <div className="mt-1 text-sm text-white/55">{e.d}</div>
+                  <div className="mt-1 text-sm leading-snug text-white/55">{e.d}</div>
+                  <div
+                    className="mt-4 border-t border-white/10 pt-3 font-mono text-sm font-semibold tracking-wide"
+                    style={{ color: e.c }}
+                  >
+                    {e.y}
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -225,11 +230,15 @@ export const slides: Slide[] = [
     render: () => (
       <SlideShell
         hue="magenta"
-        kicker="Era 1"
+        kicker="Leap 1"
         era="1958 – 1985"
         eraTint={TINT.amber}
-        title={<>The Spark: making a screen <GradientText from={TINT.amber} to={TINT.magenta}>respond</GradientText></>}
-        subtitle="Before graphics, the challenge was simply: can a machine react to a human in real time?"
+        title={
+          <>
+            The Spark: making a screen <GradientText from={TINT.amber} to={TINT.magenta}>talk back</GradientText>
+          </>
+        }
+        subtitle="Before fancy pictures, the hard question was simple: can a machine react to a person right now?"
       >
         <Figure
           src={arcadeEra}
@@ -242,32 +251,32 @@ export const slides: Slide[] = [
             <IconChip>🕹️</IconChip>
             <h3 className="mt-3 font-display text-lg font-semibold text-white">The games</h3>
             <p className="mt-1 text-sm text-white/60">
-              <em>Tennis for Two</em> (1958) on an oscilloscope, <em>Pong</em> (1972),
-              then <em>Space Invaders</em> &amp; the arcade boom.
+              <em>Tennis for Two</em> (1958) on a lab screen, <em>Pong</em> (1972), then
+              <em> Space Invaders</em> and packed arcade halls.
             </p>
           </Card>
           <Card delay={0.2}>
             <IconChip>🔌</IconChip>
-            <h3 className="mt-3 font-display text-lg font-semibold text-white">The engineering</h3>
+            <h3 className="mt-3 font-display text-lg font-semibold text-white">How it was built</h3>
             <p className="mt-1 text-sm text-white/60">
-              Discrete transistor logic and custom circuits drove electron beams across a
-              CRT. No CPU at first — the <em>wiring itself</em> was the game.
+              Early machines were wired by hand. There was often no “brain chip” yet — the
+              wiring <em>itself</em> was the game.
             </p>
           </Card>
           <Card delay={0.3}>
             <IconChip>💡</IconChip>
-            <h3 className="mt-3 font-display text-lg font-semibold text-white">The breakthrough</h3>
+            <h3 className="mt-3 font-display text-lg font-semibold text-white">The big change</h3>
             <p className="mt-1 text-sm text-white/60">
-              Cheap microprocessors (Intel 8080, MOS 6502) turned a game into
-              <em> software</em> — the same chip could play anything.
+              Cheap computer chips arrived. A game became <em>software</em> — the same machine
+              could play many different games.
             </p>
           </Card>
         </div>
         <Reveal delay={0.5} className="mt-6">
           <div className="rounded-xl border border-amber-400/25 bg-amber-400/5 p-4 text-white/70">
-            <span className="font-semibold text-amber-300">Engineer's takeaway:</span> once
-            games became software on general chips, progress stopped being about circuits and
-            started being about <span className="text-white">compute power</span>.
+            <span className="font-semibold text-amber-300">Takeaway:</span> once games were
+            software, progress stopped being about new wires and started being about{' '}
+            <span className="text-white">faster computers</span>.
           </div>
         </Reveal>
       </SlideShell>
@@ -282,11 +291,15 @@ export const slides: Slide[] = [
     render: () => (
       <SlideShell
         hue="cyan"
-        kicker="Era 2"
+        kicker="Leap 2"
         era="1994 – 2005"
         eraTint={TINT.cyan}
-        title={<>The third dimension &amp; the birth of the <GradientText>GPU</GradientText></>}
-        subtitle="Turning flat sprites into worlds meant doing enormous amounts of the same math — fast."
+        title={
+          <>
+            Games go 3D — and a new chip is born: the <GradientText>GPU</GradientText>
+          </>
+        }
+        subtitle="To turn flat pictures into worlds, a computer had to do the same maths millions of times — very fast."
       >
         <Figure
           src={gpuChip}
@@ -298,34 +311,36 @@ export const slides: Slide[] = [
           <Card delay={0.1}>
             <h3 className="font-display text-lg font-semibold text-white">The problem</h3>
             <p className="mt-2 text-sm text-white/60">
-              A 3D world is millions of triangles. Every frame you must rotate, project and
-              light each vertex, then colour every pixel. CPUs did this one step at a time —
-              far too slow for 30 frames a second.
+              A 3D world is made of millions of tiny triangles. Every picture, the computer
+              must move them, light them, and colour every dot. A normal chip (the CPU) does
+              this one step at a time — too slow for smooth play.
             </p>
           </Card>
           <Card delay={0.2}>
-            <h3 className="font-display text-lg font-semibold text-white">The solution</h3>
+            <h3 className="font-display text-lg font-semibold text-white">The answer</h3>
             <p className="mt-2 text-sm text-white/60">
-              A dedicated <span className="text-cyan-300">Graphics Processing Unit</span>:
-              a chip with hundreds of small cores that transform many vertices and pixels
-              <em> simultaneously</em>. NVIDIA's 1999 GeForce 256 was billed as the first.
+              A new chip built just for pictures: the{' '}
+              <span className="text-cyan-300">Graphics Processing Unit</span>. It has many small
+              workers that colour lots of dots <em>at the same time</em>. NVIDIA's 1999
+              GeForce 256 was sold as the first of these.
             </p>
           </Card>
         </div>
         <div className="mt-4 flex flex-wrap gap-2 font-mono text-xs">
-          {['PlayStation', 'Nintendo 64', 'Quake / OpenGL', 'GeForce 256', 'Hardware T&L'].map(
-            (t) => (
-              <span key={t} className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-white/60">
-                {t}
-              </span>
-            ),
-          )}
+          {['PlayStation', 'Nintendo 64', 'Quake', 'GeForce 256'].map((t) => (
+            <span
+              key={t}
+              className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-white/60"
+            >
+              {t}
+            </span>
+          ))}
         </div>
         <Reveal delay={0.5} className="mt-5">
           <p className="text-white/60">
-            This single idea — <span className="text-white">do the same operation on thousands
-            of data points at once</span> — is the most important thing in this whole talk.
-            Let's <span className="text-cyan-300">feel</span> why it matters. →
+            One idea matters more than anything else today:{' '}
+            <span className="text-white">do the same small job on thousands of things at once</span>.
+            Let's watch it happen. →
           </p>
         </Reveal>
       </SlideShell>
@@ -340,18 +355,39 @@ export const slides: Slide[] = [
     render: () => (
       <SlideShell
         hue="magenta"
-        kicker="Interactive · click the buttons"
-        title={<>Why a GPU? <GradientText>Parallelism.</GradientText></>}
-        subtitle="Both chips shade the same 144-pixel frame. The CPU has a few fast cores; the GPU has many. Watch the clock."
+        kicker="Try it yourself · tap the buttons"
+        title={
+          <>
+            Why a GPU? <GradientText>Many hands at once.</GradientText>
+          </>
+        }
+        subtitle="Both chips colour the same 144-dot picture. The CPU has 4 strong workers. The GPU has 48 smaller ones. Watch the clock."
       >
-        <div className="rounded-2xl border border-white/10 bg-black/30 p-6">
+        <div className="rounded-2xl border border-white/10 bg-black/30 p-4 md:p-5">
           <GpuCpuDemo />
         </div>
-        <Reveal delay={0.4} className="mt-5">
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
+          <Card delay={0.15}>
+            <h3 className="font-display text-base font-semibold text-cyan-200">CPU · 4 cores</h3>
+            <p className="mt-1 text-sm text-white/60">
+              Few workers. Each one is smart and can do many kinds of jobs — like 4 master
+              chefs in a kitchen.
+            </p>
+          </Card>
+          <Card delay={0.22}>
+            <h3 className="font-display text-base font-semibold text-fuchsia-200">GPU · 48 cores</h3>
+            <p className="mt-1 text-sm text-white/60">
+              Many workers. Each one is simple and repeats one job — like 48 line cooks all
+              chopping vegetables at once.
+            </p>
+          </Card>
+        </div>
+        <Reveal delay={0.4} className="mt-4">
           <p className="text-center text-sm text-white/55">
-            A real GPU has <span className="text-white">thousands</span> of cores. The same
-            trick that renders a game also multiplies the giant matrices behind neural
-            networks — remember that for later.
+            If we gave the CPU 48 cores, would it become a GPU?{' '}
+            <span className="text-white">No.</span> More chefs still aren't a factory line.
+            A real GPU has <span className="text-white">thousands</span> of these simple cores.
+            That same trick now trains AI.
           </p>
         </Reveal>
       </SlideShell>
@@ -366,44 +402,48 @@ export const slides: Slide[] = [
     render: () => (
       <SlideShell
         hue="violet"
-        kicker="Era 3"
+        kicker="Leap 3"
         era="2004 – 2015"
         eraTint={TINT.violet}
-        title={<>Connected worlds: <GradientText from={TINT.violet} to={TINT.magenta}>netcode</GradientText> &amp; physics</>}
-        subtitle="Broadband turned games into shared, living places — and created brutal new engineering problems."
+        title={
+          <>
+            Playing together: <GradientText from={TINT.violet} to={TINT.magenta}>delay</GradientText>,
+            physics &amp; huge worlds
+          </>
+        }
+        subtitle="Home internet turned games into places we share. That created new headaches for engineers."
       >
         <div className="grid gap-4 md:grid-cols-3">
           <Card delay={0.1}>
             <IconChip>🌐</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">Fighting latency</h3>
+            <h3 className="mt-3 font-display text-base font-semibold text-white">Fighting delay</h3>
             <p className="mt-1 text-sm text-white/60">
-              Light takes ~40ms across the world. Games <em>predict</em> your moves and
-              rewind time on the server (client-side prediction &amp; lag compensation) to
-              feel instant.
+              A signal can take about 40 milliseconds to cross the world. Games guess your next
+              move, then correct it — so play still feels instant.
             </p>
           </Card>
           <Card delay={0.2}>
             <IconChip>🧲</IconChip>
             <h3 className="mt-3 font-display text-base font-semibold text-white">Real physics</h3>
             <p className="mt-1 text-sm text-white/60">
-              Physics engines solve equations of motion, collisions and ragdolls 60×/sec —
-              the same numerical integration you meet in engineering simulations.
+              Games solve bounce, crash, and falling bodies 60 times a second — the same kind of
+              maths used in engineering simulations.
             </p>
           </Card>
           <Card delay={0.3}>
             <IconChip>🏙️</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">Massive worlds</h3>
+            <h3 className="mt-3 font-display text-base font-semibold text-white">Huge worlds</h3>
             <p className="mt-1 text-sm text-white/60">
-              MMOs like <em>World of Warcraft</em> synced tens of thousands of players across
-              distributed server farms — early cloud-scale engineering.
+              Games like <em>World of Warcraft</em> keep tens of thousands of players in sync
+              across many computers at once.
             </p>
           </Card>
         </div>
         <Reveal delay={0.5} className="mt-6">
           <div className="rounded-xl border border-violet-400/25 bg-violet-400/5 p-4 text-white/70">
-            <span className="font-semibold text-violet-300">The shift:</span> games stopped
-            being a program on your machine and became <span className="text-white">a
-            real-time distributed system</span> serving millions at once.
+            <span className="font-semibold text-violet-300">The shift:</span> a game stopped
+            being “a program on your computer” and became{' '}
+            <span className="text-white">a live system serving millions of people at once</span>.
           </div>
         </Reveal>
       </SlideShell>
@@ -418,40 +458,43 @@ export const slides: Slide[] = [
     render: () => (
       <SlideShell
         hue="cyan"
-        kicker="Era 4"
-        era="2015 – Now"
+        kicker="Leap 4"
+        era="2015 – now"
         eraTint={TINT.magenta}
-        title={<>Games go <GradientText>everywhere</GradientText></>}
-        subtitle="From a device in every pocket to photorealistic light simulated in real time."
+        title={
+          <>
+            Games go <GradientText>everywhere</GradientText>
+          </>
+        }
+        subtitle="From a phone in every pocket to light that looks almost real."
       >
         <div className="grid gap-4 md:grid-cols-2">
           <Card delay={0.1}>
             <h3 className="font-display text-lg font-semibold text-white">📱 In every pocket</h3>
             <p className="mt-2 text-sm text-white/60">
-              Mobile is now the largest slice of gaming. A phone SoC packs a capable GPU,
-              putting a console-class renderer in billions of hands.
+              Most gaming now happens on phones. A modern phone already has a strong picture
+              chip — a console in your hand.
             </p>
           </Card>
           <Card delay={0.18}>
-            <h3 className="font-display text-lg font-semibold text-white">☁️ Cloud gaming</h3>
+            <h3 className="font-display text-lg font-semibold text-white">☁️ Games in the cloud</h3>
             <p className="mt-2 text-sm text-white/60">
-              The game runs in a data-centre GPU and streams video to you — like Netflix, but
-              it must round-trip your input in milliseconds. Pure latency engineering.
+              The game can run on a faraway computer and send you video — like Netflix, except
+              your button press has to travel there and back in a blink.
             </p>
           </Card>
           <Card delay={0.26}>
-            <h3 className="font-display text-lg font-semibold text-white">💡 Ray tracing</h3>
+            <h3 className="font-display text-lg font-semibold text-white">💡 Tracing light</h3>
             <p className="mt-2 text-sm text-white/60">
-              Dedicated RT cores trace rays of light through a scene, simulating real
-              reflections and shadows — physics that used to take hours per movie frame, now
-              live.
+              New chips follow rays of light through a scene — real reflections and shadows.
+              Movie computers used to spend hours on one frame. Games now do it live.
             </p>
           </Card>
           <Card delay={0.34}>
             <h3 className="font-display text-lg font-semibold text-white">🏟️ Esports</h3>
             <p className="mt-2 text-sm text-white/60">
-              Competitive gaming fills stadiums, demanding rock-solid servers, anti-cheat and
-              sub-frame precision at global scale.
+              Competitive games fill stadiums. That needs rock-solid servers, fair play, and
+              timing accurate to a fraction of a picture.
             </p>
           </Card>
         </div>
@@ -468,40 +511,43 @@ export const slides: Slide[] = [
       <SlideShell
         hue="lime"
         kicker="Plot twist"
-        title={<>Gaming tech quietly <GradientText from={TINT.lime} to={TINT.cyan}>rebuilt the world</GradientText></>}
-        subtitle="The tools built to render fun turned out to power some of today's most serious technology."
+        title={
+          <>
+            Gaming tech quietly <GradientText from={TINT.lime} to={TINT.cyan}>rebuilt the world</GradientText>
+          </>
+        }
+        subtitle="Tools made so we could have fun ended up powering some of today's most serious work."
       >
         <div className="grid gap-4 md:grid-cols-3">
           <Card delay={0.1}>
             <IconChip>🧠</IconChip>
             <h3 className="mt-3 font-display text-base font-semibold text-white">GPUs → the AI boom</h3>
             <p className="mt-1 text-sm text-white/60">
-              The parallel math that shades pixels is exactly what trains neural networks.
-              Every large AI model — including chatbots — runs on gaming-born GPUs.
+              The same “many hands” maths that colours pixels is what trains AI. Chatbots and
+              image models run on chips that started life in games.
             </p>
           </Card>
           <Card delay={0.2}>
             <IconChip>🎬</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">Engines → film &amp; design</h3>
+            <h3 className="mt-3 font-display text-base font-semibold text-white">Game tools → film &amp; design</h3>
             <p className="mt-1 text-sm text-white/60">
-              Game engines (Unreal, Unity) now render movie backdrops, car showrooms and
-              architecture — real-time visualisation for every industry.
+              The same software that builds games now draws movie sets, car showrooms, and
+              buildings — live, not overnight.
             </p>
           </Card>
           <Card delay={0.3}>
             <IconChip>🤖</IconChip>
-            <h3 className="mt-3 font-display text-base font-semibold text-white">Physics → digital twins</h3>
+            <h3 className="mt-3 font-display text-base font-semibold text-white">Game physics → factories</h3>
             <p className="mt-1 text-sm text-white/60">
-              Robots and self-driving cars are trained inside game-like simulations, and
-              factories run virtual "digital twins" to optimise before building.
+              Robots and self-driving cars practise in game-like worlds. Factories test a
+              virtual copy of a plant before they build the real one.
             </p>
           </Card>
         </div>
         <Reveal delay={0.5} className="mt-6">
           <p className="text-white/65 md:text-lg">
-            <span className="text-lime-300">The point for engineers:</span> chasing a fun,
-            demanding problem (real-time graphics) produced general-purpose tools that reshaped
-            science, film, AI and manufacturing.
+            <span className="text-lime-300">The point:</span> chasing a fun, hard problem —
+            drawing a world 60 times a second — gave every other field a new set of tools.
           </p>
         </Reveal>
       </SlideShell>
@@ -517,37 +563,40 @@ export const slides: Slide[] = [
       <SlideShell
         hue="magenta"
         kicker="Where it's heading · Part 1"
-        title={<>Worlds that are <GradientText>generated</GradientText>, not just drawn</>}
-        subtitle="The next leap moves work from artists' hands to learned models — and from rendering to imagining."
+        title={
+          <>
+            Worlds that are <GradientText>invented</GradientText>, not just drawn
+          </>
+        }
+        subtitle="The next leap: the computer doesn't only paint the world. It starts to imagine it."
       >
         <div className="grid gap-4 md:grid-cols-2">
           <Card delay={0.1}>
-            <h3 className="font-display text-lg font-semibold text-white">🪄 Neural rendering</h3>
+            <h3 className="font-display text-lg font-semibold text-white">🪄 AI fills in the picture</h3>
             <p className="mt-2 text-sm text-white/60">
-              AI already invents most pixels: techniques like DLSS render a few real pixels and
-              let a network <em>upscale &amp; fill in</em> the rest — more detail for less
-              compute.
+              Games already draw a rough picture, then let AI add the extra detail — more
+              sharpness for less work. NVIDIA calls one version of this DLSS.
             </p>
           </Card>
           <Card delay={0.2}>
-            <h3 className="font-display text-lg font-semibold text-white">🌍 Generative worlds</h3>
+            <h3 className="font-display text-lg font-semibold text-white">🌍 Worlds made on the spot</h3>
             <p className="mt-2 text-sm text-white/60">
-              Research models can now dream up playable game frames in real time. Imagine
-              levels, characters and quests generated on the fly, unique to every player.
+              Research models can now invent playable game pictures in real time. Imagine
+              levels, characters, and quests made just for you.
             </p>
           </Card>
           <Card delay={0.28}>
-            <h3 className="font-display text-lg font-semibold text-white">🗣️ Living NPCs</h3>
+            <h3 className="font-display text-lg font-semibold text-white">🗣️ Characters that talk back</h3>
             <p className="mt-2 text-sm text-white/60">
-              Language models give non-player characters real conversations and goals — worlds
-              that respond to <em>anything</em> you say, not a fixed script.
+              Chat-style AI can give game characters real conversations — they reply to what
+              you actually say, not a fixed script.
             </p>
           </Card>
           <Card delay={0.36}>
-            <h3 className="font-display text-lg font-semibold text-white">♾️ Procedural x AI</h3>
+            <h3 className="font-display text-lg font-semibold text-white">♾️ Endless maps + AI</h3>
             <p className="mt-2 text-sm text-white/60">
-              Classic algorithms already built galaxies from a seed number; pairing them with
-              AI means endless worlds with genuine surprise and craft.
+              Older tricks already built whole galaxies from one seed number. Pair that with
+              AI and you get huge worlds that still feel surprising.
             </p>
           </Card>
         </div>
@@ -564,8 +613,12 @@ export const slides: Slide[] = [
       <SlideShell
         hue="violet"
         kicker="Where it's heading · Part 2"
-        title={<>From a screen you watch to a world you <GradientText from={TINT.violet} to={TINT.cyan}>inhabit</GradientText></>}
-        subtitle="The frontier isn't just better images — it's collapsing the distance between you and the world."
+        title={
+          <>
+            From watching a screen to a world you <GradientText from={TINT.violet} to={TINT.cyan}>step inside</GradientText>
+          </>
+        }
+        subtitle="The next race isn't only prettier pictures. It's making the world feel close enough to touch."
       >
         <Figure
           src={futureImmersion}
@@ -575,32 +628,31 @@ export const slides: Slide[] = [
         />
         <div className="grid gap-4 md:grid-cols-2">
           <Card delay={0.1}>
-            <h3 className="font-display text-lg font-semibold text-white">🥽 VR / AR &amp; spatial</h3>
+            <h3 className="font-display text-lg font-semibold text-white">🥽 Headsets &amp; mixed reality</h3>
             <p className="mt-2 text-sm text-white/60">
-              Headsets must render two 4K images at 90+ fps with under ~20ms of motion-to-photon
-              lag — miss it and you feel sick. It's one of the hardest real-time targets in
-              engineering.
+              A headset must draw two sharp pictures, many times a second, with almost no delay
+              after you move your head. Miss that, and people feel sick.
             </p>
           </Card>
           <Card delay={0.2}>
-            <h3 className="font-display text-lg font-semibold text-white">✋ Haptics &amp; the senses</h3>
+            <h3 className="font-display text-lg font-semibold text-white">✋ Feeling the world</h3>
             <p className="mt-2 text-sm text-white/60">
-              Precise motors, resistive triggers and suits let you <em>feel</em> texture,
-              weight and recoil — engineering presence, not just pictures.
+              Motors in controllers and suits let you feel weight, texture, and kickback —
+              not just see it.
             </p>
           </Card>
           <Card delay={0.28}>
-            <h3 className="font-display text-lg font-semibold text-white">☁️ Zero-hardware play</h3>
+            <h3 className="font-display text-lg font-semibold text-white">☁️ Play with almost no hardware</h3>
             <p className="mt-2 text-sm text-white/60">
-              As networks improve (5G/edge), heavy rendering moves to the cloud — a photoreal
-              world streamed to thin, cheap glasses.
+              As networks get faster, the heavy work can live in the cloud — a rich world
+              streamed to thin, cheap glasses.
             </p>
           </Card>
           <Card delay={0.36}>
-            <h3 className="font-display text-lg font-semibold text-white">🧠 Neural interfaces</h3>
+            <h3 className="font-display text-lg font-semibold text-white">🧠 Playing by thought</h3>
             <p className="mt-2 text-sm text-white/60">
-              Early brain–computer interfaces already let people move cursors by thought — the
-              long-horizon frontier of how we might one day "play".
+              Early brain–computer links already let some people move a cursor by thinking.
+              That's a far-off idea of how we might one day play.
             </p>
           </Card>
         </div>
@@ -617,14 +669,33 @@ export const slides: Slide[] = [
       <SlideShell
         hue="cyan"
         kicker="The big idea"
-        title={<>One engineering story, on <GradientText>repeat</GradientText></>}
+        title={
+          <>
+            The same story, over and <GradientText>over</GradientText>
+          </>
+        }
         center
       >
         <div className="grid gap-4 md:grid-cols-3">
           {[
-            { n: '01', t: 'A demanding dream', d: 'Someone wants an impossibly rich, instant, interactive world.', c: TINT.cyan },
-            { n: '02', t: 'A hardware/algorithm leap', d: 'Engineers answer with new chips or clever math — the GPU, netcode, RT cores, neural rendering.', c: TINT.violet },
-            { n: '03', t: 'It escapes gaming', d: 'That breakthrough becomes a general tool — powering AI, film, robotics and science.', c: TINT.magenta },
+            {
+              n: '01',
+              t: 'A wild wish',
+              d: 'Someone wants a rich world that reacts right now.',
+              c: TINT.cyan,
+            },
+            {
+              n: '02',
+              t: 'A clever leap',
+              d: 'Engineers answer with a new chip or a smart trick — the GPU, delay-hiding, tracing light, AI drawing.',
+              c: TINT.violet,
+            },
+            {
+              n: '03',
+              t: 'It leaves the game',
+              d: 'That trick becomes a tool for everyone — AI, film, robots, and science.',
+              c: TINT.magenta,
+            },
           ].map((s, i) => (
             <motion.div
               key={s.n}
@@ -643,9 +714,9 @@ export const slides: Slide[] = [
         </div>
         <Reveal delay={0.6} className="mt-8">
           <p className="max-w-3xl text-lg text-white/75 md:text-2xl">
-            Games are where we practice building{' '}
-            <GradientText>real-time worlds</GradientText> — and that practice keeps handing the
-            rest of engineering its next set of tools.
+            Games are where we practise building{' '}
+            <GradientText>worlds that react in real time</GradientText> — and that practise
+            keeps handing the rest of engineering its next tools.
           </p>
         </Reveal>
       </SlideShell>
@@ -660,23 +731,23 @@ export const slides: Slide[] = [
     render: () => {
       const points = [
         {
-          t: 'Gaming is an engineering industry',
-          d: 'Bigger than film and music combined — and every leap forward was won by engineers, not just artists.',
+          t: 'Gaming is an engineering story',
+          d: 'Bigger than film and music put together — and every leap was won by engineers, not only artists.',
           c: TINT.cyan,
         },
         {
-          t: 'The GPU is the hero of the story',
-          d: 'A chip built to shade pixels in parallel now trains every major AI model. Fun hardware became world-changing hardware.',
+          t: 'The GPU is the hero chip',
+          d: 'Built to colour dots side by side, it now trains almost every big AI model. Fun hardware became world-changing hardware.',
           c: TINT.magenta,
         },
         {
-          t: 'Breakthroughs keep escaping gaming',
-          d: 'GPUs, physics engines, netcode and neural rendering all leaked out to power AI, film, robotics and science.',
+          t: 'Game tricks keep leaving the game',
+          d: 'Picture chips, physics, online play, and AI drawing all leaked out to power AI, film, robots, and science.',
           c: TINT.violet,
         },
         {
-          t: 'The future is generated & felt',
-          d: 'AI will imagine worlds in real time, and immersion tech will dissolve the line between the player and the world.',
+          t: 'The future is invented and felt',
+          d: 'AI will imagine worlds as you play them, and headsets, touch, and networks will make those worlds feel close.',
           c: TINT.lime,
         },
       ]
@@ -684,7 +755,11 @@ export const slides: Slide[] = [
         <SlideShell
           hue="lime"
           kicker="If you remember four things"
-          title={<>Key <GradientText from={TINT.lime} to={TINT.cyan}>takeaways</GradientText></>}
+          title={
+            <>
+              Key <GradientText from={TINT.lime} to={TINT.cyan}>takeaways</GradientText>
+            </>
+          }
         >
           <div className="grid gap-4 md:grid-cols-2">
             {points.map((p, i) => (
@@ -720,21 +795,21 @@ export const slides: Slide[] = [
     hue: 'violet',
     render: () => {
       const refs = [
-        ['Newzoo', 'Global Games Market Report — revenue & player estimates', '2024'],
-        ['NVIDIA', 'GeForce 256 — “the world’s first GPU”, and GPU architecture history', '1999–'],
-        ['NVIDIA', 'DLSS: Deep Learning Super Sampling — neural rendering overview', '2020–'],
-        ['Akenine-Möller, Haines & Hoffman', 'Real-Time Rendering (4th ed.) — rasterisation & ray tracing', '2018'],
-        ['Valve Developer Community', 'Source Multiplayer Networking — lag compensation & prediction', ''],
-        ['Google DeepMind', 'AlphaGo & AlphaStar — reinforcement learning in games', '2016–19'],
-        ['Google Research', 'GameNGen — a neural network that runs a playable game in real time', '2024'],
-        ['Cooper et al., Nature', 'Predicting protein structures with the game “Foldit”', '2010'],
+        ['Newzoo', 'Global Games Market Report — how much money and how many players', '2024'],
+        ['NVIDIA', 'GeForce 256 — sold as “the world’s first GPU”, plus later chip history', '1999–'],
+        ['NVIDIA', 'DLSS — AI that adds extra detail to a game picture', '2020–'],
+        ['Akenine-Möller, Haines & Hoffman', 'Real-Time Rendering (4th ed.) — how live pictures are drawn', '2018'],
+        ['Valve Developer Community', 'Source Multiplayer Networking — hiding internet delay', ''],
+        ['Google DeepMind', 'AlphaGo & AlphaStar — AI that learned by playing games', '2016–19'],
+        ['Google Research', 'GameNGen — a neural net that can run a playable game', '2024'],
+        ['Cooper et al., Nature', 'Foldit — a game that helped fold a real protein', '2010'],
       ]
       return (
         <SlideShell
           hue="violet"
-          kicker="Sources & further reading"
+          kicker="Where the facts come from"
           title="References"
-          subtitle="A starting point if you want to dig into any part of this story."
+          subtitle="A starting list if you want to read more after today."
         >
           <div className="grid gap-x-8 gap-y-3 md:grid-cols-2">
             {refs.map(([who, what, year], i) => (
@@ -757,8 +832,8 @@ export const slides: Slide[] = [
           </div>
           <Reveal delay={0.6} className="mt-5">
             <p className="font-mono text-xs text-white/40">
-              Figures are approximate and cited for scale; imagery is illustrative /
-              AI-generated for this talk.
+              Numbers are rounded for scale. Pictures in this talk are illustrative /
+              AI-made, not photos of real products.
             </p>
           </Reveal>
         </SlideShell>
@@ -774,7 +849,7 @@ export const slides: Slide[] = [
     render: () => (
       <SlideShell hue="magenta" center>
         <div className="flex flex-col items-start">
-          <Chip>🎮 One last thought</Chip>
+          <Chip>One last thought</Chip>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -793,10 +868,10 @@ export const slides: Slide[] = [
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-6 max-w-2xl text-base text-white/65 md:text-lg"
           >
-            Pixels → Polygons → Parallel compute → AI → Immersion. From <em>Pong</em> on an
-            oscilloscope to worlds we may one day step inside — every leap was an engineering
-            leap. Keep an eye on what gamers play next; it's a preview of what everyone builds
-            with.
+            Dots → triangles → many hands at once → AI → worlds you can step inside. From
+            <em> Pong</em> on a lab screen to places we may one day walk into — every leap was
+            an engineering leap. Watch what gamers play next. It's a preview of what everyone
+            else will build with.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
