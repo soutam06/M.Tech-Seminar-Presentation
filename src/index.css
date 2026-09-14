@@ -61,32 +61,32 @@
   display: none !important;
 }
 
-/* Presentation scale: type grows with the window so a projector can actually read it */
+/* Designed for a 1920×1080 slide (standard projector). The app scales the whole slide to fit.
+   Do not use vw/vh in slide layout — those follow the browser window, not this canvas. */
 .deck-cards {
   display: grid;
   flex: 1 1 auto;
   min-height: 0;
-  gap: clamp(0.85rem, 1.2vw, 1.4rem);
-  grid-auto-rows: 1fr;
+  gap: 20px;
 }
 
 .deck-title {
-  font-size: clamp(2.6rem, 5.2vw, 5.4rem);
-  line-height: 1.05;
+  font-size: 52px;
+  line-height: 1.08;
 }
 
 .deck-sub {
-  font-size: clamp(1.45rem, 2.35vw, 2.25rem);
-  line-height: 1.3;
+  font-size: 24px;
+  line-height: 1.35;
 }
 
 .deck-h {
-  font-size: clamp(1.55rem, 2.55vw, 2.55rem);
-  line-height: 1.15;
+  font-size: 26px;
+  line-height: 1.2;
 }
 
 .deck-p {
-  font-size: clamp(1.35rem, 2.15vw, 2.05rem);
-  line-height: 1.35;
+  font-size: 20px;
+  line-height: 1.38;
   color: rgb(255 255 255 / 0.9);
 }

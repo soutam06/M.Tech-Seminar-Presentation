@@ -4,6 +4,7 @@ const GRID = 12
 const TOTAL = GRID * GRID
 const CPU_CORES = 4
 const GPU_CORES = 48
+const CELL = 22
 
 type Mode = 'idle' | 'cpu' | 'gpu'
 
@@ -61,18 +62,23 @@ export function GpuCpuDemo() {
   const tint = mode === 'gpu' ? 'var(--color-neon-magenta)' : 'var(--color-neon-cyan)'
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex h-full min-h-0 flex-col items-center justify-center gap-5">
       <div
-        className="relative grid gap-1 rounded-xl border border-white/10 bg-black/40 p-3"
-        style={{ gridTemplateColumns: `repeat(${GRID}, minmax(0, 1fr))` }}
+        className="grid rounded-xl border border-white/10 bg-black/40 p-3"
+        style={{
+          gridTemplateColumns: `repeat(${GRID}, ${CELL}px)`,
+          gap: 3,
+        }}
       >
         {Array.from({ length: TOTAL }, (_, i) => {
           const on = i < filled
           return (
             <div
               key={i}
-              className="h-5 w-5 rounded-[3px] sm:h-6 sm:w-6"
               style={{
+                width: CELL,
+                height: CELL,
+                borderRadius: 3,
                 backgroundColor: on ? tint : 'rgba(255,255,255,0.08)',
                 boxShadow: on ? `0 0 8px ${tint}` : undefined,
               }}
@@ -81,40 +87,40 @@ export function GpuCpuDemo() {
         })}
       </div>
 
-      <div className="flex items-center gap-10 font-mono text-[clamp(1.2rem,2vw,1.7rem)]">
+      <div className="flex items-center gap-10 font-mono text-[18px]">
         <div className="text-center">
           <div className="text-white/60">shaded</div>
-          <div className="text-[clamp(1.6rem,2.8vw,2.4rem)] font-bold text-white">
+          <div className="text-[32px] font-bold leading-none text-white">
             {filled}/{TOTAL}
           </div>
         </div>
         <div className="text-center">
           <div className="text-white/60">time</div>
-          <div className="text-[clamp(1.6rem,2.8vw,2.4rem)] font-bold" style={{ color: tint }}>
+          <div className="text-[32px] font-bold leading-none" style={{ color: tint }}>
             {(elapsed / 1000).toFixed(2)}s
           </div>
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-3">
+      <div className="flex items-center justify-center gap-3">
         <button
           onClick={() => run('cpu')}
           disabled={mode !== 'idle'}
-          className="rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-6 py-3 text-[clamp(1.2rem,2vw,1.6rem)] font-semibold text-cyan-200 hover:bg-cyan-400/20 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-5 py-2.5 text-[18px] font-semibold text-cyan-200 hover:bg-cyan-400/20 disabled:cursor-not-allowed disabled:opacity-40"
         >
           CPU · {CPU_CORES} cores
         </button>
         <button
           onClick={() => run('gpu')}
           disabled={mode !== 'idle'}
-          className="rounded-xl border border-fuchsia-400/40 bg-fuchsia-400/10 px-6 py-3 text-[clamp(1.2rem,2vw,1.6rem)] font-semibold text-fuchsia-200 hover:bg-fuchsia-400/20 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-xl border border-fuchsia-400/40 bg-fuchsia-400/10 px-5 py-2.5 text-[18px] font-semibold text-fuchsia-200 hover:bg-fuchsia-400/20 disabled:cursor-not-allowed disabled:opacity-40"
         >
           GPU · {GPU_CORES} cores
         </button>
       </div>
 
       {result.cpu && result.gpu && (
-        <div className="deck-p rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-center">
+        <div className="max-w-[480px] rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-center text-[18px] leading-snug text-white/90">
           Same frame — GPU finished{' '}
           <span className="font-bold text-fuchsia-300">
             {(result.cpu / result.gpu).toFixed(1)}× faster

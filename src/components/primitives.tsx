@@ -23,7 +23,7 @@ export function GradientText({
 
 export function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[clamp(0.95rem,1.4vw,1.2rem)] font-medium uppercase tracking-[0.16em] text-white/85">
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[15px] font-medium uppercase tracking-[0.16em] text-white/85">
       {children}
     </span>
   )
@@ -32,7 +32,7 @@ export function Chip({ children }: { children: ReactNode }) {
 export function EraBadge({ years, tint }: { years: string; tint: string }) {
   return (
     <span
-      className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[clamp(1rem,1.5vw,1.3rem)] font-semibold tracking-widest"
+      className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[16px] font-semibold tracking-widest"
       style={{ color: tint, background: `${tint}1a`, border: `1px solid ${tint}44` }}
     >
       <span className="h-1.5 w-1.5 rounded-full" style={{ background: tint }} />
@@ -47,12 +47,12 @@ export function Card({
   delay: _delay = 0,
 }: {
   children: ReactNode
-  className?: string
   delay?: number
+  className?: string
 }) {
   return (
     <div
-      className={`flex h-full min-h-0 flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.06] p-[1.4vw] ${className}`}
+      className={`flex h-full min-h-0 flex-col justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-6 ${className}`}
     >
       {children}
     </div>
@@ -70,13 +70,10 @@ export function Stat({
 }) {
   return (
     <div className="flex flex-col">
-      <span
-        className="font-display text-[clamp(2.8rem,5.5vw,4.8rem)] font-bold leading-none"
-        style={{ color: tint }}
-      >
+      <span className="font-display text-[56px] font-bold leading-none" style={{ color: tint }}>
         {value}
       </span>
-      <span className="mt-3 text-[clamp(1.05rem,1.7vw,1.45rem)] font-medium uppercase tracking-widest text-white/75">
+      <span className="mt-3 text-[18px] font-medium uppercase tracking-widest text-white/75">
         {label}
       </span>
     </div>
