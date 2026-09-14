@@ -209,40 +209,41 @@ export const slides: Slide[] = [
           title="Five big leaps. One story."
           subtitle="Each leap happened because engineers solved a hard problem. Here's the map for today."
         >
-          <div className="flex min-h-0 flex-1 flex-col justify-center">
-            <div className="relative pt-5">
-              <div
-                className="absolute left-[6%] right-[6%] top-[26px] h-px"
-                style={{
-                  background:
-                    'linear-gradient(90deg, color-mix(in srgb, var(--color-gold) 45%, transparent), color-mix(in srgb, var(--color-slate) 45%, transparent), color-mix(in srgb, var(--color-olive) 45%, transparent))',
-                }}
-              />
-              <div className="grid grid-cols-5 items-stretch gap-5">
-                {eras.map((e) => (
-                  <div
-                    key={e.t}
-                    className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-6 pt-8"
-                  >
-                    <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2">
-                      <span
-                        className="h-4 w-4 rounded-full ring-4 ring-[color:var(--color-ink)]"
-                        style={{ background: e.c }}
-                      />
-                    </div>
-                    <div className="deck-h font-display font-semibold" style={{ color: e.c }}>
-                      {e.t}
-                    </div>
-                    <div className="mt-3 deck-p">{e.d}</div>
-                    <div
-                      className="mt-5 border-t border-white/10 pt-3 font-mono text-[22px] font-semibold tracking-wide"
-                      style={{ color: e.c }}
-                    >
-                      {e.y}
-                    </div>
+          <div className="relative flex min-h-0 flex-1 flex-col pt-3">
+            <div
+              className="pointer-events-none absolute left-[4%] right-[4%] top-[22px] h-px"
+              style={{
+                background:
+                  'linear-gradient(90deg, color-mix(in srgb, var(--color-gold) 50%, transparent), color-mix(in srgb, var(--color-slate) 50%, transparent), color-mix(in srgb, var(--color-olive) 50%, transparent))',
+              }}
+            />
+            <div className="grid min-h-0 flex-1 grid-cols-5 gap-5">
+              {eras.map((e) => (
+                <div
+                  key={e.t}
+                  className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] px-6 pb-6 pt-9"
+                >
+                  <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2">
+                    <span
+                      className="h-3.5 w-3.5 rounded-full ring-4 ring-[color:var(--color-ink)]"
+                      style={{ background: e.c }}
+                    />
                   </div>
-                ))}
-              </div>
+                  <div
+                    className="min-h-[72px] font-display text-[26px] font-semibold leading-snug"
+                    style={{ color: e.c }}
+                  >
+                    {e.t}
+                  </div>
+                  <p className="mt-3 deck-p">{e.d}</p>
+                  <div
+                    className="mt-auto border-t border-white/10 pt-4 font-mono text-[22px] font-semibold tracking-wide"
+                    style={{ color: e.c }}
+                  >
+                    {e.y}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </SlideShell>
