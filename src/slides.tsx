@@ -15,11 +15,11 @@ export type Slide = {
 }
 
 const TINT = {
-  amber: '#d4b05a',
-  cyan: '#6ec4ba',
-  violet: '#9aabc0',
-  magenta: '#c4929f',
-  lime: '#b4bc6e',
+  amber: '#e0b84a',
+  cyan: '#5dcdc0',
+  violet: '#8fa4c4',
+  magenta: '#d08a9a',
+  lime: '#c0c86a',
 }
 
 const IMAGE_SOURCE = 'AI-generated for this seminar'
@@ -71,13 +71,123 @@ function Note({
   return (
     <div
       className="shrink-0 rounded-xl border px-5 py-3 text-[24px] leading-snug text-white"
-      style={{ borderColor: `${accent}66`, background: `${accent}22` }}
+      style={{
+        borderColor: `color-mix(in srgb, ${accent} 55%, transparent)`,
+        background: `color-mix(in srgb, ${accent} 18%, #151d26)`,
+      }}
     >
       <span className="font-semibold" style={{ color: accent }}>
         {label}
       </span>{' '}
       {children}
     </div>
+  )
+}
+
+function Panel({
+  index,
+  title,
+  children,
+  tint,
+  glyph,
+}: {
+  index?: string
+  title: ReactNode
+  children: ReactNode
+  tint: string
+  glyph?: 0 | 1 | 2 | 3 | 4
+}) {
+  return (
+    <div
+      className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-xl"
+      style={{
+        border: `1px solid color-mix(in srgb, ${tint} 45%, transparent)`,
+        background: `linear-gradient(165deg, color-mix(in srgb, ${tint} 24%, #18222c) 0%, #151d26 48%, #12191f 100%)`,
+      }}
+    >
+      <div className="h-[5px] w-full shrink-0" style={{ background: tint }} />
+      <div className="px-7 pt-6">
+        {index ? (
+          <div
+            className="font-mono text-[15px] font-semibold tracking-[0.22em]"
+            style={{ color: tint }}
+          >
+            {index}
+          </div>
+        ) : null}
+        <h3 className={`${index ? 'mt-3' : ''} deck-h font-display font-semibold text-white`}>
+          {title}
+        </h3>
+        <div className="mt-3 deck-p">{children}</div>
+      </div>
+      <div
+        className="relative mt-auto flex min-h-[120px] flex-1 items-end justify-between px-7 pb-5"
+        style={{
+          backgroundImage: `radial-gradient(color-mix(in srgb, ${tint} 30%, transparent) 1.15px, transparent 1.15px)`,
+          backgroundSize: '18px 18px',
+        }}
+      >
+        {glyph !== undefined ? (
+          <div
+            className="grid h-[72px] w-[72px] place-items-center rounded-xl"
+            style={{
+              background: `color-mix(in srgb, ${tint} 18%, transparent)`,
+              border: `1px solid color-mix(in srgb, ${tint} 42%, transparent)`,
+            }}
+          >
+            <LeapGlyph kind={glyph} color={tint} size={40} />
+          </div>
+        ) : (
+          <span />
+        )}
+        {index ? (
+          <div
+            className="select-none font-display text-[88px] font-bold leading-none"
+            style={{ color: tint, opacity: 0.22 }}
+          >
+            {index}
+          </div>
+        ) : null}
+      </div>
+    </div>
+  )
+}
+
+function LeapGlyph({
+  kind,
+  color,
+  size = 34,
+}: {
+  kind: 0 | 1 | 2 | 3 | 4
+  color: string
+  size?: number
+}) {
+  const s = {
+    fill: 'none',
+    stroke: color,
+    strokeWidth: 1.7,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+  }
+  return (
+    <svg width={size} height={size} viewBox="0 0 36 36" aria-hidden className="shrink-0">
+      {kind === 0 && <rect x="7" y="9" width="22" height="16" rx="2" {...s} />}
+      {kind === 1 && <path d="M8 27 L18 8 L28 27 Z" {...s} />}
+      {kind === 2 && (
+        <>
+          <circle cx="12" cy="18" r="5" {...s} />
+          <circle cx="24" cy="18" r="5" {...s} />
+          <path d="M17 18h2" {...s} />
+        </>
+      )}
+      {kind === 3 && (
+        <>
+          <circle cx="18" cy="18" r="4.5" {...s} />
+          <circle cx="18" cy="18" r="9.5" {...s} />
+        </>
+      )}
+      {kind === 4 && <path d="M18 7v22M8 18h20" {...s} />}
+    </svg>
   )
 }
 
@@ -99,9 +209,9 @@ function Cluster({
           ? 'grid-cols-4'
           : 'grid-cols-5'
   return (
-    <div className="flex min-h-0 flex-1 flex-col justify-center gap-6">
-      <div className={`grid items-stretch gap-5 ${colClass}`}>{children}</div>
-      {footer}
+    <div className="flex min-h-0 flex-1 flex-col gap-5">
+      <div className={`grid min-h-0 flex-1 items-stretch gap-5 ${colClass}`}>{children}</div>
+      {footer ? <div className="shrink-0">{footer}</div> : null}
     </div>
   )
 }
@@ -209,42 +319,57 @@ export const slides: Slide[] = [
           title="Five big leaps. One story."
           subtitle="Each leap happened because engineers solved a hard problem. Here's the map for today."
         >
-          <div className="relative flex min-h-0 flex-1 flex-col pt-3">
+        <div className="relative flex min-h-0 flex-1 flex-col gap-3">
             <div
-              className="pointer-events-none absolute left-[4%] right-[4%] top-[22px] h-px"
+              className="absolute bottom-8 left-[48px] top-8 w-[3px] rounded-full"
               style={{
                 background:
-                  'linear-gradient(90deg, color-mix(in srgb, var(--color-gold) 50%, transparent), color-mix(in srgb, var(--color-slate) 50%, transparent), color-mix(in srgb, var(--color-olive) 50%, transparent))',
+                  'linear-gradient(180deg, var(--color-gold), var(--color-teal), var(--color-slate), var(--color-rose), var(--color-olive))',
               }}
             />
-            <div className="grid min-h-0 flex-1 grid-cols-5 gap-5">
-              {eras.map((e) => (
+            {eras.map((e, i) => (
+              <div
+                key={e.t}
+                className="relative flex min-h-0 flex-1 items-center gap-7 overflow-hidden rounded-xl pr-6 pl-5"
+                style={{
+                  border: `1px solid color-mix(in srgb, ${e.c} 42%, transparent)`,
+                  background: `linear-gradient(90deg, color-mix(in srgb, ${e.c} 22%, #171f28) 0%, #151d26 34%, #131a21 100%)`,
+                }}
+              >
                 <div
-                  key={e.t}
-                  className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] px-6 pb-6 pt-9"
+                  className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[16px] font-bold"
+                  style={{
+                    color: e.c,
+                    background: 'var(--color-ink)',
+                    border: `2px solid ${e.c}`,
+                    boxShadow: `0 0 0 6px #0c1218`,
+                  }}
                 >
-                  <div className="absolute left-1/2 top-0 z-10 flex -translate-x-1/2 -translate-y-1/2">
-                    <span
-                      className="h-3.5 w-3.5 rounded-full ring-4 ring-[color:var(--color-ink)]"
-                      style={{ background: e.c }}
-                    />
-                  </div>
-                  <div
-                    className="min-h-[72px] font-display text-[26px] font-semibold leading-snug"
-                    style={{ color: e.c }}
-                  >
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                <div
+                  className="w-[210px] shrink-0 font-mono text-[18px] font-semibold tracking-[0.12em]"
+                  style={{ color: e.c }}
+                >
+                  {e.y}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="font-display text-[32px] font-semibold leading-tight text-white">
                     {e.t}
                   </div>
-                  <p className="mt-3 deck-p">{e.d}</p>
-                  <div
-                    className="mt-auto border-t border-white/10 pt-4 font-mono text-[22px] font-semibold tracking-wide"
-                    style={{ color: e.c }}
-                  >
-                    {e.y}
-                  </div>
+                  <p className="mt-1.5 deck-p">{e.d}</p>
                 </div>
-              ))}
-            </div>
+                <div
+                  className="grid h-16 w-16 shrink-0 place-items-center rounded-xl"
+                  style={{
+                    background: `color-mix(in srgb, ${e.c} 16%, transparent)`,
+                    border: `1px solid color-mix(in srgb, ${e.c} 40%, transparent)`,
+                  }}
+                >
+                  <LeapGlyph kind={i as 0 | 1 | 2 | 3 | 4} color={e.c} size={36} />
+                </div>
+              </div>
+            ))}
           </div>
         </SlideShell>
       )
@@ -444,27 +569,18 @@ export const slides: Slide[] = [
             </Note>
           }
         >
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">Fighting delay</h3>
-            <p className="mt-2 deck-p">
-              A signal can take about 40 milliseconds to cross the world. Games guess your next
-              move, then correct it — so play still feels instant.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">Real physics</h3>
-            <p className="mt-2 deck-p">
-              Games solve bounce, crash, and falling bodies 60 times a second — the same kind of
-              maths used in engineering simulations.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">Huge worlds</h3>
-            <p className="mt-2 deck-p">
-              Games like <em>World of Warcraft</em> keep tens of thousands of players in sync
-              across many computers at once.
-            </p>
-          </Card>
+          <Panel index="01" tint={TINT.violet} glyph={2} title="Fighting delay">
+            A signal can take about 40 milliseconds to cross the world. Games guess your next
+            move, then correct it — so play still feels instant.
+          </Panel>
+          <Panel index="02" tint={TINT.cyan} glyph={1} title="Real physics">
+            Games solve bounce, crash, and falling bodies 60 times a second — the same kind of
+            maths used in engineering simulations.
+          </Panel>
+          <Panel index="03" tint={TINT.magenta} glyph={3} title="Huge worlds">
+            Games like <em>World of Warcraft</em> keep tens of thousands of players in sync
+            across many computers at once.
+          </Panel>
         </Cluster>
       </SlideShell>
     ),
@@ -488,34 +604,22 @@ export const slides: Slide[] = [
         subtitle="From a phone in every pocket to light that looks almost real."
       >
         <Cluster cols={2}>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">In every pocket</h3>
-            <p className="mt-2 deck-p">
-              Most gaming now happens on phones. A modern phone already has a strong picture
-              chip — a console in your hand.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">Games in the cloud</h3>
-            <p className="mt-2 deck-p">
-              The game can run on a faraway computer and send you video — like Netflix, except
-              your button press has to travel there and back in a blink.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">Tracing light</h3>
-            <p className="mt-2 deck-p">
-              New chips follow rays of light through a scene — real reflections and shadows.
-              Movie computers used to spend hours on one frame. Games now do it live.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">Esports</h3>
-            <p className="mt-2 deck-p">
-              Competitive games fill stadiums. That needs rock-solid servers, fair play, and
-              timing accurate to a fraction of a picture.
-            </p>
-          </Card>
+          <Panel index="01" tint={TINT.cyan} glyph={0} title="In every pocket">
+            Most gaming now happens on phones. A modern phone already has a strong picture
+            chip — a console in your hand.
+          </Panel>
+          <Panel index="02" tint={TINT.violet} glyph={2} title="Games in the cloud">
+            The game can run on a faraway computer and send you video — like Netflix, except
+            your button press has to travel there and back in a blink.
+          </Panel>
+          <Panel index="03" tint={TINT.lime} glyph={1} title="Tracing light">
+            New chips follow rays of light through a scene — real reflections and shadows.
+            Movie computers used to spend hours on one frame. Games now do it live.
+          </Panel>
+          <Panel index="04" tint={TINT.magenta} glyph={3} title="Esports">
+            Competitive games fill stadiums. That needs rock-solid servers, fair play, and
+            timing accurate to a fraction of a picture.
+          </Panel>
         </Cluster>
       </SlideShell>
     ),
@@ -545,33 +649,18 @@ export const slides: Slide[] = [
             </p>
           }
         >
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">
-              GPUs → the AI boom
-            </h3>
-            <p className="mt-2 deck-p">
-              The same “many hands” maths that colours pixels is what trains AI. Chatbots and
-              image models run on chips that started life in games.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">
-              Game tools → film &amp; design
-            </h3>
-            <p className="mt-2 deck-p">
-              The same software that builds games now draws movie sets, car showrooms, and
-              buildings — live, not overnight.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">
-              Game physics → factories
-            </h3>
-            <p className="mt-2 deck-p">
-              Robots and self-driving cars practise in game-like worlds. Factories test a
-              virtual copy of a plant before they build the real one.
-            </p>
-          </Card>
+          <Panel index="01" tint={TINT.cyan} glyph={1} title="GPUs → the AI boom">
+            The same “many hands” maths that colours pixels is what trains AI. Chatbots and
+            image models run on chips that started life in games.
+          </Panel>
+          <Panel index="02" tint={TINT.violet} glyph={0} title={<>Game tools → film &amp; design</>}>
+            The same software that builds games now draws movie sets, car showrooms, and
+            buildings — live, not overnight.
+          </Panel>
+          <Panel index="03" tint={TINT.magenta} glyph={4} title="Game physics → factories">
+            Robots and self-driving cars practise in game-like worlds. Factories test a
+            virtual copy of a plant before they build the real one.
+          </Panel>
         </Cluster>
       </SlideShell>
     ),
@@ -593,42 +682,22 @@ export const slides: Slide[] = [
         subtitle="The next leap: the computer doesn't only paint the world. It starts to imagine it."
       >
         <Cluster cols={2}>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">
-              AI fills in the picture
-            </h3>
-            <p className="mt-2 deck-p">
-              Games already draw a rough picture, then let AI add the extra detail — more
-              sharpness for less work. NVIDIA calls one version of this DLSS.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">
-              Worlds made on the spot
-            </h3>
-            <p className="mt-2 deck-p">
-              Research models can now invent playable game pictures in real time. Imagine
-              levels, characters, and quests made just for you.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">
-              Characters that talk back
-            </h3>
-            <p className="mt-2 deck-p">
-              Chat-style AI can give game characters real conversations — they reply to what
-              you actually say, not a fixed script.
-            </p>
-          </Card>
-          <Card>
-            <h3 className="deck-h font-display font-semibold text-white">
-              Endless maps + AI
-            </h3>
-            <p className="mt-2 deck-p">
-              Older tricks already built whole galaxies from one seed number. Pair that with
-              AI and you get huge worlds that still feel surprising.
-            </p>
-          </Card>
+          <Panel index="01" tint={TINT.magenta} glyph={4} title="AI fills in the picture">
+            Games already draw a rough picture, then let AI add the extra detail — more
+            sharpness for less work. NVIDIA calls one version of this DLSS.
+          </Panel>
+          <Panel index="02" tint={TINT.cyan} glyph={3} title="Worlds made on the spot">
+            Research models can now invent playable game pictures in real time. Imagine
+            levels, characters, and quests made just for you.
+          </Panel>
+          <Panel index="03" tint={TINT.violet} glyph={2} title="Characters that talk back">
+            Chat-style AI can give game characters real conversations — they reply to what
+            you actually say, not a fixed script.
+          </Panel>
+          <Panel index="04" tint={TINT.lime} glyph={0} title="Endless maps + AI">
+            Older tricks already built whole galaxies from one seed number. Pair that with
+            AI and you get huge worlds that still feel surprising.
+          </Panel>
         </Cluster>
       </SlideShell>
     ),

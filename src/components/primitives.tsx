@@ -45,7 +45,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`flex h-full min-h-0 flex-col justify-start overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-6 ${className}`}
+      className={`flex h-full min-h-0 flex-col justify-start overflow-hidden rounded-xl border border-white/18 bg-[#18222c] p-6 ${className}`}
     >
       {children}
     </div>

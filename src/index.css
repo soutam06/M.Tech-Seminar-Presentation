@@ -9,15 +9,15 @@
   --color-ink: #0c1218;
   --color-ink-soft: #151c24;
   --color-accent: #4ea8a0;
-  --color-gold: #d4b05a;
-  --color-teal: #6ec4ba;
-  --color-slate: #9aabc0;
-  --color-rose: #c4929f;
-  --color-olive: #b4bc6e;
-  --color-neon-cyan: #6ec4ba;
-  --color-neon-magenta: #c4929f;
-  --color-neon-violet: #9aabc0;
-  --color-neon-lime: #b4bc6e;
+  --color-gold: #e0b84a;
+  --color-teal: #5dcdc0;
+  --color-slate: #8fa4c4;
+  --color-rose: #d08a9a;
+  --color-olive: #c0c86a;
+  --color-neon-cyan: #5dcdc0;
+  --color-neon-magenta: #d08a9a;
+  --color-neon-violet: #8fa4c4;
+  --color-neon-lime: #c0c86a;
 }
 
 @layer base {

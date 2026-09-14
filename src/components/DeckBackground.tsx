@@ -2,14 +2,14 @@
 export function DeckBackground({ hue = 'cyan' }: { hue?: 'cyan' | 'magenta' | 'violet' | 'lime' }) {
   const orbA =
     hue === 'magenta'
-      ? 'rgba(196,146,159,0.09)'
+      ? 'rgba(208,138,154,0.16)'
       : hue === 'violet'
-        ? 'rgba(154,171,192,0.09)'
+        ? 'rgba(143,164,196,0.16)'
         : hue === 'lime'
-          ? 'rgba(180,188,110,0.07)'
-          : 'rgba(110,196,186,0.09)'
+          ? 'rgba(192,200,106,0.12)'
+          : 'rgba(93,205,192,0.16)'
   const orbB =
-    hue === 'magenta' ? 'rgba(154,171,192,0.07)' : 'rgba(196,146,159,0.06)'
+    hue === 'magenta' ? 'rgba(143,164,196,0.12)' : 'rgba(208,138,154,0.10)'
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
