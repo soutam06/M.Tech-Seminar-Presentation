@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Export screenshot scratch files
+Mtech presentation/.slides-tmp/

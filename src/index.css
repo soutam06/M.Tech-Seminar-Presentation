@@ -71,3 +71,7 @@
   background: rgba(139, 92, 246, 0.4);
   border-radius: 999px;
 }
+
+.export-mode .export-hide {
+  display: none !important;
+}

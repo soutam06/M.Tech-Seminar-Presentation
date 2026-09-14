@@ -31,16 +31,20 @@ function IconChip({ children }: { children: ReactNode }) {
   )
 }
 
+const IMAGE_SOURCE = 'AI-generated for this seminar'
+
 function Figure({
   src,
   alt,
   caption,
+  source = IMAGE_SOURCE,
   delay = 0.2,
   className = '',
 }: {
   src: string
   alt: string
   caption?: string
+  source?: string
   delay?: number
   className?: string
 }) {
@@ -51,7 +55,12 @@ function Figure({
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       className={`overflow-hidden rounded-2xl border border-white/10 bg-black/30 ${className}`}
     >
-      <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover" />
+      <div className="relative h-full w-full">
+        <img src={src} alt={alt} loading="eager" className="h-full w-full object-cover" />
+        <span className="absolute bottom-1.5 left-1.5 max-w-[94%] rounded bg-black/70 px-2 py-1 font-mono text-[11px] leading-none tracking-wide text-white/90 md:text-xs">
+          Source: {source}
+        </span>
+      </div>
       {caption && (
         <figcaption className="px-3 py-2 text-center font-mono text-[11px] text-white/45">
           {caption}
@@ -832,8 +841,9 @@ export const slides: Slide[] = [
           </div>
           <Reveal delay={0.6} className="mt-5">
             <p className="font-mono text-xs text-white/40">
-              Numbers are rounded for scale. Pictures in this talk are illustrative /
-              AI-made, not photos of real products.
+              Numbers are rounded for scale. Every picture carries its own source
+              line. Pictures in this talk are original AI-generated illustrations
+              made for this seminar — not photos of real products.
             </p>
           </Reveal>
         </SlideShell>

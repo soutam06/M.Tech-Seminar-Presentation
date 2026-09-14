@@ -1,11 +1,23 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
 import { slides } from './slides'
 
+function readExportMode() {
+  if (typeof window === 'undefined') return { exportMode: false, start: 0 }
+  const params = new URLSearchParams(window.location.search)
+  const raw = Number(params.get('slide') ?? '0')
+  const start = Number.isFinite(raw) ? raw : 0
+  return { exportMode: params.has('export'), start }
+}
+
 export default function App() {
-  const [index, setIndex] = useState(0)
+  const boot = readExportMode()
+  const [index, setIndex] = useState(() =>
+    Math.max(0, Math.min(slides.length - 1, boot.start)),
+  )
   const [dir, setDir] = useState(1)
   const [showMap, setShowMap] = useState(false)
+  const exportMode = boot.exportMode
   const count = slides.length
 
   // keep a ref of index for the key handler without re-binding
@@ -48,15 +60,20 @@ export default function App() {
   const current = slides[index]
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-[color:var(--color-ink)] text-white">
+    <MotionConfig reducedMotion={exportMode ? 'always' : 'never'}>
+    <div
+      className={`relative h-screen w-screen overflow-hidden bg-[color:var(--color-ink)] text-white ${
+        exportMode ? 'export-mode' : ''
+      }`}
+    >
       <AnimatePresence mode="wait" custom={dir}>
         <motion.div
           key={current.id}
           custom={dir}
-          initial={{ opacity: 0, x: dir * 60 }}
+          initial={exportMode ? false : { opacity: 0, x: dir * 60 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: dir * -60 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          exit={exportMode ? undefined : { opacity: 0, x: dir * -60 }}
+          transition={{ duration: exportMode ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
         >
           {current.render()}
@@ -64,7 +81,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* Progress bar */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1 bg-white/5">
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1 bg-white/5 export-hide">
         <motion.div
           className="h-full"
           style={{
@@ -76,7 +93,7 @@ export default function App() {
       </div>
 
       {/* Bottom control bar */}
-      <div className="absolute inset-x-0 bottom-0 z-30 flex items-center justify-between px-5 pb-5 md:px-8">
+      <div className="absolute inset-x-0 bottom-0 z-30 flex items-center justify-between px-5 pb-5 md:px-8 export-hide">
         <button
           onClick={() => setShowMap((s) => !s)}
           className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/10 bg-black/40 px-4 py-2 font-mono text-xs text-white/70 backdrop-blur transition hover:bg-black/60"
@@ -101,7 +118,7 @@ export default function App() {
       </div>
 
       {/* Slide dots */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-16 z-20 flex justify-center gap-1.5">
+      <div className="pointer-events-none absolute inset-x-0 bottom-16 z-20 flex justify-center gap-1.5 export-hide">
         {slides.map((s, i) => (
           <button
             key={s.id}
@@ -168,6 +185,7 @@ export default function App() {
         )}
       </AnimatePresence>
     </div>
+    </MotionConfig>
   )
 }
 
