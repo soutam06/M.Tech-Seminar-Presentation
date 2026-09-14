@@ -91,8 +91,7 @@ export default function App() {
             className="h-full"
             style={{
               width: `${((index + 1) / count) * 100}%`,
-              background:
-                'linear-gradient(90deg, var(--color-neon-cyan), var(--color-neon-magenta))',
+              background: 'var(--color-accent)',
             }}
           />
         </div>
@@ -121,7 +120,7 @@ export default function App() {
               className="pointer-events-auto h-1.5 rounded-full"
               style={{
                 width: i === index ? 22 : 6,
-                background: i === index ? 'var(--color-neon-cyan)' : 'rgba(255,255,255,0.25)',
+                background: i === index ? 'var(--color-accent)' : 'rgba(255,255,255,0.25)',
               }}
               aria-label={s.label}
             />
@@ -150,7 +149,7 @@ export default function App() {
                     }}
                     className={`rounded-xl border p-4 text-left ${
                       i === index
-                        ? 'border-cyan-400/60 bg-cyan-400/10'
+                        ? 'border-[color:color-mix(in_srgb,var(--color-accent)_55%,transparent)] bg-[color:color-mix(in_srgb,var(--color-accent)_10%,transparent)]'
                         : 'border-white/10 bg-white/[0.03] hover:bg-white/[0.07]'
                     }`}
                   >

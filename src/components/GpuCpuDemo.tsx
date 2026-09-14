@@ -5,6 +5,8 @@ const TOTAL = GRID * GRID
 const CPU_CORES = 4
 const GPU_CORES = 48
 const CELL = 26
+const CPU_TINT = 'var(--color-teal)'
+const GPU_TINT = 'var(--color-rose)'
 
 type Mode = 'idle' | 'cpu' | 'gpu'
 
@@ -59,7 +61,7 @@ export function GpuCpuDemo() {
     }
   }, [])
 
-  const tint = mode === 'gpu' ? 'var(--color-neon-magenta)' : 'var(--color-neon-cyan)'
+  const tint = mode === 'gpu' ? GPU_TINT : CPU_TINT
   const done = Boolean(result.cpu && result.gpu)
 
   return (
@@ -81,7 +83,6 @@ export function GpuCpuDemo() {
                 height: CELL,
                 borderRadius: 3,
                 backgroundColor: on ? tint : 'rgba(255,255,255,0.08)',
-                boxShadow: on ? `0 0 8px ${tint}` : undefined,
               }}
             />
           )
@@ -107,14 +108,24 @@ export function GpuCpuDemo() {
         <button
           onClick={() => run('cpu')}
           disabled={mode !== 'idle'}
-          className="rounded-xl border border-cyan-300/70 bg-cyan-400/20 px-5 py-3 text-[22px] font-semibold text-cyan-100 hover:bg-cyan-400/30 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-xl border px-5 py-3 text-[22px] font-semibold disabled:cursor-not-allowed disabled:opacity-40"
+          style={{
+            color: 'var(--color-teal)',
+            borderColor: 'color-mix(in srgb, var(--color-teal) 50%, transparent)',
+            background: 'color-mix(in srgb, var(--color-teal) 14%, transparent)',
+          }}
         >
           CPU · {CPU_CORES} cores
         </button>
         <button
           onClick={() => run('gpu')}
           disabled={mode !== 'idle'}
-          className="rounded-xl border border-fuchsia-300/70 bg-fuchsia-400/20 px-5 py-3 text-[22px] font-semibold text-fuchsia-100 hover:bg-fuchsia-400/30 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-xl border px-5 py-3 text-[22px] font-semibold disabled:cursor-not-allowed disabled:opacity-40"
+          style={{
+            color: 'var(--color-rose)',
+            borderColor: 'color-mix(in srgb, var(--color-rose) 50%, transparent)',
+            background: 'color-mix(in srgb, var(--color-rose) 14%, transparent)',
+          }}
         >
           GPU · {GPU_CORES} cores
         </button>
@@ -129,7 +140,7 @@ export function GpuCpuDemo() {
           }`}
         >
           Same frame — GPU finished{' '}
-          <span className="font-bold text-fuchsia-300">
+          <span className="font-bold" style={{ color: 'var(--color-rose)' }}>
             {done ? (result.cpu! / result.gpu!).toFixed(1) : '0.0'}× faster
           </span>{' '}
           by colouring dots at the same time.

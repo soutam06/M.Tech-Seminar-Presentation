@@ -3,19 +3,12 @@ import type { ReactNode } from 'react'
 export function GradientText({
   children,
   className = '',
-  from = 'var(--color-neon-cyan)',
-  to = 'var(--color-neon-magenta)',
 }: {
   children: ReactNode
   className?: string
-  from?: string
-  to?: string
 }) {
   return (
-    <span
-      className={`bg-clip-text text-transparent ${className}`}
-      style={{ backgroundImage: `linear-gradient(90deg, ${from}, ${to})` }}
-    >
+    <span className={className} style={{ color: 'var(--color-accent)' }}>
       {children}
     </span>
   )
@@ -23,7 +16,7 @@ export function GradientText({
 
 export function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[16px] font-medium uppercase tracking-[0.16em] text-white">
+    <span className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] px-4 py-1.5 text-[16px] font-medium uppercase tracking-[0.16em] text-white">
       {children}
     </span>
   )
@@ -52,7 +45,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`flex h-full min-h-0 flex-col justify-start overflow-hidden rounded-2xl border border-white/20 bg-white/[0.09] p-6 ${className}`}
+      className={`flex h-full min-h-0 flex-col justify-start overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-6 ${className}`}
     >
       {children}
     </div>
@@ -62,7 +55,7 @@ export function Card({
 export function Stat({
   value,
   label,
-  tint = 'var(--color-neon-cyan)',
+  tint = 'var(--color-teal)',
 }: {
   value: string
   label: string

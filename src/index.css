@@ -1,17 +1,23 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap');
 
 @theme {
-  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Source Sans 3', 'Source Sans Pro', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  --color-ink: #05060f;
-  --color-ink-soft: #0b0e1f;
-  --color-neon-cyan: #5ceeff;
-  --color-neon-magenta: #ff7af0;
-  --color-neon-violet: #c4b5fd;
-  --color-neon-lime: #c4f542;
+  --color-ink: #0c1218;
+  --color-ink-soft: #151c24;
+  --color-accent: #4ea8a0;
+  --color-gold: #d4b05a;
+  --color-teal: #6ec4ba;
+  --color-slate: #9aabc0;
+  --color-rose: #c4929f;
+  --color-olive: #b4bc6e;
+  --color-neon-cyan: #6ec4ba;
+  --color-neon-magenta: #c4929f;
+  --color-neon-violet: #9aabc0;
+  --color-neon-lime: #b4bc6e;
 }
 
 @layer base {
@@ -35,16 +41,9 @@
   }
 }
 
-.text-glow-cyan {
-  text-shadow: 0 0 24px rgba(34, 211, 238, 0.55);
-}
-.text-glow-magenta {
-  text-shadow: 0 0 24px rgba(233, 74, 255, 0.55);
-}
-
 .grid-bg {
-  background-image: linear-gradient(rgba(139, 92, 246, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.07) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(154, 171, 192, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(154, 171, 192, 0.035) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
@@ -53,7 +52,7 @@
   width: 8px;
 }
 .slide-scroll::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.4);
+  background: rgba(154, 171, 192, 0.28);
   border-radius: 999px;
 }
 
