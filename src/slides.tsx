@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { SlideShell } from './components/SlideShell'
-import { Card, Chip, GradientText, Stat } from './components/primitives'
+import { Card, Chip, GradientText } from './components/primitives'
 import { GpuCpuDemo } from './components/GpuCpuDemo'
 import heroEvolution from './assets/hero-evolution.png'
 import arcadeEra from './assets/arcade-era.png'
@@ -270,29 +270,49 @@ export const slides: Slide[] = [
         }
         subtitle="Bigger than movies and music put together. And it isn't really an art industry. It's an engineering one."
       >
-        <Cluster
-          cols={4}
-          footer={
-            <p className="deck-p">
+        <div className="grid min-h-0 flex-1 grid-cols-[1fr_780px] gap-6 overflow-hidden">
+          <div
+            className="flex min-h-0 flex-col justify-center rounded-xl px-10 py-9"
+            style={{
+              border: `1px solid color-mix(in srgb, ${TINT.cyan} 42%, transparent)`,
+              background: `linear-gradient(180deg, color-mix(in srgb, ${TINT.cyan} 16%, #171f28) 0%, #141b22 100%)`,
+            }}
+          >
+            <div className="h-[5px] w-16 rounded-full" style={{ background: TINT.cyan }} />
+            <p className="mt-8 text-[32px] font-medium leading-snug text-white">
               Every second, your computer does maths for millions of points — shape, bounce,
               light — and paints a new picture before you can blink. That's the story we're
               following today.
             </p>
-          }
-        >
-          <Card>
-            <Stat value="~$200B" label="Money made each year" tint={TINT.cyan} />
-          </Card>
-          <Card>
-            <Stat value="3.3B+" label="People who play" tint={TINT.magenta} />
-          </Card>
-          <Card>
-            <Stat value="1 in 3" label="People on the planet play" tint={TINT.violet} />
-          </Card>
-          <Card>
-            <Stat value="60–240" label="New pictures drawn every second" tint={TINT.lime} />
-          </Card>
-        </Cluster>
+          </div>
+          <div className="flex min-h-0 flex-col gap-4">
+            {[
+              { v: '~$200B', l: 'Money made each year', c: TINT.cyan },
+              { v: '3.3B+', l: 'People who play', c: TINT.magenta },
+              { v: '1 in 3', l: 'People on the planet play', c: TINT.violet },
+              { v: '60–240', l: 'New pictures drawn every second', c: TINT.lime },
+            ].map((s) => (
+              <div
+                key={s.l}
+                className="flex min-h-0 flex-1 items-center gap-7 overflow-hidden rounded-xl px-7"
+                style={{
+                  border: `1px solid color-mix(in srgb, ${s.c} 42%, transparent)`,
+                  background: `linear-gradient(90deg, color-mix(in srgb, ${s.c} 20%, #171f28) 0%, #141b22 100%)`,
+                }}
+              >
+                <div
+                  className="w-[250px] shrink-0 font-display text-[52px] font-bold leading-none"
+                  style={{ color: s.c }}
+                >
+                  {s.v}
+                </div>
+                <div className="text-[20px] font-medium uppercase tracking-widest text-white">
+                  {s.l}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </SlideShell>
     ),
   },
@@ -781,45 +801,74 @@ export const slides: Slide[] = [
           </>
         }
       >
-        <Cluster
-          cols={3}
-          footer={
-            <p className="deck-p max-w-5xl">
-              Games are where we practise building{' '}
-              <GradientText>worlds that react in real time</GradientText> — and that practise
-              keeps handing the rest of engineering its next tools.
-            </p>
-          }
-        >
-          {[
-            {
-              n: '01',
-              t: 'A wild wish',
-              d: 'Someone wants a rich world that reacts right now.',
-              c: TINT.cyan,
-            },
-            {
-              n: '02',
-              t: 'A clever leap',
-              d: 'Engineers answer with a new chip or a smart trick — the GPU, delay-hiding, tracing light, AI drawing.',
-              c: TINT.violet,
-            },
-            {
-              n: '03',
-              t: 'It leaves the game',
-              d: 'That trick becomes a tool for everyone — AI, film, robots, and science.',
-              c: TINT.magenta,
-            },
-          ].map((s) => (
-            <Card key={s.n}>
-              <div className="font-mono text-[48px] font-bold" style={{ color: s.c }}>
-                {s.n}
+        <div className="flex min-h-0 flex-1 flex-col gap-4">
+          <div className="relative flex min-h-0 flex-1 flex-col gap-3">
+            <div
+              className="absolute bottom-8 left-[27px] top-8 w-[3px] rounded-full"
+              style={{
+                background:
+                  'linear-gradient(180deg, var(--color-teal), var(--color-slate), var(--color-rose), var(--color-teal))',
+              }}
+            />
+            {[
+              {
+                n: '01',
+                t: 'A wild wish',
+                d: 'Someone wants a rich world that reacts right now.',
+                c: TINT.cyan,
+              },
+              {
+                n: '02',
+                t: 'A clever leap',
+                d: 'Engineers answer with a new chip or a smart trick — the GPU, delay-hiding, tracing light, AI drawing.',
+                c: TINT.violet,
+              },
+              {
+                n: '03',
+                t: 'It leaves the game',
+                d: 'That trick becomes a tool for everyone — AI, film, robots, and science.',
+                c: TINT.magenta,
+              },
+            ].map((s) => (
+              <div key={s.n} className="relative flex min-h-0 flex-1 items-stretch gap-4">
+                <div
+                  className="relative z-10 my-auto grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[16px] font-bold"
+                  style={{
+                    color: s.c,
+                    background: 'var(--color-ink)',
+                    border: `2px solid ${s.c}`,
+                    boxShadow: '0 0 0 7px var(--color-ink)',
+                  }}
+                >
+                  {s.n}
+                </div>
+                <div
+                  className="relative flex min-h-0 min-w-0 flex-1 items-center gap-8 overflow-hidden rounded-xl px-8"
+                  style={{
+                    border: `1px solid color-mix(in srgb, ${s.c} 42%, transparent)`,
+                    background: `linear-gradient(90deg, color-mix(in srgb, ${s.c} 20%, #171f28) 0%, #141b22 100%)`,
+                  }}
+                >
+                  <div className="min-w-0 flex-1">
+                    <h3 className="deck-h font-display font-semibold text-white">{s.t}</h3>
+                    <p className="mt-2 deck-p">{s.d}</p>
+                  </div>
+                  <div
+                    className="pointer-events-none shrink-0 select-none font-display text-[80px] font-bold leading-none"
+                    style={{ color: s.c, opacity: 0.12 }}
+                  >
+                    {s.n}
+                  </div>
+                </div>
               </div>
-              <h3 className="mt-3 deck-h font-display font-semibold text-white">{s.t}</h3>
-              <p className="mt-2 deck-p">{s.d}</p>
-            </Card>
-          ))}
-        </Cluster>
+            ))}
+          </div>
+          <p className="shrink-0 deck-p max-w-5xl">
+            Games are where we practise building{' '}
+            <GradientText>worlds that react in real time</GradientText> — and that practise
+            keeps handing the rest of engineering its next tools.
+          </p>
+        </div>
       </SlideShell>
     ),
   },
