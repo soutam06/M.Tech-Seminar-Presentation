@@ -33,7 +33,7 @@ export function SlideShell({
           {(kicker || era) && (
             <div className="mb-3 flex shrink-0 flex-wrap items-center gap-3">
               {kicker && (
-                <span className="font-mono text-[15px] uppercase tracking-[0.22em] text-white/70">
+                <span className="font-mono text-[17px] uppercase tracking-[0.22em] text-white">
                   {kicker}
                 </span>
               )}
@@ -46,7 +46,7 @@ export function SlideShell({
             </h2>
           )}
           {subtitle && (
-            <p className="deck-sub mt-3 max-w-[1600px] shrink-0 font-medium text-white/90">
+            <p className="deck-sub mt-3 max-w-[1600px] shrink-0 font-medium">
               {subtitle}
             </p>
           )}

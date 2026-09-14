@@ -4,7 +4,7 @@ const GRID = 12
 const TOTAL = GRID * GRID
 const CPU_CORES = 4
 const GPU_CORES = 48
-const CELL = 22
+const CELL = 26
 
 type Mode = 'idle' | 'cpu' | 'gpu'
 
@@ -87,16 +87,16 @@ export function GpuCpuDemo() {
         })}
       </div>
 
-      <div className="flex items-center gap-10 font-mono text-[18px]">
+      <div className="flex items-center gap-10 font-mono text-[20px]">
         <div className="text-center">
-          <div className="text-white/60">shaded</div>
-          <div className="text-[32px] font-bold leading-none text-white">
+          <div className="text-white/80">shaded</div>
+          <div className="text-[36px] font-bold leading-none text-white">
             {filled}/{TOTAL}
           </div>
         </div>
         <div className="text-center">
-          <div className="text-white/60">time</div>
-          <div className="text-[32px] font-bold leading-none" style={{ color: tint }}>
+          <div className="text-white/80">time</div>
+          <div className="text-[36px] font-bold leading-none" style={{ color: tint }}>
             {(elapsed / 1000).toFixed(2)}s
           </div>
         </div>
@@ -106,21 +106,21 @@ export function GpuCpuDemo() {
         <button
           onClick={() => run('cpu')}
           disabled={mode !== 'idle'}
-          className="rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-5 py-2.5 text-[18px] font-semibold text-cyan-200 hover:bg-cyan-400/20 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-xl border border-cyan-300/70 bg-cyan-400/20 px-5 py-3 text-[22px] font-semibold text-cyan-100 hover:bg-cyan-400/30 disabled:cursor-not-allowed disabled:opacity-40"
         >
           CPU · {CPU_CORES} cores
         </button>
         <button
           onClick={() => run('gpu')}
           disabled={mode !== 'idle'}
-          className="rounded-xl border border-fuchsia-400/40 bg-fuchsia-400/10 px-5 py-2.5 text-[18px] font-semibold text-fuchsia-200 hover:bg-fuchsia-400/20 disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-xl border border-fuchsia-300/70 bg-fuchsia-400/20 px-5 py-3 text-[22px] font-semibold text-fuchsia-100 hover:bg-fuchsia-400/30 disabled:cursor-not-allowed disabled:opacity-40"
         >
           GPU · {GPU_CORES} cores
         </button>
       </div>
 
       {result.cpu && result.gpu && (
-        <div className="max-w-[480px] rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-center text-[18px] leading-snug text-white/90">
+        <div className="max-w-[520px] rounded-xl border border-white/20 bg-white/10 px-4 py-2 text-center text-[20px] leading-snug text-white">
           Same frame — GPU finished{' '}
           <span className="font-bold text-fuchsia-300">
             {(result.cpu / result.gpu).toFixed(1)}× faster

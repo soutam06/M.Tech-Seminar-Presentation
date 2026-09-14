@@ -23,7 +23,7 @@ export function GradientText({
 
 export function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex w-fit shrink-0 items-center gap-2 self-start rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[15px] font-medium uppercase tracking-[0.16em] text-white/85">
+    <span className="inline-flex w-fit shrink-0 items-center gap-2 self-start rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[16px] font-medium uppercase tracking-[0.16em] text-white">
       {children}
     </span>
   )
@@ -32,7 +32,7 @@ export function Chip({ children }: { children: ReactNode }) {
 export function EraBadge({ years, tint }: { years: string; tint: string }) {
   return (
     <span
-      className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[16px] font-semibold tracking-widest"
+      className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[18px] font-semibold tracking-widest"
       style={{ color: tint, background: `${tint}1a`, border: `1px solid ${tint}44` }}
     >
       <span className="h-1.5 w-1.5 rounded-full" style={{ background: tint }} />
@@ -52,7 +52,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`flex h-full min-h-0 flex-col justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-6 ${className}`}
+      className={`flex h-full min-h-0 flex-col justify-center overflow-hidden rounded-2xl border border-white/20 bg-white/[0.09] p-6 ${className}`}
     >
       {children}
     </div>
@@ -70,10 +70,10 @@ export function Stat({
 }) {
   return (
     <div className="flex flex-col">
-      <span className="font-display text-[56px] font-bold leading-none" style={{ color: tint }}>
+      <span className="font-display text-[60px] font-bold leading-none" style={{ color: tint }}>
         {value}
       </span>
-      <span className="mt-3 text-[18px] font-medium uppercase tracking-widest text-white/75">
+      <span className="mt-3 text-[20px] font-medium uppercase tracking-widest text-white">
         {label}
       </span>
     </div>

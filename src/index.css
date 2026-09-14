@@ -8,10 +8,10 @@
 
   --color-ink: #05060f;
   --color-ink-soft: #0b0e1f;
-  --color-neon-cyan: #22d3ee;
-  --color-neon-magenta: #e94aff;
-  --color-neon-violet: #8b5cf6;
-  --color-neon-lime: #a3e635;
+  --color-neon-cyan: #5ceeff;
+  --color-neon-magenta: #ff7af0;
+  --color-neon-violet: #c4b5fd;
+  --color-neon-lime: #c4f542;
 }
 
 @layer base {
@@ -71,22 +71,23 @@
 }
 
 .deck-title {
-  font-size: 52px;
+  font-size: 56px;
   line-height: 1.08;
 }
 
 .deck-sub {
-  font-size: 24px;
-  line-height: 1.35;
+  font-size: 28px;
+  line-height: 1.32;
+  color: #f4f6ff;
 }
 
 .deck-h {
-  font-size: 26px;
+  font-size: 28px;
   line-height: 1.2;
 }
 
 .deck-p {
-  font-size: 20px;
-  line-height: 1.38;
-  color: rgb(255 255 255 / 0.9);
+  font-size: 24px;
+  line-height: 1.35;
+  color: #f4f6ff;
 }
