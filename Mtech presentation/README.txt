@@ -10,6 +10,8 @@ Soutam Rajbhar · Chemical Engineering · IIT Kharagpur
 | `The-Engineering-of-Play.pdf` | Opens on any computer. Full-screen in a PDF reader (Ctrl+L in Adobe / many readers). |
 | `SPEECH.md` | Your 15-minute script + answers to likely questions. |
 
+Slides are **16:10 (1920×1200)** — native size for Nalanda’s WUXGA projectors.
+
 If the venue has internet, the live deck is still nicer (animations + the CPU vs GPU demo):
 https://soutam06.github.io/M.Tech-Seminar-Presentation/
 
