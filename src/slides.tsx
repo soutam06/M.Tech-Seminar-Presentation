@@ -270,22 +270,8 @@ export const slides: Slide[] = [
         }
         subtitle="Bigger than movies and music put together. And it isn't really an art industry. It's an engineering one."
       >
-        <div className="grid min-h-0 flex-1 grid-cols-[1fr_780px] gap-6 overflow-hidden">
-          <div
-            className="flex min-h-0 flex-col justify-center rounded-xl px-10 py-9"
-            style={{
-              border: `1px solid color-mix(in srgb, ${TINT.cyan} 42%, transparent)`,
-              background: `linear-gradient(180deg, color-mix(in srgb, ${TINT.cyan} 16%, #171f28) 0%, #141b22 100%)`,
-            }}
-          >
-            <div className="h-[5px] w-16 rounded-full" style={{ background: TINT.cyan }} />
-            <p className="mt-8 text-[32px] font-medium leading-snug text-white">
-              Every second, your computer does maths for millions of points — shape, bounce,
-              light — and paints a new picture before you can blink. That's the story we're
-              following today.
-            </p>
-          </div>
-          <div className="flex min-h-0 flex-col gap-4">
+        <div className="flex min-h-0 flex-1 flex-col gap-5">
+          <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-4">
             {[
               { v: '~$200B', l: 'Money made each year', c: TINT.cyan },
               { v: '3.3B+', l: 'People who play', c: TINT.magenta },
@@ -294,23 +280,37 @@ export const slides: Slide[] = [
             ].map((s) => (
               <div
                 key={s.l}
-                className="flex min-h-0 flex-1 items-center gap-7 overflow-hidden rounded-xl px-7"
+                className="flex min-h-0 flex-col overflow-hidden rounded-xl"
                 style={{
-                  border: `1px solid color-mix(in srgb, ${s.c} 42%, transparent)`,
-                  background: `linear-gradient(90deg, color-mix(in srgb, ${s.c} 20%, #171f28) 0%, #141b22 100%)`,
+                  border: `1px solid color-mix(in srgb, ${s.c} 45%, transparent)`,
+                  background: `linear-gradient(90deg, color-mix(in srgb, ${s.c} 22%, #171f28) 0%, #141b22 100%)`,
                 }}
               >
-                <div
-                  className="w-[250px] shrink-0 font-display text-[52px] font-bold leading-none"
-                  style={{ color: s.c }}
-                >
-                  {s.v}
-                </div>
-                <div className="text-[20px] font-medium uppercase tracking-widest text-white">
-                  {s.l}
+                <div className="h-[5px] w-full shrink-0" style={{ background: s.c }} />
+                <div className="flex min-h-0 flex-1 items-center gap-8 px-9">
+                  <div
+                    className="w-[300px] shrink-0 font-display text-[72px] font-bold leading-none"
+                    style={{ color: s.c }}
+                  >
+                    {s.v}
+                  </div>
+                  <div className="max-w-[380px] text-[22px] font-medium uppercase tracking-widest text-white">
+                    {s.l}
+                  </div>
                 </div>
               </div>
             ))}
+          </div>
+          <div
+            className="shrink-0 rounded-xl px-7 py-4 text-[24px] leading-snug text-white"
+            style={{
+              border: `1px solid color-mix(in srgb, ${TINT.cyan} 45%, transparent)`,
+              background: `color-mix(in srgb, ${TINT.cyan} 16%, #151d26)`,
+            }}
+          >
+            Every second, your computer does maths for millions of points — shape, bounce,
+            light — and paints a new picture before you can blink. That's the story we're
+            following today.
           </div>
         </div>
       </SlideShell>
