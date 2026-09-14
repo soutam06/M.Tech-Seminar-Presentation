@@ -10,7 +10,7 @@ const SHOTS = path.join(OUT, '.slides-tmp')
 const BASE = process.env.DECK_URL ?? 'http://127.0.0.1:43733'
 const SLIDE_COUNT = 15
 const WIDTH = 1920
-const HEIGHT = 1080
+const HEIGHT = 1200
 const CHROME = process.env.CHROME_PATH ?? '/usr/local/bin/google-chrome'
 
 async function main() {
@@ -58,7 +58,7 @@ async function main() {
 
   const pdf = await PDFDocument.create()
   const pageW = 13.333 * 72
-  const pageH = 7.5 * 72
+  const pageH = 8.333 * 72
   for (const file of files) {
     const bytes = await (await import('node:fs/promises')).readFile(file)
     const img = await pdf.embedJpg(bytes)
@@ -70,13 +70,13 @@ async function main() {
   console.log('wrote', pdfPath)
 
   const pptx = new PptxGenJS()
-  pptx.defineLayout({ name: 'WIDE', width: 13.333, height: 7.5 })
-  pptx.layout = 'WIDE'
+  pptx.defineLayout({ name: 'WIDE16x10', width: 13.333, height: 8.333 })
+  pptx.layout = 'WIDE16x10'
   pptx.title = 'The Engineering of Play'
   pptx.author = 'Soutam Rajbhar'
   for (const file of files) {
     const s = pptx.addSlide()
-    s.addImage({ path: file, x: 0, y: 0, w: 13.333, h: 7.5 })
+    s.addImage({ path: file, x: 0, y: 0, w: 13.333, h: 8.333 })
   }
   const pptxPath = path.join(OUT, 'The-Engineering-of-Play.pptx')
   await pptx.writeFile({ fileName: pptxPath })

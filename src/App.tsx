@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { slides } from './slides'
 
 const SLIDE_W = 1920
-const SLIDE_H = 1080
+const SLIDE_H = 1200
 
 function readExportMode() {
   if (typeof window === 'undefined') return { exportMode: false, start: 0 }

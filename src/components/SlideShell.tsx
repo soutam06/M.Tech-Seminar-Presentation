@@ -24,7 +24,7 @@ export function SlideShell({
   return (
     <section className="relative h-full w-full overflow-hidden">
       <DeckBackground hue={hue} />
-      <div className="relative z-10 flex h-full min-h-0 flex-col px-16 pb-24 pt-11">
+      <div className="relative z-10 flex h-full min-h-0 flex-col px-16 pb-24 pt-12">
         <div
           className={`flex min-h-0 w-full flex-1 flex-col overflow-hidden ${
             center ? 'justify-center' : ''

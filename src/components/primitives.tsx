@@ -23,7 +23,7 @@ export function GradientText({
 
 export function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[15px] font-medium uppercase tracking-[0.16em] text-white/85">
+    <span className="inline-flex w-fit shrink-0 items-center gap-2 self-start rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[15px] font-medium uppercase tracking-[0.16em] text-white/85">
       {children}
     </span>
   )

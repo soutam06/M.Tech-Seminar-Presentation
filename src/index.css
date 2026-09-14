@@ -61,7 +61,7 @@
   display: none !important;
 }
 
-/* Designed for a 1920×1080 slide (standard projector). The app scales the whole slide to fit.
+/* Designed for a 1920×1200 slide (16:10, Nalanda WUXGA projectors). The app scales the whole slide to fit.
    Do not use vw/vh in slide layout — those follow the browser window, not this canvas. */
 .deck-cards {
   display: grid;

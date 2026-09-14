@@ -44,7 +44,7 @@ Then open the printed URL (defaults to <http://127.0.0.1:43733>).
 ### Presenting tips
 
 - Press **F11** for full-screen in your browser before you start.
-- The deck is locked to a **1920×1080 (16:9)** slide and scales to fit the projector. Use a 16:9 screen if you can.
+- The deck is locked to a **1920×1200 (16:10)** slide — the native size of Nalanda’s WUXGA projectors — and scales to fit any other screen. Press **F11** before you start.
 - The one live demo (CPU vs GPU) is on slide 6 — click both buttons for a great "aha" moment.
 
 ## Tech
