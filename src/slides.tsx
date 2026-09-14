@@ -101,49 +101,44 @@ function Panel({
     <div
       className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-xl"
       style={{
-        border: `1px solid color-mix(in srgb, ${tint} 45%, transparent)`,
-        background: `linear-gradient(165deg, color-mix(in srgb, ${tint} 24%, #18222c) 0%, #151d26 48%, #12191f 100%)`,
+        border: `1px solid color-mix(in srgb, ${tint} 48%, transparent)`,
+        background: `linear-gradient(180deg, color-mix(in srgb, ${tint} 14%, #171f28) 0%, #141b22 100%)`,
       }}
     >
-      <div className="h-[5px] w-full shrink-0" style={{ background: tint }} />
-      <div className="px-7 pt-6">
+      <div
+        className="flex shrink-0 items-center gap-4 px-6 py-[18px]"
+        style={{
+          background: `color-mix(in srgb, ${tint} 20%, #12191f)`,
+          borderBottom: `1px solid color-mix(in srgb, ${tint} 34%, transparent)`,
+        }}
+      >
         {index ? (
-          <div
+          <span
             className="font-mono text-[15px] font-semibold tracking-[0.22em]"
             style={{ color: tint }}
           >
             {index}
-          </div>
+          </span>
         ) : null}
-        <h3 className={`${index ? 'mt-3' : ''} deck-h font-display font-semibold text-white`}>
-          {title}
-        </h3>
-        <div className="mt-3 deck-p">{children}</div>
-      </div>
-      <div
-        className="relative mt-auto flex min-h-[120px] flex-1 items-end justify-between px-7 pb-5"
-        style={{
-          backgroundImage: `radial-gradient(color-mix(in srgb, ${tint} 30%, transparent) 1.15px, transparent 1.15px)`,
-          backgroundSize: '18px 18px',
-        }}
-      >
         {glyph !== undefined ? (
           <div
-            className="grid h-[72px] w-[72px] place-items-center rounded-xl"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-lg"
             style={{
-              background: `color-mix(in srgb, ${tint} 18%, transparent)`,
-              border: `1px solid color-mix(in srgb, ${tint} 42%, transparent)`,
+              background: `color-mix(in srgb, ${tint} 16%, transparent)`,
+              border: `1px solid color-mix(in srgb, ${tint} 40%, transparent)`,
             }}
           >
-            <LeapGlyph kind={glyph} color={tint} size={40} />
+            <LeapGlyph kind={glyph} color={tint} size={26} />
           </div>
-        ) : (
-          <span />
-        )}
+        ) : null}
+        <h3 className="min-w-0 deck-h font-display font-semibold text-white">{title}</h3>
+      </div>
+      <div className="relative flex min-h-0 flex-1 items-start px-7 pt-5 pb-6">
+        <div className="relative z-10 max-w-[1420px] deck-p">{children}</div>
         {index ? (
           <div
-            className="select-none font-display text-[88px] font-bold leading-none"
-            style={{ color: tint, opacity: 0.22 }}
+            className="pointer-events-none absolute bottom-2 right-6 select-none font-display text-[84px] font-bold leading-none"
+            style={{ color: tint, opacity: 0.12 }}
           >
             {index}
           </div>
@@ -196,18 +191,20 @@ function Cluster({
   children,
   footer,
 }: {
-  cols: 2 | 3 | 4 | 5
+  cols: 1 | 2 | 3 | 4 | 5
   children: ReactNode
   footer?: ReactNode
 }) {
   const colClass =
-    cols === 2
-      ? 'grid-cols-2'
-      : cols === 3
-        ? 'grid-cols-3'
-        : cols === 4
-          ? 'grid-cols-4'
-          : 'grid-cols-5'
+    cols === 1
+      ? 'grid-cols-1'
+      : cols === 2
+        ? 'grid-cols-2'
+        : cols === 3
+          ? 'grid-cols-3'
+          : cols === 4
+            ? 'grid-cols-4'
+            : 'grid-cols-5'
   return (
     <div className="flex min-h-0 flex-1 flex-col gap-5">
       <div className={`grid min-h-0 flex-1 items-stretch gap-5 ${colClass}`}>{children}</div>
@@ -321,52 +318,59 @@ export const slides: Slide[] = [
         >
         <div className="relative flex min-h-0 flex-1 flex-col gap-3">
             <div
-              className="absolute bottom-8 left-[48px] top-8 w-[3px] rounded-full"
+              className="absolute bottom-8 left-[27px] top-8 w-[3px] rounded-full"
               style={{
                 background:
                   'linear-gradient(180deg, var(--color-gold), var(--color-teal), var(--color-slate), var(--color-rose), var(--color-olive))',
               }}
             />
             {eras.map((e, i) => (
-              <div
-                key={e.t}
-                className="relative flex min-h-0 flex-1 items-center gap-7 overflow-hidden rounded-xl pr-6 pl-5"
-                style={{
-                  border: `1px solid color-mix(in srgb, ${e.c} 42%, transparent)`,
-                  background: `linear-gradient(90deg, color-mix(in srgb, ${e.c} 22%, #171f28) 0%, #151d26 34%, #131a21 100%)`,
-                }}
-              >
+              <div key={e.t} className="relative flex min-h-0 flex-1 items-stretch gap-4">
                 <div
-                  className="relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[16px] font-bold"
+                  className="relative z-10 my-auto grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[16px] font-bold"
                   style={{
                     color: e.c,
                     background: 'var(--color-ink)',
                     border: `2px solid ${e.c}`,
-                    boxShadow: `0 0 0 6px #0c1218`,
+                    boxShadow: '0 0 0 7px var(--color-ink)',
                   }}
                 >
                   {String(i + 1).padStart(2, '0')}
                 </div>
                 <div
-                  className="w-[210px] shrink-0 font-mono text-[18px] font-semibold tracking-[0.12em]"
-                  style={{ color: e.c }}
-                >
-                  {e.y}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="font-display text-[32px] font-semibold leading-tight text-white">
-                    {e.t}
-                  </div>
-                  <p className="mt-1.5 deck-p">{e.d}</p>
-                </div>
-                <div
-                  className="grid h-16 w-16 shrink-0 place-items-center rounded-xl"
+                  className="relative flex min-h-0 min-w-0 flex-1 items-center gap-8 overflow-hidden rounded-xl px-7"
                   style={{
-                    background: `color-mix(in srgb, ${e.c} 16%, transparent)`,
-                    border: `1px solid color-mix(in srgb, ${e.c} 40%, transparent)`,
+                    border: `1px solid color-mix(in srgb, ${e.c} 42%, transparent)`,
+                    background: `linear-gradient(90deg, color-mix(in srgb, ${e.c} 22%, #171f28) 0%, #151d26 36%, #131a21 100%)`,
                   }}
                 >
-                  <LeapGlyph kind={i as 0 | 1 | 2 | 3 | 4} color={e.c} size={36} />
+                  <div
+                    className="w-[210px] shrink-0 font-mono text-[18px] font-semibold tracking-[0.12em]"
+                    style={{ color: e.c }}
+                  >
+                    {e.y}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="font-display text-[32px] font-semibold leading-tight text-white">
+                      {e.t}
+                    </div>
+                    <p className="mt-1.5 deck-p">{e.d}</p>
+                  </div>
+                  <div
+                    className="pointer-events-none absolute right-28 top-1/2 -translate-y-1/2 select-none font-display text-[92px] font-bold leading-none"
+                    style={{ color: e.c, opacity: 0.09 }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <div
+                    className="relative z-10 grid h-16 w-16 shrink-0 place-items-center rounded-xl"
+                    style={{
+                      background: `color-mix(in srgb, ${e.c} 16%, transparent)`,
+                      border: `1px solid color-mix(in srgb, ${e.c} 40%, transparent)`,
+                    }}
+                  >
+                    <LeapGlyph kind={i as 0 | 1 | 2 | 3 | 4} color={e.c} size={36} />
+                  </div>
                 </div>
               </div>
             ))}
@@ -561,7 +565,7 @@ export const slides: Slide[] = [
         subtitle="Home internet turned games into places we share. That created new headaches for engineers."
       >
         <Cluster
-          cols={3}
+          cols={1}
           footer={
             <Note accent={TINT.violet} label="The shift:">
               a game stopped being “a program on your computer” and became{' '}
@@ -641,7 +645,7 @@ export const slides: Slide[] = [
         subtitle="Tools made so we could have fun ended up powering some of today's most serious work."
       >
         <Cluster
-          cols={3}
+          cols={1}
           footer={
             <p className="deck-p">
               <span style={{ color: TINT.lime }}>The point:</span> chasing a fun, hard problem —
