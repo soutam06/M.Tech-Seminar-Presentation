@@ -37,7 +37,7 @@ export function SlideShell({
               }`}
             >
               {kicker && (
-                <span className="font-mono text-[17px] uppercase tracking-[0.22em] text-muted">
+                <span className="font-mono text-[20px] uppercase tracking-[0.22em] text-muted">
                   {kicker}
                 </span>
               )}

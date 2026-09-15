@@ -48,11 +48,11 @@ function Figure({
         className="absolute inset-0 h-full w-full object-contain"
       />
       {caption && (
-        <span className="absolute left-3 top-3 max-w-[90%] rounded bg-black/65 px-2 py-1 font-mono text-[13px] leading-snug text-white/90">
+        <span className="absolute left-3 top-3 max-w-[90%] rounded bg-black/65 px-2 py-1 font-mono text-[16px] leading-snug text-white/90">
           {caption}
         </span>
       )}
-      <span className="absolute bottom-3 left-3 max-w-[90%] rounded bg-black/70 px-2 py-1 font-mono text-[13px] leading-none tracking-wide text-white/90">
+      <span className="absolute bottom-3 left-3 max-w-[90%] rounded bg-black/70 px-2 py-1 font-mono text-[16px] leading-none tracking-wide text-white/90">
         Source: {source}
       </span>
     </figure>
@@ -70,7 +70,7 @@ function Note({
 }) {
   return (
     <div
-      className="shrink-0 rounded-xl border px-5 py-3 text-[24px] leading-snug text-ink"
+      className="shrink-0 rounded-xl border px-5 py-3 text-[28px] leading-snug text-ink"
       style={{
         borderColor: `color-mix(in srgb, ${accent} 45%, transparent)`,
         background: `color-mix(in srgb, ${accent} 10%, var(--color-paper))`,
@@ -114,7 +114,7 @@ function Panel({
       >
         {index ? (
           <span
-            className="font-mono text-[15px] font-semibold tracking-[0.22em]"
+            className="font-mono text-[18px] font-semibold tracking-[0.22em]"
             style={{ color: tint }}
           >
             {index}
@@ -223,12 +223,12 @@ export const slides: Slide[] = [
         <div className="grid h-full min-h-0 grid-cols-[1fr_920px] items-center gap-12">
           <div className="flex min-h-0 flex-col justify-center">
             <Chip>A science &amp; engineering talk</Chip>
-            <h1 className="mt-6 font-display text-[72px] font-bold leading-[1.02] tracking-tight">
+            <h1 className="mt-6 font-display text-[80px] font-bold leading-[1.02] tracking-tight">
               The Engineering
               <br />
               of <GradientText>Play</GradientText>
             </h1>
-            <p className="mt-6 max-w-[720px] text-[28px] font-medium leading-snug text-ink">
+            <p className="mt-6 max-w-[760px] text-[32px] font-medium leading-snug text-ink">
               How games grew up — and where they are going — told through the engineering
               that made each leap possible.
             </p>
@@ -236,11 +236,11 @@ export const slides: Slide[] = [
               className="mt-8 border-l-2 pl-4"
               style={{ borderColor: 'color-mix(in srgb, var(--color-accent) 55%, transparent)' }}
             >
-              <div className="font-display text-[36px] font-semibold text-ink">
+              <div className="font-display text-[42px] font-semibold text-ink">
                 Soutam Rajbhar
               </div>
-              <div className="mt-1 text-[24px] text-ink">Department of Chemical Engineering</div>
-              <div className="text-[24px] text-ink">IIT Kharagpur</div>
+              <div className="mt-1 text-[28px] text-ink">Department of Chemical Engineering</div>
+              <div className="text-[28px] text-ink">IIT Kharagpur</div>
             </div>
           </div>
           <Figure
@@ -289,12 +289,12 @@ export const slides: Slide[] = [
                 <div className="h-[5px] w-full shrink-0" style={{ background: s.c }} />
                 <div className="flex min-h-0 flex-1 items-center gap-8 px-9">
                   <div
-                    className="w-[300px] shrink-0 font-display text-[72px] font-bold leading-none"
+                    className="w-[320px] shrink-0 font-display text-[80px] font-bold leading-none"
                     style={{ color: s.c }}
                   >
                     {s.v}
                   </div>
-                  <div className="max-w-[380px] text-[22px] font-medium uppercase tracking-widest text-ink">
+                  <div className="max-w-[400px] text-[26px] font-medium uppercase tracking-widest text-ink">
                     {s.l}
                   </div>
                 </div>
@@ -302,7 +302,7 @@ export const slides: Slide[] = [
             ))}
           </div>
           <div
-            className="shrink-0 rounded-xl px-7 py-4 text-[24px] leading-snug text-ink"
+            className="shrink-0 rounded-xl px-7 py-4 text-[28px] leading-snug text-ink"
             style={{
               border: `1px solid color-mix(in srgb, ${TINT.cyan} 45%, transparent)`,
               background: `color-mix(in srgb, ${TINT.cyan} 16%, var(--color-paper))`,
@@ -338,7 +338,7 @@ export const slides: Slide[] = [
         >
         <div className="relative flex min-h-0 flex-1 flex-col gap-3">
             <div
-              className="absolute bottom-8 left-[27px] top-8 w-[3px] rounded-full"
+              className="absolute bottom-8 left-[32px] top-8 w-[3px] rounded-full"
               style={{
                 background:
                   'linear-gradient(180deg, var(--color-gold), var(--color-teal), var(--color-slate), var(--color-rose), var(--color-olive))',
@@ -347,7 +347,7 @@ export const slides: Slide[] = [
             {eras.map((e, i) => (
               <div key={e.t} className="relative flex min-h-0 flex-1 items-stretch gap-4">
                 <div
-                  className="relative z-10 my-auto grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[16px] font-bold"
+                  className="relative z-10 my-auto grid h-16 w-16 shrink-0 place-items-center rounded-full font-mono text-[18px] font-bold"
                   style={{
                     color: e.c,
                     background: 'var(--color-paper)',
@@ -365,13 +365,13 @@ export const slides: Slide[] = [
                   }}
                 >
                   <div
-                    className="w-[210px] shrink-0 font-mono text-[18px] font-semibold tracking-[0.12em]"
+                    className="w-[240px] shrink-0 font-mono text-[22px] font-semibold tracking-[0.12em]"
                     style={{ color: e.c }}
                   >
                     {e.y}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="font-display text-[32px] font-semibold leading-tight text-ink">
+                    <div className="font-display text-[36px] font-semibold leading-tight text-ink">
                       {e.t}
                     </div>
                     <p className="mt-1.5 deck-p">{e.d}</p>
@@ -496,7 +496,7 @@ export const slides: Slide[] = [
                 GeForce 256 was sold as the first of these.
               </p>
             </Card>
-            <div className="flex shrink-0 flex-wrap gap-2 font-mono text-[18px]">
+            <div className="flex shrink-0 flex-wrap gap-2 font-mono text-[22px]">
               {['PlayStation', 'Nintendo 64', 'Quake', 'GeForce 256'].map((t) => (
                 <span
                   key={t}
@@ -804,7 +804,7 @@ export const slides: Slide[] = [
         <div className="flex min-h-0 flex-1 flex-col gap-4">
           <div className="relative flex min-h-0 flex-1 flex-col gap-3">
             <div
-              className="absolute bottom-8 left-[27px] top-8 w-[3px] rounded-full"
+              className="absolute bottom-8 left-[32px] top-8 w-[3px] rounded-full"
               style={{
                 background:
                   'linear-gradient(180deg, var(--color-teal), var(--color-slate), var(--color-rose), var(--color-teal))',
@@ -832,7 +832,7 @@ export const slides: Slide[] = [
             ].map((s) => (
               <div key={s.n} className="relative flex min-h-0 flex-1 items-stretch gap-4">
                 <div
-                  className="relative z-10 my-auto grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[16px] font-bold"
+                  className="relative z-10 my-auto grid h-16 w-16 shrink-0 place-items-center rounded-full font-mono text-[18px] font-bold"
                   style={{
                     color: s.c,
                     background: 'var(--color-paper)',
@@ -917,7 +917,7 @@ export const slides: Slide[] = [
                 className="flex h-full items-center gap-5 overflow-hidden rounded-2xl border border-ink/12 bg-white p-6"
               >
                 <span
-                  className="grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[22px] font-bold"
+                  className="grid h-16 w-16 shrink-0 place-items-center rounded-full font-mono text-[24px] font-bold"
                   style={{ color: p.c, background: `${p.c}1a`, border: `1px solid ${p.c}55` }}
                 >
                   {i + 1}
@@ -960,7 +960,7 @@ export const slides: Slide[] = [
           <div className="mt-2 grid w-[1500px] max-w-full grid-cols-2 gap-x-16 gap-y-5 text-left">
             {refs.map(([who, what, year], i) => (
               <div key={who + what} className="flex gap-3 border-b border-ink/10 pb-3">
-                <span className="font-mono text-[20px] text-muted">
+                <span className="font-mono text-[24px] text-muted">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <p className="deck-p">
@@ -970,7 +970,7 @@ export const slides: Slide[] = [
               </div>
             ))}
           </div>
-          <p className="mt-8 max-w-[1200px] text-center text-[20px] text-muted">
+          <p className="mt-8 max-w-[1200px] text-center text-[24px] text-muted">
             Numbers are rounded for scale. Every picture carries its own source line. Pictures in
             this talk are original AI-generated illustrations made for this seminar — not photos of
             real products.
@@ -988,20 +988,20 @@ export const slides: Slide[] = [
       <SlideShell hue="magenta" center>
         <div className="flex max-w-[1400px] flex-col items-center text-center">
           <Chip>One last thought</Chip>
-          <h2 className="mt-6 font-display text-[60px] font-bold leading-[1.08] tracking-tight">
+          <h2 className="mt-6 font-display text-[68px] font-bold leading-[1.08] tracking-tight">
             The next leap in technology
             <br />
             won't be announced in a lab —
             <br />
             <GradientText>it'll ship in a game.</GradientText>
           </h2>
-          <p className="mt-6 max-w-5xl text-[28px] font-medium leading-snug text-ink">
+          <p className="mt-6 max-w-5xl text-[32px] font-medium leading-snug text-ink">
             Dots → triangles → many hands at once → AI → worlds you can step inside. From
             <em> Pong</em> on a lab screen to places we may one day walk into — every leap was
             an engineering leap. Watch what gamers play next. It's a preview of what everyone
             else will build with.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 font-mono text-[20px] text-ink">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 font-mono text-[24px] text-ink">
             <span
               className="rounded-lg border px-4 py-1.5"
               style={{

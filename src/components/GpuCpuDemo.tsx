@@ -89,16 +89,16 @@ export function GpuCpuDemo() {
         })}
       </div>
 
-      <div className="flex shrink-0 items-center gap-10 font-mono text-[20px]">
+      <div className="flex shrink-0 items-center gap-10 font-mono text-[24px]">
         <div className="text-center">
           <div className="text-muted">shaded</div>
-          <div className="text-[36px] font-bold leading-none text-ink">
+          <div className="text-[42px] font-bold leading-none text-ink">
             {filled}/{TOTAL}
           </div>
         </div>
         <div className="text-center">
           <div className="text-muted">time</div>
-          <div className="text-[36px] font-bold leading-none" style={{ color: tint }}>
+          <div className="text-[42px] font-bold leading-none" style={{ color: tint }}>
             {(elapsed / 1000).toFixed(2)}s
           </div>
         </div>
@@ -108,7 +108,7 @@ export function GpuCpuDemo() {
         <button
           onClick={() => run('cpu')}
           disabled={mode !== 'idle'}
-          className="rounded-xl border px-5 py-3 text-[22px] font-semibold disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-xl border px-5 py-3 text-[26px] font-semibold disabled:cursor-not-allowed disabled:opacity-40"
           style={{
             color: 'var(--color-teal)',
             borderColor: 'color-mix(in srgb, var(--color-teal) 50%, transparent)',
@@ -120,7 +120,7 @@ export function GpuCpuDemo() {
         <button
           onClick={() => run('gpu')}
           disabled={mode !== 'idle'}
-          className="rounded-xl border px-5 py-3 text-[22px] font-semibold disabled:cursor-not-allowed disabled:opacity-40"
+          className="rounded-xl border px-5 py-3 text-[26px] font-semibold disabled:cursor-not-allowed disabled:opacity-40"
           style={{
             color: 'var(--color-rose)',
             borderColor: 'color-mix(in srgb, var(--color-rose) 50%, transparent)',
@@ -131,9 +131,9 @@ export function GpuCpuDemo() {
         </button>
       </div>
 
-      <div className="flex h-[84px] w-full max-w-[520px] shrink-0 items-center justify-center">
+      <div className="flex h-[108px] w-full max-w-[560px] shrink-0 items-center justify-center">
         <div
-          className={`rounded-xl border px-4 py-2 text-center text-[20px] leading-snug ${
+          className={`rounded-xl border px-4 py-2 text-center text-[24px] leading-snug ${
             done
               ? 'border-ink/15 bg-white text-ink'
               : 'invisible border-transparent'

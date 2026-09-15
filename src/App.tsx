@@ -99,12 +99,12 @@ export default function App() {
         <div className="absolute inset-x-0 bottom-0 z-30 flex items-center justify-between px-10 pb-6 export-hide">
           <button
             onClick={() => setShowMap((s) => !s)}
-            className="pointer-events-auto flex items-center gap-2 rounded-full border border-ink/15 bg-white px-4 py-2 font-mono text-sm text-ink hover:bg-panel"
+            className="pointer-events-auto flex items-center gap-2 rounded-full border border-ink/15 bg-white px-4 py-2 font-mono text-[16px] text-ink hover:bg-panel"
           >
             {slides[index].label}
           </button>
           <div className="pointer-events-auto flex items-center gap-3">
-            <span className="font-mono text-sm text-muted">
+            <span className="font-mono text-[16px] text-muted">
               {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
             </span>
             <NavButton disabled={index === 0} onClick={() => go(index - 1)} dir="prev" />
