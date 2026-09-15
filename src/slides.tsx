@@ -15,11 +15,11 @@ export type Slide = {
 }
 
 const TINT = {
-  amber: '#e0b84a',
-  cyan: '#5dcdc0',
-  violet: '#8fa4c4',
-  magenta: '#d08a9a',
-  lime: '#c0c86a',
+  amber: '#8a5a10',
+  cyan: '#0d6e68',
+  violet: '#2f4a73',
+  magenta: '#9a3550',
+  lime: '#5a6414',
 }
 
 const IMAGE_SOURCE = 'AI-generated for this seminar'
@@ -39,7 +39,7 @@ function Figure({
 }) {
   return (
     <figure
-      className={`relative overflow-hidden rounded-2xl border border-white/10 bg-black/40 ${className}`}
+      className={`relative overflow-hidden rounded-2xl border border-ink/12 bg-panel ${className}`}
     >
       <img
         src={src}
@@ -70,10 +70,10 @@ function Note({
 }) {
   return (
     <div
-      className="shrink-0 rounded-xl border px-5 py-3 text-[24px] leading-snug text-white"
+      className="shrink-0 rounded-xl border px-5 py-3 text-[24px] leading-snug text-ink"
       style={{
-        borderColor: `color-mix(in srgb, ${accent} 55%, transparent)`,
-        background: `color-mix(in srgb, ${accent} 18%, #151d26)`,
+        borderColor: `color-mix(in srgb, ${accent} 45%, transparent)`,
+        background: `color-mix(in srgb, ${accent} 10%, var(--color-paper))`,
       }}
     >
       <span className="font-semibold" style={{ color: accent }}>
@@ -101,14 +101,14 @@ function Panel({
     <div
       className="relative flex h-full min-h-0 flex-col overflow-hidden rounded-xl"
       style={{
-        border: `1px solid color-mix(in srgb, ${tint} 48%, transparent)`,
-        background: `linear-gradient(180deg, color-mix(in srgb, ${tint} 14%, #171f28) 0%, #141b22 100%)`,
+        border: `1px solid color-mix(in srgb, ${tint} 40%, transparent)`,
+        background: `linear-gradient(180deg, color-mix(in srgb, ${tint} 10%, var(--color-paper)) 0%, var(--color-paper) 100%)`,
       }}
     >
       <div
         className="flex shrink-0 items-center gap-4 px-6 py-[18px]"
         style={{
-          background: `color-mix(in srgb, ${tint} 20%, #12191f)`,
+          background: `color-mix(in srgb, ${tint} 12%, var(--color-panel))`,
           borderBottom: `1px solid color-mix(in srgb, ${tint} 34%, transparent)`,
         }}
       >
@@ -131,7 +131,7 @@ function Panel({
             <LeapGlyph kind={glyph} color={tint} size={26} />
           </div>
         ) : null}
-        <h3 className="min-w-0 deck-h font-display font-semibold text-white">{title}</h3>
+        <h3 className="min-w-0 deck-h font-display font-semibold text-ink">{title}</h3>
       </div>
       <div className="relative flex min-h-0 flex-1 items-start px-7 pt-5 pb-6">
         <div className="relative z-10 max-w-[1420px] deck-p">{children}</div>
@@ -228,7 +228,7 @@ export const slides: Slide[] = [
               <br />
               of <GradientText>Play</GradientText>
             </h1>
-            <p className="mt-6 max-w-[720px] text-[28px] font-medium leading-snug text-white">
+            <p className="mt-6 max-w-[720px] text-[28px] font-medium leading-snug text-ink">
               How games grew up — and where they are going — told through the engineering
               that made each leap possible.
             </p>
@@ -236,11 +236,11 @@ export const slides: Slide[] = [
               className="mt-8 border-l-2 pl-4"
               style={{ borderColor: 'color-mix(in srgb, var(--color-accent) 55%, transparent)' }}
             >
-              <div className="font-display text-[36px] font-semibold text-white">
+              <div className="font-display text-[36px] font-semibold text-ink">
                 Soutam Rajbhar
               </div>
-              <div className="mt-1 text-[24px] text-white">Department of Chemical Engineering</div>
-              <div className="text-[24px] text-white">IIT Kharagpur</div>
+              <div className="mt-1 text-[24px] text-ink">Department of Chemical Engineering</div>
+              <div className="text-[24px] text-ink">IIT Kharagpur</div>
             </div>
           </div>
           <Figure
@@ -283,7 +283,7 @@ export const slides: Slide[] = [
                 className="flex min-h-0 flex-col overflow-hidden rounded-xl"
                 style={{
                   border: `1px solid color-mix(in srgb, ${s.c} 45%, transparent)`,
-                  background: `linear-gradient(90deg, color-mix(in srgb, ${s.c} 22%, #171f28) 0%, #141b22 100%)`,
+                  background: `linear-gradient(90deg, color-mix(in srgb, ${s.c} 22%, var(--color-paper)) 0%, var(--color-paper) 100%)`,
                 }}
               >
                 <div className="h-[5px] w-full shrink-0" style={{ background: s.c }} />
@@ -294,7 +294,7 @@ export const slides: Slide[] = [
                   >
                     {s.v}
                   </div>
-                  <div className="max-w-[380px] text-[22px] font-medium uppercase tracking-widest text-white">
+                  <div className="max-w-[380px] text-[22px] font-medium uppercase tracking-widest text-ink">
                     {s.l}
                   </div>
                 </div>
@@ -302,10 +302,10 @@ export const slides: Slide[] = [
             ))}
           </div>
           <div
-            className="shrink-0 rounded-xl px-7 py-4 text-[24px] leading-snug text-white"
+            className="shrink-0 rounded-xl px-7 py-4 text-[24px] leading-snug text-ink"
             style={{
               border: `1px solid color-mix(in srgb, ${TINT.cyan} 45%, transparent)`,
-              background: `color-mix(in srgb, ${TINT.cyan} 16%, #151d26)`,
+              background: `color-mix(in srgb, ${TINT.cyan} 16%, var(--color-paper))`,
             }}
           >
             Every second, your computer does maths for millions of points — shape, bounce,
@@ -350,9 +350,9 @@ export const slides: Slide[] = [
                   className="relative z-10 my-auto grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[16px] font-bold"
                   style={{
                     color: e.c,
-                    background: 'var(--color-ink)',
+                    background: 'var(--color-paper)',
                     border: `2px solid ${e.c}`,
-                    boxShadow: '0 0 0 7px var(--color-ink)',
+                    boxShadow: '0 0 0 7px var(--color-paper)',
                   }}
                 >
                   {String(i + 1).padStart(2, '0')}
@@ -361,7 +361,7 @@ export const slides: Slide[] = [
                   className="relative flex min-h-0 min-w-0 flex-1 items-center gap-8 overflow-hidden rounded-xl px-7"
                   style={{
                     border: `1px solid color-mix(in srgb, ${e.c} 42%, transparent)`,
-                    background: `linear-gradient(90deg, color-mix(in srgb, ${e.c} 22%, #171f28) 0%, #151d26 36%, #131a21 100%)`,
+                    background: `linear-gradient(90deg, color-mix(in srgb, ${e.c} 22%, var(--color-paper)) 0%, var(--color-paper) 36%, var(--color-paper) 100%)`,
                   }}
                 >
                   <div
@@ -371,7 +371,7 @@ export const slides: Slide[] = [
                     {e.y}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="font-display text-[32px] font-semibold leading-tight text-white">
+                    <div className="font-display text-[32px] font-semibold leading-tight text-ink">
                       {e.t}
                     </div>
                     <p className="mt-1.5 deck-p">{e.d}</p>
@@ -425,21 +425,21 @@ export const slides: Slide[] = [
           />
           <div className="flex flex-col gap-4">
             <Card>
-              <h3 className="deck-h font-display font-semibold text-white">The games</h3>
+              <h3 className="deck-h font-display font-semibold text-ink">The games</h3>
               <p className="mt-2 deck-p">
                 <em>Tennis for Two</em> (1958) on a lab screen, <em>Pong</em> (1972), then
                 <em> Space Invaders</em> and packed arcade halls.
               </p>
             </Card>
             <Card>
-              <h3 className="deck-h font-display font-semibold text-white">How it was built</h3>
+              <h3 className="deck-h font-display font-semibold text-ink">How it was built</h3>
               <p className="mt-2 deck-p">
                 Early machines were wired by hand. There was often no “brain chip” yet — the
                 wiring <em>itself</em> was the game.
               </p>
             </Card>
             <Card>
-              <h3 className="deck-h font-display font-semibold text-white">The big change</h3>
+              <h3 className="deck-h font-display font-semibold text-ink">The big change</h3>
               <p className="mt-2 deck-p">
                 Cheap computer chips arrived. A game became <em>software</em> — the same machine
                 could play many different games.
@@ -447,7 +447,7 @@ export const slides: Slide[] = [
             </Card>
             <Note accent={TINT.amber} label="Takeaway:">
               once games were software, progress stopped being about new wires and started being
-              about <span className="text-white">faster computers</span>.
+              about <span className="font-semibold text-ink">faster computers</span>.
             </Note>
           </div>
         </div>
@@ -480,7 +480,7 @@ export const slides: Slide[] = [
           />
           <div className="flex flex-col gap-4">
             <Card>
-              <h3 className="deck-h font-display font-semibold text-white">The problem</h3>
+              <h3 className="deck-h font-display font-semibold text-ink">The problem</h3>
               <p className="mt-2 deck-p">
                 A 3D world is made of millions of tiny triangles. Every picture, the computer
                 must move them, light them, and colour every dot. A normal chip (the CPU) does
@@ -488,7 +488,7 @@ export const slides: Slide[] = [
               </p>
             </Card>
             <Card>
-              <h3 className="deck-h font-display font-semibold text-white">The answer</h3>
+              <h3 className="deck-h font-display font-semibold text-ink">The answer</h3>
               <p className="mt-2 deck-p">
                 A new chip built just for pictures: the{' '}
                 <span style={{ color: TINT.cyan }}>Graphics Processing Unit</span>. It has many small
@@ -500,7 +500,7 @@ export const slides: Slide[] = [
               {['PlayStation', 'Nintendo 64', 'Quake', 'GeForce 256'].map((t) => (
                 <span
                   key={t}
-                  className="rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-white"
+                  className="rounded-lg border border-ink/15 bg-panel px-4 py-2 text-ink"
                 >
                   {t}
                 </span>
@@ -508,7 +508,7 @@ export const slides: Slide[] = [
             </div>
             <p className="deck-p">
               One idea matters more than anything else today:{' '}
-              <span className="text-white">do the same small job on thousands of things at once</span>.
+              <span className="font-semibold text-ink">do the same small job on thousands of things at once</span>.
               Let's watch it happen. →
             </p>
           </div>
@@ -533,7 +533,7 @@ export const slides: Slide[] = [
         subtitle="Both chips colour the same 144-dot picture. The CPU has 4 strong workers. The GPU has 48 smaller ones. Watch the clock."
       >
         <div className="grid min-h-0 flex-1 grid-cols-[560px_1fr] items-center gap-8 overflow-hidden">
-          <div className="flex min-h-0 items-center overflow-hidden rounded-2xl border border-white/10 bg-black/30 p-5">
+          <div className="flex min-h-0 items-center overflow-hidden rounded-2xl border border-ink/12 bg-panel p-5">
             <GpuCpuDemo />
           </div>
           <div className="flex flex-col gap-4">
@@ -557,8 +557,8 @@ export const slides: Slide[] = [
             </Card>
             <p className="deck-p">
               If we gave the CPU 48 cores, would it become a GPU?{' '}
-              <span className="text-white">No.</span> More chefs still aren't a factory line. A
-              real GPU has <span className="text-white">thousands</span> of these simple cores.
+              <span className="font-semibold text-ink">No.</span> More chefs still aren't a factory line. A
+              real GPU has <span className="font-semibold text-ink">thousands</span> of these simple cores.
               That same trick now trains AI.
             </p>
           </div>
@@ -589,7 +589,7 @@ export const slides: Slide[] = [
           footer={
             <Note accent={TINT.violet} label="The shift:">
               a game stopped being “a program on your computer” and became{' '}
-              <span className="text-white">a live system serving millions of people at once</span>.
+              <span className="font-semibold text-ink">a live system serving millions of people at once</span>.
             </Note>
           }
         >
@@ -750,7 +750,7 @@ export const slides: Slide[] = [
           />
           <div className="grid grid-cols-2 gap-4">
             <Card>
-              <h3 className="deck-h font-display font-semibold text-white">
+              <h3 className="deck-h font-display font-semibold text-ink">
                 Headsets &amp; mixed reality
               </h3>
               <p className="mt-2 deck-p">
@@ -759,14 +759,14 @@ export const slides: Slide[] = [
               </p>
             </Card>
             <Card>
-              <h3 className="deck-h font-display font-semibold text-white">Feeling the world</h3>
+              <h3 className="deck-h font-display font-semibold text-ink">Feeling the world</h3>
               <p className="mt-2 deck-p">
                 Motors in controllers and suits let you feel weight, texture, and kickback — not
                 just see it.
               </p>
             </Card>
             <Card>
-              <h3 className="deck-h font-display font-semibold text-white">
+              <h3 className="deck-h font-display font-semibold text-ink">
                 Play with almost no hardware
               </h3>
               <p className="mt-2 deck-p">
@@ -775,7 +775,7 @@ export const slides: Slide[] = [
               </p>
             </Card>
             <Card>
-              <h3 className="deck-h font-display font-semibold text-white">Playing by thought</h3>
+              <h3 className="deck-h font-display font-semibold text-ink">Playing by thought</h3>
               <p className="mt-2 deck-p">
                 Early brain–computer links already let some people move a cursor by thinking.
                 That's a far-off idea of how we might one day play.
@@ -835,9 +835,9 @@ export const slides: Slide[] = [
                   className="relative z-10 my-auto grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[16px] font-bold"
                   style={{
                     color: s.c,
-                    background: 'var(--color-ink)',
+                    background: 'var(--color-paper)',
                     border: `2px solid ${s.c}`,
-                    boxShadow: '0 0 0 7px var(--color-ink)',
+                    boxShadow: '0 0 0 7px var(--color-paper)',
                   }}
                 >
                   {s.n}
@@ -846,11 +846,11 @@ export const slides: Slide[] = [
                   className="relative flex min-h-0 min-w-0 flex-1 items-center gap-8 overflow-hidden rounded-xl px-8"
                   style={{
                     border: `1px solid color-mix(in srgb, ${s.c} 42%, transparent)`,
-                    background: `linear-gradient(90deg, color-mix(in srgb, ${s.c} 20%, #171f28) 0%, #141b22 100%)`,
+                    background: `linear-gradient(90deg, color-mix(in srgb, ${s.c} 20%, var(--color-paper)) 0%, var(--color-paper) 100%)`,
                   }}
                 >
                   <div className="min-w-0 flex-1">
-                    <h3 className="deck-h font-display font-semibold text-white">{s.t}</h3>
+                    <h3 className="deck-h font-display font-semibold text-ink">{s.t}</h3>
                     <p className="mt-2 deck-p">{s.d}</p>
                   </div>
                   <div
@@ -914,7 +914,7 @@ export const slides: Slide[] = [
             {points.map((p, i) => (
               <div
                 key={p.t}
-                className="flex h-full items-center gap-5 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-6"
+                className="flex h-full items-center gap-5 overflow-hidden rounded-2xl border border-ink/12 bg-white p-6"
               >
                 <span
                   className="grid h-14 w-14 shrink-0 place-items-center rounded-full font-mono text-[22px] font-bold"
@@ -923,7 +923,7 @@ export const slides: Slide[] = [
                   {i + 1}
                 </span>
                 <div className="min-w-0">
-                  <h3 className="deck-h font-display font-semibold text-white">{p.t}</h3>
+                  <h3 className="deck-h font-display font-semibold text-ink">{p.t}</h3>
                   <p className="mt-2 deck-p">{p.d}</p>
                 </div>
               </div>
@@ -959,18 +959,18 @@ export const slides: Slide[] = [
         >
           <div className="mt-2 grid w-[1500px] max-w-full grid-cols-2 gap-x-16 gap-y-5 text-left">
             {refs.map(([who, what, year], i) => (
-              <div key={who + what} className="flex gap-3 border-b border-white/10 pb-3">
-                <span className="font-mono text-[20px] text-white/70">
+              <div key={who + what} className="flex gap-3 border-b border-ink/10 pb-3">
+                <span className="font-mono text-[20px] text-muted">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <p className="deck-p">
-                  <span className="font-semibold text-white">{who}.</span> {what}
-                  {year ? <span className="text-white/70"> · {year}</span> : null}
+                  <span className="font-semibold text-ink">{who}.</span> {what}
+                  {year ? <span className="text-muted"> · {year}</span> : null}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-8 max-w-[1200px] text-center text-[20px] text-white/80">
+          <p className="mt-8 max-w-[1200px] text-center text-[20px] text-muted">
             Numbers are rounded for scale. Every picture carries its own source line. Pictures in
             this talk are original AI-generated illustrations made for this seminar — not photos of
             real products.
@@ -995,13 +995,13 @@ export const slides: Slide[] = [
             <br />
             <GradientText>it'll ship in a game.</GradientText>
           </h2>
-          <p className="mt-6 max-w-5xl text-[28px] font-medium leading-snug text-white">
+          <p className="mt-6 max-w-5xl text-[28px] font-medium leading-snug text-ink">
             Dots → triangles → many hands at once → AI → worlds you can step inside. From
             <em> Pong</em> on a lab screen to places we may one day walk into — every leap was
             an engineering leap. Watch what gamers play next. It's a preview of what everyone
             else will build with.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 font-mono text-[20px] text-white">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 font-mono text-[20px] text-ink">
             <span
               className="rounded-lg border px-4 py-1.5"
               style={{
@@ -1012,7 +1012,7 @@ export const slides: Slide[] = [
             >
               Thank you — questions welcome
             </span>
-            <span className="text-white/80">Soutam Rajbhar · Chemical Engineering, IIT Kharagpur</span>
+            <span className="text-muted">Soutam Rajbhar · Chemical Engineering, IIT Kharagpur</span>
           </div>
         </div>
       </SlideShell>

@@ -6,23 +6,25 @@
   --font-sans: 'Source Sans 3', 'Source Sans Pro', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  --color-ink: #0c1218;
-  --color-ink-soft: #151c24;
-  --color-accent: #4ea8a0;
-  --color-gold: #e0b84a;
-  --color-teal: #5dcdc0;
-  --color-slate: #8fa4c4;
-  --color-rose: #d08a9a;
-  --color-olive: #c0c86a;
-  --color-neon-cyan: #5dcdc0;
-  --color-neon-magenta: #d08a9a;
-  --color-neon-violet: #8fa4c4;
-  --color-neon-lime: #c0c86a;
+  --color-paper: #ffffff;
+  --color-panel: #f3f5f7;
+  --color-ink: #15202b;
+  --color-muted: #3d4c5a;
+  --color-accent: #0d6e68;
+  --color-gold: #8a5a10;
+  --color-teal: #0d6e68;
+  --color-slate: #2f4a73;
+  --color-rose: #9a3550;
+  --color-olive: #5a6414;
+  --color-neon-cyan: #0d6e68;
+  --color-neon-magenta: #9a3550;
+  --color-neon-violet: #2f4a73;
+  --color-neon-lime: #5a6414;
 }
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html,
@@ -33,8 +35,8 @@
 
   body {
     margin: 0;
-    background-color: var(--color-ink);
-    color: #e7e9f3;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow: hidden;
@@ -42,8 +44,8 @@
 }
 
 .grid-bg {
-  background-image: linear-gradient(rgba(154, 171, 192, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(154, 171, 192, 0.035) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(21, 32, 43, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21, 32, 43, 0.045) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
@@ -52,7 +54,7 @@
   width: 8px;
 }
 .slide-scroll::-webkit-scrollbar-thumb {
-  background: rgba(154, 171, 192, 0.28);
+  background: rgba(21, 32, 43, 0.22);
   border-radius: 999px;
 }
 
@@ -72,21 +74,23 @@
 .deck-title {
   font-size: 56px;
   line-height: 1.08;
+  color: var(--color-ink);
 }
 
 .deck-sub {
   font-size: 28px;
   line-height: 1.32;
-  color: #f4f6ff;
+  color: var(--color-ink);
 }
 
 .deck-h {
   font-size: 28px;
   line-height: 1.2;
+  color: var(--color-ink);
 }
 
 .deck-p {
   font-size: 24px;
   line-height: 1.35;
-  color: #f4f6ff;
+  color: var(--color-ink);
 }

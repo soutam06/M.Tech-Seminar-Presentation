@@ -67,7 +67,7 @@ export function GpuCpuDemo() {
   return (
     <div className="flex h-full min-h-0 w-full flex-col items-center justify-center gap-5">
       <div
-        className="grid shrink-0 rounded-xl border border-white/10 bg-black/40 p-3"
+        className="grid shrink-0 rounded-xl border border-ink/12 bg-panel p-3"
         style={{
           gridTemplateColumns: `repeat(${GRID}, ${CELL}px)`,
           gap: 3,
@@ -82,7 +82,7 @@ export function GpuCpuDemo() {
                 width: CELL,
                 height: CELL,
                 borderRadius: 3,
-                backgroundColor: on ? tint : 'rgba(255,255,255,0.08)',
+                backgroundColor: on ? tint : 'rgba(21,32,43,0.08)',
               }}
             />
           )
@@ -91,13 +91,13 @@ export function GpuCpuDemo() {
 
       <div className="flex shrink-0 items-center gap-10 font-mono text-[20px]">
         <div className="text-center">
-          <div className="text-white/80">shaded</div>
-          <div className="text-[36px] font-bold leading-none text-white">
+          <div className="text-muted">shaded</div>
+          <div className="text-[36px] font-bold leading-none text-ink">
             {filled}/{TOTAL}
           </div>
         </div>
         <div className="text-center">
-          <div className="text-white/80">time</div>
+          <div className="text-muted">time</div>
           <div className="text-[36px] font-bold leading-none" style={{ color: tint }}>
             {(elapsed / 1000).toFixed(2)}s
           </div>
@@ -135,7 +135,7 @@ export function GpuCpuDemo() {
         <div
           className={`rounded-xl border px-4 py-2 text-center text-[20px] leading-snug ${
             done
-              ? 'border-white/20 bg-white/10 text-white'
+              ? 'border-ink/15 bg-white text-ink'
               : 'invisible border-transparent'
           }`}
         >

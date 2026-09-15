@@ -71,12 +71,12 @@ export default function App() {
 
   return (
     <div
-      className={`grid h-screen w-screen place-items-center overflow-hidden bg-black ${
+      className={`grid h-screen w-screen place-items-center overflow-hidden bg-panel ${
         exportMode ? 'export-mode' : ''
       }`}
     >
       <div
-        className="relative overflow-hidden bg-[color:var(--color-ink)] text-white"
+        className="relative overflow-hidden bg-paper text-ink"
         style={{
           width: SLIDE_W,
           height: SLIDE_H,
@@ -86,7 +86,7 @@ export default function App() {
       >
         <div className="absolute inset-0">{current.render()}</div>
 
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1.5 bg-white/5 export-hide">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-1.5 bg-ink/10 export-hide">
           <div
             className="h-full"
             style={{
@@ -99,12 +99,12 @@ export default function App() {
         <div className="absolute inset-x-0 bottom-0 z-30 flex items-center justify-between px-10 pb-6 export-hide">
           <button
             onClick={() => setShowMap((s) => !s)}
-            className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-4 py-2 font-mono text-sm text-white/70 hover:bg-black/70"
+            className="pointer-events-auto flex items-center gap-2 rounded-full border border-ink/15 bg-white px-4 py-2 font-mono text-sm text-ink hover:bg-panel"
           >
             {slides[index].label}
           </button>
           <div className="pointer-events-auto flex items-center gap-3">
-            <span className="font-mono text-sm text-white/45">
+            <span className="font-mono text-sm text-muted">
               {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
             </span>
             <NavButton disabled={index === 0} onClick={() => go(index - 1)} dir="prev" />
@@ -120,7 +120,7 @@ export default function App() {
               className="pointer-events-auto h-1.5 rounded-full"
               style={{
                 width: i === index ? 22 : 6,
-                background: i === index ? 'var(--color-accent)' : 'rgba(255,255,255,0.25)',
+                background: i === index ? 'var(--color-accent)' : 'rgba(21,32,43,0.22)',
               }}
               aria-label={s.label}
             />
@@ -129,14 +129,14 @@ export default function App() {
 
         {showMap && (
           <div
-            className="absolute inset-0 z-40 flex items-center justify-center bg-black/80"
+            className="absolute inset-0 z-40 flex items-center justify-center bg-ink/40"
             onClick={() => setShowMap(false)}
           >
             <div
-              className="max-h-[860px] w-[1100px] overflow-y-auto p-6"
+              className="max-h-[860px] w-[1100px] overflow-y-auto rounded-2xl border border-ink/10 bg-paper p-6"
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className="mb-4 font-display text-2xl font-semibold text-white/80">
+              <h3 className="mb-4 font-display text-2xl font-semibold text-ink">
                 Jump to a slide
               </h3>
               <div className="grid grid-cols-3 gap-3">
@@ -150,13 +150,13 @@ export default function App() {
                     className={`rounded-xl border p-4 text-left ${
                       i === index
                         ? 'border-[color:color-mix(in_srgb,var(--color-accent)_55%,transparent)] bg-[color:color-mix(in_srgb,var(--color-accent)_10%,transparent)]'
-                        : 'border-white/10 bg-white/[0.03] hover:bg-white/[0.07]'
+                        : 'border-ink/10 bg-panel hover:bg-white'
                     }`}
                   >
-                    <div className="font-mono text-sm text-white/40">
+                    <div className="font-mono text-sm text-muted">
                       {String(i + 1).padStart(2, '0')}
                     </div>
-                    <div className="mt-1 font-display text-lg font-semibold text-white">
+                    <div className="mt-1 font-display text-lg font-semibold text-ink">
                       {s.label}
                     </div>
                   </button>
@@ -183,7 +183,7 @@ function NavButton({
     <button
       onClick={onClick}
       disabled={disabled}
-      className="pointer-events-auto grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-black/50 text-white/80 hover:bg-black/70 disabled:cursor-not-allowed disabled:opacity-30"
+      className="pointer-events-auto grid h-10 w-10 place-items-center rounded-full border border-ink/15 bg-white text-ink hover:bg-panel disabled:cursor-not-allowed disabled:opacity-30"
       aria-label={dir === 'next' ? 'Next slide' : 'Previous slide'}
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
